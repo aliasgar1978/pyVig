@@ -1,4 +1,3 @@
-
 import os
 
 stencil_folder = os.path.abspath(os.getcwd()) + "/stencils/"
@@ -8,6 +7,13 @@ stencil_icons = {
 	'L2_SW': "Master.38",
 	'ROUTER': "Master.39",
 	'LINE': 'line',
+	'AP': 'Wireless access point',
+	'LAN': 'Ethernet',
+	'SERVER': 'Server',
+	'FIREWALL': 'Firewall',
+	'PRINTER': 'Printer',
+	'MODEM': 'Modem',
+	'': None,
 }
 # -----------------------------------------------------------------------------------
 

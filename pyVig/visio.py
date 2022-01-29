@@ -1,9 +1,9 @@
-
 # ------------------------------------------------------------------------------
 #  IMPORTS
 # ------------------------------------------------------------------------------
 import win32com.client
 from win32com.client import constants
+import traceback
 
 from static import *
 from common import *
@@ -216,23 +216,89 @@ class VisioObject:
 		connector.Cells("BeginX").GlueTo(shpObj1.Cells("PinX"))
 		connector.Cells("EndX").GlueTo(shpObj2.Cells("PinX"))		
 
-	def connector(self, connector_type=None, x=0, y=0):
-		'''s1_s2_Connector = self.connector()
-		Drops a connector to visio page.
-		param : connector_type = ( eg - straight, curved, default=angled )
-		param : x, u = coordinates where to drop connector (default=0,0)
-		'''
-		item = self.page.Drop(self.visio.ConnectorToolDataObject, x, y)
-		if connector_type == "straight":
+	def fit_to_draw(self, height, width):
+		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageWidth).FormulaU = f"{width} in"
+		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageHeight).FormulaU = f"{height} in"
+		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageDrawSizeType).FormulaU = "1"
+		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, 38).FormulaU = "2"
+
+
+
+class Connector():
+	'''s1_s2_Connector = self.connector()
+	Drops a connector to visio page.
+	param : connector_type = ( eg - straight, curved, default=angled )
+	param : x, u = coordinates where to drop connector (default=0,0)
+	'''
+
+	def __init__(self, visObj, connector_type=None):
+		self.visObj = visObj
+		self.connector_type = connector_type
+
+	def drop(self, connector_type=None):
+		item = self.visObj.page.Drop(self.visObj.visio.ConnectorToolDataObject, 0, 0)
+		if self.connector_type == "straight":
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLOLineRouteExt).FormulaU = "1"
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLORouteStyle).FormulaU = "16"
-		elif connector_type == "curved":
+		elif self.connector_type == "curved":
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLOLineRouteExt).FormulaU = "2"
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLORouteStyle).FormulaU = "1"
 		else:
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLOLineRouteExt).FormulaU = "1"
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLORouteStyle).FormulaU = "1"
+		self.obj = item
 		return item
+
+	def add_a_port_info(self, aport_info, at_angle, connector_type, indent=True):
+		self.description(aport_info)
+		if connector_type and connector_type != "angled":
+			# print(connector_type)
+			self.text_rotate(at_angle)
+		if indent: self.text_indent()
+
+	def format_line(self, color=None, weight=None, pattern=None):
+		if color: self.line_color(color)
+		if weight: self.line_weight(weight)
+		if pattern: self.line_pattern(pattern)
+
+	@property
+	def object(self):
+		return self.obj
+
+	def text_rotate(self, degree=90):
+		self.obj.CellsSRC(visSectionObject, visRowTextXForm, visXFormAngle).FormulaU = f"{degree} deg"
+
+	def text_indent(self):
+		inch = self.obj.LengthIU / 2 
+		self.obj.CellsSRC(visSectionParagraph, 0, visIndentLeft).FormulaU = f"{inch} in"
+
+	def description(self, remarks):
+		try:
+			self.obj.Characters.Text = remarks
+		except:
+			pass
+
+	def line_color(self, color=None):
+		if isinstance(color, str):
+			if color.lower() == "red": clr = "THEMEGUARD(RGB(255,0,0))"
+			if color.lower() == "green": clr = "THEMEGUARD(RGB(0,255,0))"
+			if color.lower() == "blue": clr = "THEMEGUARD(RGB(0,0,255))"
+			if color.lower() == "gray": clr = "THEMEGUARD(RGB(127,127,127))"
+			if color.lower() == "lightgray": clr = "THEMEGUARD(RGB(55,55,55))"
+			if color.lower() == "darkgray": clr = "THEMEGUARD(RGB(200,200,200))"
+		elif isinstance(color, (list, tuple)) and len(color) == 3:
+			clr = f"THEMEGUARD(RGB({color[0]},{color[1]},{color[2]}))"
+		else:
+			return None
+		try:
+			self.obj.CellsSRC(visSectionObject, visRowLine, visLineColor).FormulaU = clr
+		except: pass
+
+	def line_weight(self, weight=None):
+		self.obj.CellsSRC(visSectionObject, visRowLine, visLineWeight).FormulaU = f"{weight} pt"
+
+	def line_pattern(self, pattern=None):
+		self.obj.CellsSRC(visSectionObject, visRowLine, visLinePattern).FormulaU = pattern
 
 
 class Device():
@@ -244,16 +310,32 @@ class Device():
 		self.y = y
 
 	def drop_from(self, stencil):
-		self.obj = self.visObj.selectNdrop(stencil=stencil, 
-			item=self.item, posX=self.x, posY=self.y)
+		if self.item:
+			self.obj = self.visObj.selectNdrop(stencil=stencil, 
+				item=self.item, posX=self.y, posY=self.x)
+		else:
+			self.obj = self.visObj.shapeDrow('rectangle', 
+				self.x, self.y, self.x+1.7, self.y+1,
+				vAlign=1, hAlign=1)
 
 	@property
 	def object(self):
 		return self.obj
 
-	def connect(self, remote, connector_type=None):
-		connector = self.visObj.connector(connector_type=connector_type)
-		self.visObj.join(connector, self.obj, remote.obj)
+	def connect(self, 
+		remote, 
+		connector_type=None, 
+		angle=0, 
+		aport="",
+		color=None,
+		weight=None,
+		pattern=None,
+		):
+		connector = Connector(self.visObj, connector_type)
+		connector.drop()
+		self.visObj.join(connector.object, self.obj, remote.obj)
+		connector.add_a_port_info(aport, angle, connector_type, indent=False)
+		connector.format_line(color, weight, pattern)
 
 	def description(self, remarks):
 		self.obj.Characters.Text = remarks

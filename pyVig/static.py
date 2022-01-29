@@ -1,4 +1,3 @@
-
 import os
 
 op_file = "c:/users/al202t/desktop/new.vsdx"
@@ -11,6 +10,9 @@ visCharStyle = {
 	'Italic': 51,
 	'Underline': 55,
 }
+visPageWidth = 0
+visPageHeight = 1
+visPageDrawSizeType = 6
 visSectionObject = 1
 visSectionCharacter = 3
 visSectionParagraph = 4
@@ -22,6 +24,11 @@ visFillBkgndTrans = 7
 visRowFill = 3
 visRowXFormOut = 1
 visRowTextXForm = 12
+visRowLine = 2
+visRowPage = 10
+visLineColor = 1
+visLineWeight = 0
+visLinePattern = 2
 visXFormPinX = 0
 visXFormPinY = 1
 visXFormHeight = 3
@@ -43,6 +50,9 @@ visResizeDirSE = 7    # Right, bottom shape handle.
 visRowShapeLayout = 23
 visSLOLineRouteExt = 19
 visSLORouteStyle = 10
+visXFormAngle = 6
+visIndentLeft = 1
+visIndentRight = 2
 
 visTextHorizontalAlign = {
 	'left': 0,
@@ -56,3 +66,13 @@ visTextVerticalAlign = {
 }
 
 # ------------------------------------------------------------------------------
+
+
+REMARKS_COLUMNS_TO_MERGE = [
+	'ip_address',
+	'device_model',
+	'serial_number',
+
+	# Add More as needed.
+	# Resequence as required in output.
+]
