@@ -1,8 +1,12 @@
+import os
 # from pyVig.visio import device, VisioObject
 # from pyVig.static import op_file
-from pyVig import *
-# from pyVig import DeviceData, CableMatrixData
+from pyVig import VisioObject, device
+from pyVig.stencils import stencil_icons, get_list_of_stencils
+from pyVig.database import DeviceData, CableMatrixData
 
+stencil_folder = os.path.abspath(os.getcwd()) + "\\pyVig\\stencils\\"
+op_file = "output.vsdx"
 # # -----------------------------------------------------------------------------------
 # data_file = 'data.xlsx'
 # data_file = 'data - vod.xlsx'
