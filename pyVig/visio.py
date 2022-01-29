@@ -4,9 +4,10 @@
 import win32com.client
 from win32com.client import constants
 import traceback
+from random import randint
 
 from pyVig.static import *
-from pyVig.common import *
+from pyVig.common import get_filename
 
 # ------------------------------------------------------------------------------
 #  VisioObject class
@@ -223,7 +224,9 @@ class VisioObject:
 		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, 38).FormulaU = "2"
 
 
-
+# ------------------------------------------------------------------------------
+# A Single Connector Class defining connector properties and methods.
+# ------------------------------------------------------------------------------
 class Connector():
 	'''s1_s2_Connector = self.connector()
 	Drops a connector to visio page.
@@ -236,7 +239,7 @@ class Connector():
 		self.connector_type = connector_type
 
 	def drop(self, connector_type=None):
-		item = self.visObj.page.Drop(self.visObj.visio.ConnectorToolDataObject, 0, 0)
+		item = self.visObj.page.Drop(self.visObj.visio.ConnectorToolDataObject, randint(1, 50), randint(1, 50))
 		if self.connector_type == "straight":
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLOLineRouteExt).FormulaU = "1"
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLORouteStyle).FormulaU = "16"
@@ -301,6 +304,9 @@ class Connector():
 		self.obj.CellsSRC(visSectionObject, visRowLine, visLinePattern).FormulaU = pattern
 
 
+# ------------------------------------------------------------------------------
+# A Single Visio Item Class defining its properties and methods.
+# ------------------------------------------------------------------------------
 class Device():
 
 	def __init__(self, visObj, item, x, y):
@@ -341,8 +347,13 @@ class Device():
 		self.obj.Characters.Text = remarks
 
 
+# ------------------------------------------------------------------------------
+# Device class object return by dropping it to given position
+# ------------------------------------------------------------------------------
 def device(stencil, visObj, item, x, y):
 	D = Device(visObj, item, x, y)
 	D.drop_from(stencil)
 	return D
 
+
+# ------------------------------------------------------------------------------

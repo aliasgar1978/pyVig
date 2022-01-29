@@ -1,6 +1,3 @@
-import os
-
-op_file = "c:/users/al202t/desktop/new.vsdx"
 
 # ------------------------------------------------------------------------------
 #  Visio static CONSTANTS
@@ -66,13 +63,3 @@ visTextVerticalAlign = {
 }
 
 # ------------------------------------------------------------------------------
-
-
-REMARKS_COLUMNS_TO_MERGE = [
-	'ip_address',
-	'device_model',
-	'serial_number',
-
-	# Add More as needed.
-	# Resequence as required in output.
-]
