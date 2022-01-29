@@ -3,8 +3,8 @@
 import pandas as pd
 from math import tanh, degrees
 
-from maths import df_with_slops_and_angles
-from static import REMARKS_COLUMNS_TO_MERGE
+from pyVig.maths import df_with_slops_and_angles
+from pyVig.static import REMARKS_COLUMNS_TO_MERGE
 
 class Data():
 	def __init__(self, data_file):

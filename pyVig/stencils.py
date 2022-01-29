@@ -1,6 +1,6 @@
 import os
 
-stencil_folder = os.path.abspath(os.getcwd()) + "/stencils/"
+# stencil_folder = os.path.abspath(os.getcwd()) + "\\stencils\\"
 # -----------------------------------------------------------------------------------
 stencil_icons = {
 	'L3_SW': "Master.35",

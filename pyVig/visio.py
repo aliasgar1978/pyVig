@@ -5,8 +5,8 @@ import win32com.client
 from win32com.client import constants
 import traceback
 
-from static import *
-from common import *
+from pyVig.static import *
+from pyVig.common import *
 
 # ------------------------------------------------------------------------------
 #  VisioObject class
