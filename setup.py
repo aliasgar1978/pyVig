@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyVig",
-    version="0.0.0",
+    version="0.0.1",
     author="ALIASGAR - ALI",
     author_email="aholo2000@gmail.com",
     description="python based Visio Generator",

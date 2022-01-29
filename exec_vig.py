@@ -1,7 +1,7 @@
-from pyVig.visio import device, VisioObject
-from pyVig.static import op_file
-from pyVig.stencils import *
-from pyVig.database import DeviceData, CableMatrixData
+# from pyVig.visio import device, VisioObject
+# from pyVig.static import op_file
+from pyVig import *
+# from pyVig import DeviceData, CableMatrixData
 
 # # -----------------------------------------------------------------------------------
 # data_file = 'data.xlsx'
