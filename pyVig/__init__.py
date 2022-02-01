@@ -6,5 +6,7 @@ __ver__ = "0.0.1"
 # ------------------------------------------------------------------------------
 
 from .visio import VisioObject
-from .visioObjects import ItemObjects, Connectors
+from .entities import ItemObjects, Connectors
+from .stencils import get_list_of_stencils
+from .database import DeviceData, CableMatrixData
 # ------------------------------------------------------------------------------

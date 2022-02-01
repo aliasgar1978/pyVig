@@ -98,6 +98,7 @@ class VisioObject:
 
 	# Return item from Stencil
 	def _selectItemfromStencil(self, item, stencil):
+		# print(stencil, item)
 		return self.stn[stencil].Masters.Item(item)
 		# try: return stencil.Masters.Item(item)
 		# except: pass
@@ -214,8 +215,19 @@ class VisioObject:
 
 	def join(self, connector, shpObj1, shpObj2):
 		'''connectors to join two shapes'''
-		connector.Cells("BeginX").GlueTo(shpObj1.Cells("PinX"))
-		connector.Cells("EndX").GlueTo(shpObj2.Cells("PinX"))		
+		try:
+			connector.obj.Cells("BeginX").GlueTo(shpObj1.obj.Cells("PinX"))
+		except:
+			x, y = shpObj1.x, shpObj1.y
+			connector.obj.CellsSRC(visSectionObject, visRowXForm1D, vis1DBeginX).FormulaU = f"{x} in"
+			connector.obj.CellsSRC(visSectionObject, visRowXForm1D, vis1DBeginY).FormulaU = f"{y} in"
+		try:
+			connector.obj.Cells("EndX").GlueTo(shpObj2.obj.Cells("PinX"))		
+		except:
+			x, y = shpObj2.x, shpObj2.y
+			connector.obj.CellsSRC(visSectionObject, visRowXForm1D, vis1DEndX).FormulaU = f"{x} in"
+			connector.obj.CellsSRC(visSectionObject, visRowXForm1D, vis1DEndY).FormulaU = f"{y} in"
+
 
 	def fit_to_draw(self, height, width):
 		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageWidth).FormulaU = f"{width} in"
@@ -316,7 +328,7 @@ class Device():
 		self.y = y
 
 	def drop_from(self, stencil):
-		if self.item:
+		if stencil and self.item:
 			self.obj = self.visObj.selectNdrop(stencil=stencil, 
 				item=self.item, posX=self.y, posY=self.x)
 		else:
@@ -339,12 +351,21 @@ class Device():
 		):
 		connector = Connector(self.visObj, connector_type)
 		connector.drop()
-		self.visObj.join(connector.object, self.obj, remote.obj)
+		self.visObj.join(connector, self, remote)
 		connector.add_a_port_info(aport, angle, connector_type, indent=False)
 		connector.format_line(color, weight, pattern)
 
 	def description(self, remarks):
-		self.obj.Characters.Text = remarks
+		try:
+			self.obj.Characters.Text = remarks
+		except:
+			dev = device(						# drop rectangle
+				stencil=None, 
+				visObj=self.visObj, 
+				item="",
+				x=self.x-1,
+				y=self.y-1)
+			dev.description(remarks)
 
 
 # ------------------------------------------------------------------------------

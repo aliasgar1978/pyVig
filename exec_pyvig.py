@@ -1,67 +1,70 @@
-
 # -----------------------------------------------------------------------------------
 import os
 
 from pyVig.stencils import get_list_of_stencils
 from pyVig.database import DeviceData, CableMatrixData
-from pyVig import VisioObject, ItemObjects, Connectors
+from pyVig.entities import ItemObjects, Connectors
+from pyVig.visio import VisioObject
 
 # -----------------------------------------------------------------------------------
 
 # Static inputs
-stencil_folder = os.path.abspath(os.getcwd()) + "\\pyVig\\stencils\\"
+# stencil_folder = os.path.abspath(os.getcwd()) + "\\pyVig\\stencils\\"
+stencil_folder = "C:\\Users\\al202t\\Desktop\\Short-Cuts\\04.     #~~~ IGA-PJT ~~~#\\01. - OWN Projects\\IGA\\100. Help Docs\\Stencil\\"
 op_file = "output.vsdx"
-stencil_icons_dict = {
-	'L3_SW': "Master.35",
-	'L2_SW': "Master.38",
-	'ROUTER': "Master.39",
-	'LINE': 'line',
-	'AP': 'Wireless access point',
-	'LAN': 'Ethernet',
-	'SERVER': 'Server',
-	'FIREWALL': 'Firewall',
-	'PRINTER': 'Printer',
-	'MODEM': 'Modem',
-	'': None,
-}
 
 REMARKS_COLUMNS_TO_MERGE = [
-	'ip_address',
 	'device_model',
-	'serial_number',
+	# 'ip_address',
+	# 'serial_number',
+	# 'blg_hubroom',
+	# 'rack_details',
 
 	# Add More as needed.
 	# Resequence as required in output.
 ]
 
 ######## Multiple test databases #########
-# data_file = 'data/data.xlsx'
+data_file = 'data/data.xlsx'
 # data_file = 'data/data - vod.xlsx'
-data_file = "data/data - MTP.xlsx"
+# data_file = "data/data - MTP.xlsx"
+# data_file = "data/data - MTP - KYN.xlsx"
 
 # -----------------------------------------------------------------------------------
 #  Executions
 # -----------------------------------------------------------------------------------
 
-# database operations
+#---------------------------
+# device database operations
+#---------------------------
 devices_data = DeviceData(data_file)
-devices_data.read("Devices")
-devices_data.add_description(REMARKS_COLUMNS_TO_MERGE)
+devices_data.read("Devices")				# 'Devices' is tab on Excel file
+devices_data.plane_coordinate_columns(		# decide the x,y column names
+	x="x", 
+	y="y")	 
+devices_data.add_description(REMARKS_COLUMNS_TO_MERGE)	# Device Description containing columns
 
+#---------------------------------
+# cable-matrix database operations
+#---------------------------------
 cable_matrix_data = CableMatrixData(data_file)
-cable_matrix_data.read("CableMatrix")
-cable_matrix_data.filter_eligible_cables_only()
-cable_matrix_data.calc_slop(devices_data)
+cable_matrix_data.read("CableMatrix")		# 'CableMatrix' is tab on Excel file
+cable_matrix_data.filter_eligible_cables_only()	# Apply filter for 'include' column containing 'x'
+cable_matrix_data.filter(draw_type="core")	# Apply if to filter a particular column=records
+cable_matrix_data.calc_slop(devices_data)		# calculate cable slop/angle
 # -----------------------------------------------------------------------------------
 
-# visio operations
-stencils = get_list_of_stencils(stencil_folder)
+#------------------------
+# visio app operations
+#------------------------
+stencils = get_list_of_stencils(stencil_folder, devices_data)
+
 with VisioObject(stencils=stencils, outputFile=op_file) as v:
 	print("Visio Drawing Inprogress, Do not close Visio Drawing while its running...")
 	#
 	print("Dropping Devices...")
 	devices_details = (dev for i, dev in devices_data.df.iterrows())
-	item_objects = ItemObjects(v, stencil_icons_dict, devices_details, cable_matrix_data.df)
+	item_objects = ItemObjects(v, devices_details, cable_matrix_data.df)
 	#
 	print("Connecting Devices...")
 	connectors = (connector for i, connector in cable_matrix_data.df.iterrows())

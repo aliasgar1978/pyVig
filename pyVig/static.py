@@ -1,4 +1,3 @@
-
 # ------------------------------------------------------------------------------
 #  Visio static CONSTANTS
 # ------------------------------------------------------------------------------
@@ -23,6 +22,7 @@ visRowXFormOut = 1
 visRowTextXForm = 12
 visRowLine = 2
 visRowPage = 10
+
 visLineColor = 1
 visLineWeight = 0
 visLinePattern = 2
@@ -50,6 +50,12 @@ visSLORouteStyle = 10
 visXFormAngle = 6
 visIndentLeft = 1
 visIndentRight = 2
+
+vis1DBeginX = 0
+vis1DBeginY = 1
+vis1DEndX = 2
+vis1DEndY = 3
+visRowXForm1D = 4
 
 visTextHorizontalAlign = {
 	'left': 0,
