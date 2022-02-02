@@ -3,8 +3,20 @@ import os
 
 # -----------------------------------------------------------------------------------
 # Stencil functions
-# ------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
 def get_list_of_stencils(folder, devices_data):
+	"""finds the required stencil files in given folder and return those filenames in a list.
+
+	Args:
+		folder (str): path of folder where stencils stored
+		devices_data (DeviceData): Device Data object
+
+	Raises:
+		ValueError: Raise Exception if any stencil is missing
+
+	Returns:
+		list: list of file names
+	"""	
 	default_stencil = devices_data.default_stencil
 	stencil_col = devices_data.stencil
 	if not stencil_col in devices_data.df:

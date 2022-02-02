@@ -9,6 +9,8 @@ from pyVig.visio import device
 #  Visio Objects / Items
 # -----------------------------------------------------------------------------------
 class ItemObjects(Multi_Execution):
+	"""Execution of Devices/Item objects on visio
+	"""		
 
 	def __init__(self, 
 		visObj, 
@@ -31,27 +33,70 @@ class ItemObjects(Multi_Execution):
 	def __getitem__(self, k): return self.devices[k]
 
 	@property
-	def top_most(self): return max(self.y_coordinates)
+	def top_most(self):
+		"""top most used co-ordinate on visio
+
+		Returns:
+			int: maximum of used y-axis
+		"""		 
+		return max(self.y_coordinates)
 	@property
-	def bottom_most(self): return min(self.y_coordinates)
+	def bottom_most(self): 
+		"""bottom most used co-ordinate on visio
+
+		Returns:
+			int: minimum of used y-axis
+		"""		 
+		return min(self.y_coordinates)
 	@property
-	def left_most(self): return min(self.x_coordinates)
+	def left_most(self): 
+		"""left most used co-ordinate on visio
+
+		Returns:
+			int: minimum of used x-axis
+		"""		 
+		return min(self.x_coordinates)
 	@property
-	def right_most(self): return max(self.x_coordinates)
+	def right_most(self): 
+		"""right most used co-ordinate on visio
+
+		Returns:
+			int: maximum of used x-axis
+		"""		 
+		return max(self.x_coordinates)
 	@property
 	def page_height(self): 
+		"""total height occupied by drawing  on visio page
+
+		Returns:
+			int: page height
+		"""		 		
 		try:
 			return self.top_most - self.bottom_most + 3
 		except:
 			return 4
 	@property
 	def page_width(self): 
+		"""total width occupied by drawing  on visio page
+
+		Returns:
+			int: page width
+		"""		 		
 		try:
 			return self.right_most - self.left_most + 3
 		except:
 			return 8
 	
 	def execute(self, dev):
+		"""Executor
+		Paralllel processing disabled currently due to visio not support
+
+		Args:
+			dev (dict): a single row details of device data
+
+		Returns:
+			None: None
+		"""		
 		# filter to only drop connected devices.
 		if (self.filterOnCables 
 			and (not (
@@ -89,6 +134,8 @@ class ItemObjects(Multi_Execution):
 #  Visio Connectors
 # -----------------------------------------------------------------------------------
 class Connectors(Multi_Execution):
+	"""Execution of Cabling/Connector objects on visio
+	"""		
 
 	def __init__(self, cable_matrix_data, devices):
 		self.connectors = cable_matrix_data
@@ -98,6 +145,15 @@ class Connectors(Multi_Execution):
 		self.start(multi_thread=False)
 
 	def execute(self, connector):
+		"""Executor
+		Paralllel processing disabled currently due to visio not support
+
+		Args:
+			connector (dict): a single row details of cabling data
+
+		Returns:
+			None: None
+		"""		
 		if connector[self.connectors.dev_a] and connector[self.connectors.dev_b]:
 			aport_y = get_col_value(connector, self.connectors.dev_a_port + "_y")
 			conn_type_x = get_col_value(connector, self.connectors.conn_type + "_x")
@@ -118,6 +174,16 @@ class Connectors(Multi_Execution):
 			)
 
 def get_col_value(row_info, column, isMerged=True):
+	"""get the value of provided column from given row details
+
+	Args:
+		row_info (dict): a single row information from a DataFrame
+		column (str): column name 
+		isMerged (bool, optional): is it a merged column or native. Defaults to True.
+
+	Returns:
+		str: Cell information from row
+	"""	
 	try:
 		return row_info[column]
 	except:

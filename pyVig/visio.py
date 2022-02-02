@@ -28,10 +28,14 @@ class VisioObject:
 
 	# object initializer
 	def __init__(self, stencils=None, outputFile=None):
-		'''Initialize Visio Object by starting Visio Application, 
+		"""Initialize Visio Object by starting Visio Application, 
 		Opens a blank Visio Document/Page inside it.
-		Opetional Parameters (**stencils) -> will open all stencils mentioned.
-		'''
+		open all stencils mentioned
+
+		Args:
+			stencils (list, optional): List of stencils. Defaults to None.
+			outputFile (str, optional): output filename. Defaults to None.
+		"""		
 		self.no_of_icons = 0
 		self.icons = {}
 		self.outputFile = outputFile
@@ -169,21 +173,35 @@ class VisioObject:
 
 	# Internal + External : Open mentioned stencil in opened visio application. 
 	def openStencil(self, stencil):
-		'''stn = visObj.openStencil(stencil)
-		Opens mentioned stencil 'stencil' in visio object visio application.
-		'''
+		"""open a stencil in visio document
+
+		Args:
+			stencil (str): stencil file
+
+		Returns:
+			visioStencil: visio stencil object
+		"""		
 		stencil = stencil.replace("/", "\\")
-		# return self.visio.Documents.Open(stencil)
 		try:
 			return self.visio.Documents.Open(stencil)
 		except:
 			pass
 
 	def selectNdrop(self, stencil, item, posX, posY, **format):
-		'''icon = visObj.selectNdrop(stencil,item,posX,posY) : 
-		Selects item 'item' from provided stencil 'stencil' for selected visio object.
+		"""Selects item 'item' from provided stencil 'stencil' for selected visio object.
 		And drops that item on visio Object at given position index ( posX and posY )
-		'''
+		usage: icon = visObj.selectNdrop(stencil,item,posX,posY)
+		**format = shape formatting (see _format() for type of formats available)
+		
+		Args:
+			stencil (str): name of stencil
+			item (str, int): icon name or number from stencil
+			posX (int): plane x-coordinate
+			posY (int): plane y-coordinate
+
+		Returns:
+			iconObject: dropped icon object
+		"""		
 		itm = self._selectItemfromStencil(item, stencil)
 		if itm is not None:
 			icon = self._dropItemtoPage(itm, posX, posY)
@@ -191,12 +209,20 @@ class VisioObject:
 			return icon
 
 	def shapeDrow(self, shape, lx, lr, rx, rr, **format):
-		'''shape = visObj.shapeDrow(shape, lx, lr, rx, rr, **format):
-		Drops provided shape to visio page.
-		param : shape = Shape Name ( eg - rectangle, ellipse, arc, line )
-		param : lx, lr, rx, rr = co-ordinate where the shape to be drawn
-		param : **format = shape formatting (see _format() for type of formats available)
-		'''
+		"""Drops provided shape to visio page.
+		Usage: shape = visObj.shapeDrow(shape, lx, lr, rx, rr, **format)
+		**format = shape formatting (see _format() for type of formats available)
+
+		Args:
+			shape (str): [description]
+			lx (int): x1 - coordinate
+			lr (int): y1 - coordinate
+			rx (int): x2 - coordinate
+			rr (int): y2 - coordinate
+
+		Returns:
+			shapeObject: shape object from visio
+		"""		
 		shaping = True
 		if shape.lower() == "rectangle":
 			rect = self.page.DrawRectangle(lx, lr, rx, rr)
@@ -214,7 +240,13 @@ class VisioObject:
 			return rect
 
 	def join(self, connector, shpObj1, shpObj2):
-		'''connectors to join two shapes'''
+		"""use Connector object to join two shapes (Device objects)
+
+		Args:
+			connector (Connector): Connector object
+			shpObj1 (Device): Device Object 1
+			shpObj2 (Device): Device Object 2
+		"""		
 		try:
 			connector.obj.Cells("BeginX").GlueTo(shpObj1.obj.Cells("PinX"))
 		except:
@@ -230,6 +262,12 @@ class VisioObject:
 
 
 	def fit_to_draw(self, height, width):
+		"""resize visio page to fit the page to drawing.
+
+		Args:
+			height (int)): page height to be resized (inch)
+			width (int): page width to be resized (inch)
+		"""		
 		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageWidth).FormulaU = f"{width} in"
 		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageHeight).FormulaU = f"{height} in"
 		self.page.PageSheet.CellsSRC(visSectionObject, visRowPage, visPageDrawSizeType).FormulaU = "1"
@@ -251,6 +289,15 @@ class Connector():
 		self.connector_type = connector_type
 
 	def drop(self, connector_type=None):
+		"""drops a connector to visio page.
+
+		Args:
+			connector_type (str, optional): connector tpe (valid options are: 
+				angled, straight, curved). Defaults to None=angled.
+
+		Returns:
+			connectorObj: Connector Object from visio
+		"""		
 		item = self.visObj.page.Drop(self.visObj.visio.ConnectorToolDataObject, randint(1, 50), randint(1, 50))
 		if self.connector_type == "straight":
 			item.CellsSRC(visSectionObject, visRowShapeLayout, visSLOLineRouteExt).FormulaU = "1"
@@ -265,6 +312,14 @@ class Connector():
 		return item
 
 	def add_a_port_info(self, aport_info, at_angle, connector_type, indent=True):
+		"""add port information for (a-side interface) on connector
+
+		Args:
+			aport_info (str): port information
+			at_angle (int): rotate information at angle
+			connector_type (str): connector type ( angled, straight, curved )
+			indent (bool, optional): indent text or not. Defaults to True.
+		"""		
 		self.description(aport_info)
 		if connector_type and connector_type != "angled":
 			# print(connector_type)
@@ -272,28 +327,63 @@ class Connector():
 		if indent: self.text_indent()
 
 	def format_line(self, color=None, weight=None, pattern=None):
+		"""formatting of line
+
+		Args:
+			color (str, optional): set color of line (blue, red, gray etc.). Defaults to None=black.
+				see line_color for all available options.
+			weight (int, optional): thickness of line. Defaults to None=1.
+			pattern (int, optional): line patterns. Defaults to solid line.
+		"""		
 		if color: self.line_color(color)
 		if weight: self.line_weight(weight)
 		if pattern: self.line_pattern(pattern)
 
 	@property
 	def object(self):
+		"""visio object
+
+		Returns:
+			visioObject: visio object
+		"""		
 		return self.obj
 
 	def text_rotate(self, degree=90):
+		"""Rotation of text at given angle
+
+		Args:
+			degree (int, optional): angle to be rotate to. Defaults to 90.
+		"""		
 		self.obj.CellsSRC(visSectionObject, visRowTextXForm, visXFormAngle).FormulaU = f"{degree} deg"
 
 	def text_indent(self):
+		"""Indention to be done on oject
+		"""		
 		inch = self.obj.LengthIU / 2 
 		self.obj.CellsSRC(visSectionParagraph, 0, visIndentLeft).FormulaU = f"{inch} in"
 
 	def description(self, remarks):
+		"""description to be add to object.
+
+		Args:
+			remarks (str, memo): description
+		"""		
 		try:
 			self.obj.Characters.Text = remarks
 		except:
 			pass
 
 	def line_color(self, color=None):
+		"""color of a line object
+
+		Args:
+			color (str tuple, optional): color of line. Defaults to black.
+				valid string options are (red, green, blue, gray, lightgray, darkgray )
+				Other option is to provide RGB color in tuple ex: (10, 10, 10)
+
+		Returns:
+			None: None
+		"""		
 		if isinstance(color, str):
 			if color.lower() == "red": clr = "THEMEGUARD(RGB(255,0,0))"
 			if color.lower() == "green": clr = "THEMEGUARD(RGB(0,255,0))"
@@ -310,9 +400,19 @@ class Connector():
 		except: pass
 
 	def line_weight(self, weight=None):
+		"""set weight/thickness of a line
+
+		Args:
+			weight (int, optional): thickness of line. Defaults to None=1.
+		"""		
 		self.obj.CellsSRC(visSectionObject, visRowLine, visLineWeight).FormulaU = f"{weight} pt"
 
 	def line_pattern(self, pattern=None):
+		"""set line pattern
+
+		Args:
+			pattern (int, optional): pattern number. Defaults to solid line.
+		"""		
 		self.obj.CellsSRC(visSectionObject, visRowLine, visLinePattern).FormulaU = pattern
 
 
@@ -320,14 +420,29 @@ class Connector():
 # A Single Visio Item Class defining its properties and methods.
 # ------------------------------------------------------------------------------
 class Device():
+	"""A Device Object
+	"""		
 
 	def __init__(self, visObj, item, x, y):
+		"""Initialize Device Object
+
+		Args:
+			visObj (Visio): visio object
+			item (str): Device/Item name
+			x (int): x-coordinate
+			y (int): y-coordinate
+		"""		
 		self.visObj = visObj
 		self.item = item
 		self.x = x
 		self.y = y
 
 	def drop_from(self, stencil):
+		"""drop an item from stencil, if item not found in stencil then it will drop a rectangle.
+
+		Args:
+			stencil (str): stencil name
+		"""		
 		if stencil and self.item:
 			self.obj = self.visObj.selectNdrop(stencil=stencil, 
 				item=self.item, posX=self.y, posY=self.x, textSize=.8)
@@ -338,6 +453,11 @@ class Device():
 
 	@property
 	def object(self):
+		"""self object
+
+		Returns:
+			self.obj: self object
+		"""		
 		return self.obj
 
 	def connect(self, 
@@ -349,6 +469,17 @@ class Device():
 		weight=None,
 		pattern=None,
 		):
+		"""connects self object with remote object using connector.
+
+		Args:
+			remote (Device): remote Device object
+			connector_type (str, optional): connector type. Defaults to None='angled'.
+			angle (int, optional): a-port info rotate at. Defaults to 0.
+			aport (str, optional): line a-port info. Defaults to "".
+			color (str, optional): line color. Defaults to None.
+			weight (int, optional): line weight. Defaults to None.
+			pattern (int, optional): line pattern. Defaults to None.
+		"""				
 		connector = Connector(self.visObj, connector_type)
 		connector.drop()
 		self.visObj.join(connector, self, remote)
@@ -356,6 +487,11 @@ class Device():
 		connector.format_line(color, weight, pattern)
 
 	def description(self, remarks):
+		"""set description/remark of current object.
+
+		Args:
+			remarks (str, memo): remark for the object.
+		"""		
 		try:
 			self.obj.Characters.Text = remarks
 		except:
@@ -372,6 +508,18 @@ class Device():
 # Device class object return by dropping it to given position
 # ------------------------------------------------------------------------------
 def device(stencil, visObj, item, x, y):
+	"""Drop an item from stencil given to visio object at given x,y co-ordinates.
+
+	Args:
+		stencil (str): stencil name
+		visObj (Visio): Visio Object
+		item (str): name or number of device/item from stencil
+		x (int): x coordinate
+		y (int): y coordinate
+
+	Returns:
+		Device: Device Object
+	"""	
 	D = Device(visObj, item, x, y)
 	D.drop_from(stencil)
 	return D
