@@ -98,7 +98,7 @@ class VisioObject:
 
 	# Return item from Stencil
 	def _selectItemfromStencil(self, item, stencil):
-		# print(stencil, item)
+		# print(stencil,item)
 		return self.stn[stencil].Masters.Item(item)
 		# try: return stencil.Masters.Item(item)
 		# except: pass
@@ -330,10 +330,10 @@ class Device():
 	def drop_from(self, stencil):
 		if stencil and self.item:
 			self.obj = self.visObj.selectNdrop(stencil=stencil, 
-				item=self.item, posX=self.y, posY=self.x)
+				item=self.item, posX=self.y, posY=self.x, textSize=.8)
 		else:
 			self.obj = self.visObj.shapeDrow('rectangle', 
-				self.x, self.y, self.x+1.7, self.y+1,
+				self.x, self.y, self.x+1.7, self.y+1.2,
 				vAlign=1, hAlign=1)
 
 	@property
