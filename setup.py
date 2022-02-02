@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyVig",
-    version="0.0.1",
+    version="0.0.2",
     author="ALIASGAR - ALI",
     author_email="aholo2000@gmail.com",
     description="python based Visio Generator",
@@ -19,6 +19,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
-    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit']
+    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit', 'pywin32']
 )
 
