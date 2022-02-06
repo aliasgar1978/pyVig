@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 import pandas as pd
-from math import tanh, degrees
+# from math import tanh, degrees
 
 from pyVig.maths import df_with_slops_and_angles
 # -----------------------------------------------------------------------------------
@@ -61,7 +61,6 @@ class DeviceData(Data):
 		"""		
 		super().read(sheet_name)
 		self.add_missing_cols()
-		# self.plane_coordinate_columns(self.x, self.y)
 
 	def add_missing_cols(self):
 		"""add the additional blank columns to dataframe if missing.
@@ -98,28 +97,6 @@ class DeviceData(Data):
 			if col.empty:  continue
 			self.df.description += "\n"+ col.str.strip().fillna("invalid datatype")
 
-
-	# def plane_coordinate_columns(self, x=None, y=None):
-	# 	"""create a copy of x and y columns if provided with some other names.
-
-	# 	Args:
-	# 		x (str, optional): column name of x-axis. Defaults to None.
-	# 		y (str, optional): column name of y-axis. Defaults to None.
-
-	# 	Raises:
-	# 		ValueError: Raise Exception if x-column undefined
-	# 		ValueError: Raise Exception if x-column undefined
-	# 	"""		
-	# 	if x:
-	# 		try:
-	# 			self.df["x"] = self.df[x]
-	# 		except:
-	# 			raise ValueError("Undefined x-column")
-	# 	if y:
-	# 		try:
-	# 			self.df["y"] = self.df[y]
-	# 		except:
-	# 			raise ValueError("Undefined y-column")
 
 # -----------------------------------------------------------------------------------
 

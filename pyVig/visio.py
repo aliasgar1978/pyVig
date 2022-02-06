@@ -36,6 +36,7 @@ class VisioObject:
 			stencils (list, optional): List of stencils. Defaults to None.
 			outputFile (str, optional): output filename. Defaults to None.
 		"""		
+		self.page_number = 0
 		self.no_of_icons = 0
 		self.icons = {}
 		self.outputFile = outputFile
@@ -44,7 +45,7 @@ class VisioObject:
 		if all([stencils is not None, 
 				self.visio is not None,
 				self.doc is not None,
-				self.page is not None,
+				# self.page is not None,
 				]):
 			for value in stencils:
 				v = get_filename(value)
@@ -93,19 +94,17 @@ class VisioObject:
 	# Internal use only: Open a blank visio page inside opened Visio Application
 	@property
 	def _openBlankVisioDoc(self):
-		try:
-			self.doc = self.visio.Documents.Add("")
-			self.page = self.doc.Pages.Item(1)
-		except:
-			self.doc = None
-			self.page = None
+		self.doc = self.visio.Documents.Add("")
+
+	def insert_new_page(self, name=None):
+		self.page_number += 1
+		self.page = self.doc.Pages.Add()
+		self.page = self.doc.Pages.Item(self.page_number)
+		if name: self.page.Name = name
 
 	# Return item from Stencil
 	def _selectItemfromStencil(self, item, stencil):
-		# print(stencil,item)
 		return self.stn[stencil].Masters.Item(item)
-		# try: return stencil.Masters.Item(item)
-		# except: pass
 
 	# Drops 'item' on visio page at given position index ( posX and posY )
 	def _dropItemtoPage(self, item, posX, posY):

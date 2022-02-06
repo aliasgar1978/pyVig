@@ -34,7 +34,7 @@ def slop_to_straight_connector(m):
 	if not m: return 0
 	angle = int(np.math.degrees(np.math.tanh(m)))
 	if angle < 0: angle = 90+angle
-	if m < 0: angle = 360-angle 
+	if m <= 0: angle = 360-angle 
 	return angle
 
 def slop_to_angled_connector(m):
