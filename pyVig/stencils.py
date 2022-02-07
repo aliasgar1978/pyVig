@@ -32,12 +32,12 @@ def get_list_of_stencils(folder, devices_data):
 	for file in os.listdir(folder):
 		if file.startswith("~$$"): continue
 		if default_stencil and file.startswith(default_stencil):
-			found_stn.append(folder+file)
+			found_stn.append(folder+"/"+file)
 			stn_file.add(".".join(file.split(".")[:-1]))
 			continue
 		for stn in used_stn:
 			if file.find(stn) > -1 :
-				found_stn.append(folder+file)
+				found_stn.append(folder+"/"+file)
 				stn_file.add(".".join(file.split(".")[:-1]))
 				break
 	if len(used_stn) == len(stn_file):
