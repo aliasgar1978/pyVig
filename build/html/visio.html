@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.1.8. visio &mdash; pyVig 0.0.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="6.1.7. stencils" href="stencils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyVig
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. pyVig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation &amp; Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executions.html">3. CLI Execution Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui_executions.html">4. GUI Execution Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">5. Excel database Samples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tech_doc.html">6. Technical documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tech_doc.html#welcome-to-pyvig-project-s-technical-documentation">6.1. Welcome to pyVig project’s technical documentation!</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="common.html">6.1.1. common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html">6.1.2. database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entities.html">6.1.3. entities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gui.html">6.1.4. gui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maths.html">6.1.5. maths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static.html">6.1.6. static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stencils.html">6.1.7. stencils</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.1.8. visio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tech_doc.html#indices-and-tables">7. Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyVig</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="tech_doc.html"><span class="section-number">6. </span>Technical documentation</a> &raquo;</li>
+      <li><span class="section-number">6.1.8. </span>visio</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/visio.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-pyVig.visio">
+<span id="visio"></span><h1><span class="section-number">6.1.8. </span>visio<a class="headerlink" href="#module-pyVig.visio" title="Permalink to this headline"></a></h1>
+<p>Module to interact with MS-Visio</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.visio.Connector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">Connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyVig.visio.Connector.object" title="pyVig.visio.Connector.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>s1_s2_Connector = self.connector()
+Drops a connector to visio page.
+param : connector_type = ( eg - straight, curved, default=angled )
+param : x, u = coordinates where to drop connector (default=0,0)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.add_a_port_info">
+<span class="sig-name descname"><span class="pre">add_a_port_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aport_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">at_angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.add_a_port_info" title="Permalink to this definition"></a></dt>
+<dd><p>add port information for (a-side interface) on connector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aport_info</strong> (<em>str</em>) – port information</p></li>
+<li><p><strong>at_angle</strong> (<em>int</em>) – rotate information at angle</p></li>
+<li><p><strong>connector_type</strong> (<em>str</em>) – connector type ( angled, straight, curved )</p></li>
+<li><p><strong>indent</strong> (<em>bool</em><em>, </em><em>optional</em>) – indent text or not. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remarks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.description" title="Permalink to this definition"></a></dt>
+<dd><p>description to be add to object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>remarks</strong> (<em>str</em><em>, </em><em>memo</em>) – description</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.drop" title="Permalink to this definition"></a></dt>
+<dd><p>drops a connector to visio page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>connector_type</strong> (<em>str</em><em>, </em><em>optional</em>) – connector tpe (valid options are:
+angled, straight, curved). Defaults to None=angled.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Connector Object from visio</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>connectorObj</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.format_line">
+<span class="sig-name descname"><span class="pre">format_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.format_line" title="Permalink to this definition"></a></dt>
+<dd><p>formatting of line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) – set color of line (blue, red, gray etc.). Defaults to None=black.
+see line_color for all available options.</p></li>
+<li><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – thickness of line. Defaults to None=1.</p></li>
+<li><p><strong>pattern</strong> (<em>int</em><em>, </em><em>optional</em>) – line patterns. Defaults to solid line.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.line_color">
+<span class="sig-name descname"><span class="pre">line_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.line_color" title="Permalink to this definition"></a></dt>
+<dd><p>color of a line object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>str tuple</em><em>, </em><em>optional</em>) – color of line. Defaults to black.
+valid string options are (red, green, blue, gray, lightgray, darkgray )
+Other option is to provide RGB color in tuple ex: (10, 10, 10)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.line_pattern">
+<span class="sig-name descname"><span class="pre">line_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.line_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>set line pattern</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>int</em><em>, </em><em>optional</em>) – pattern number. Defaults to solid line.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.line_weight">
+<span class="sig-name descname"><span class="pre">line_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.line_weight" title="Permalink to this definition"></a></dt>
+<dd><p>set weight/thickness of a line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – thickness of line. Defaults to None=1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.object">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#pyVig.visio.Connector.object" title="Permalink to this definition"></a></dt>
+<dd><p>visio object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>visio object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>visioObject</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.text_indent">
+<span class="sig-name descname"><span class="pre">text_indent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.text_indent" title="Permalink to this definition"></a></dt>
+<dd><p>Indention to be done on oject</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.text_rotate">
+<span class="sig-name descname"><span class="pre">text_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Connector.text_rotate" title="Permalink to this definition"></a></dt>
+<dd><p>Rotation of text at given angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>degree</strong> (<em>int</em><em>, </em><em>optional</em>) – angle to be rotate to. Defaults to 90.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.visio.Device">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Device" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyVig.visio.Device.object" title="pyVig.visio.Device.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A Device Object</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Device.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aport</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Device.connect" title="Permalink to this definition"></a></dt>
+<dd><p>connects self object with remote object using connector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>remote</strong> (<a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device"><em>Device</em></a>) – remote Device object</p></li>
+<li><p><strong>connector_type</strong> (<em>str</em><em>, </em><em>optional</em>) – connector type. Defaults to None=’angled’.</p></li>
+<li><p><strong>angle</strong> (<em>int</em><em>, </em><em>optional</em>) – a-port info rotate at. Defaults to 0.</p></li>
+<li><p><strong>aport</strong> (<em>str</em><em>, </em><em>optional</em>) – line a-port info. Defaults to “”.</p></li>
+<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) – line color. Defaults to None.</p></li>
+<li><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – line weight. Defaults to None.</p></li>
+<li><p><strong>pattern</strong> (<em>int</em><em>, </em><em>optional</em>) – line pattern. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Device.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remarks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Device.description" title="Permalink to this definition"></a></dt>
+<dd><p>set description/remark of current object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>remarks</strong> (<em>str</em><em>, </em><em>memo</em>) – remark for the object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Device.drop_from">
+<span class="sig-name descname"><span class="pre">drop_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.Device.drop_from" title="Permalink to this definition"></a></dt>
+<dd><p>drop an item from stencil, if item not found in stencil then it will drop a rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stencil</strong> (<em>str</em>) – stencil name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.visio.Device.object">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#pyVig.visio.Device.object" title="Permalink to this definition"></a></dt>
+<dd><p>self object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self.obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">VisioObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencils</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.fit_to_draw">
+<span class="sig-name descname"><span class="pre">fit_to_draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject.fit_to_draw" title="Permalink to this definition"></a></dt>
+<dd><p>resize visio page to fit the page to drawing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<em>int</em><em>)</em>) – page height to be resized (inch)</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – page width to be resized (inch)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.insert_new_page">
+<span class="sig-name descname"><span class="pre">insert_new_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject.insert_new_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shpObj1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shpObj2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject.join" title="Permalink to this definition"></a></dt>
+<dd><p>use Connector object to join two shapes (Device objects)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connector</strong> (<a class="reference internal" href="#pyVig.visio.Connector" title="pyVig.visio.Connector"><em>Connector</em></a>) – Connector object</p></li>
+<li><p><strong>shpObj1</strong> (<a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device"><em>Device</em></a>) – Device Object 1</p></li>
+<li><p><strong>shpObj2</strong> (<a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device"><em>Device</em></a>) – Device Object 2</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.openStencil">
+<span class="sig-name descname"><span class="pre">openStencil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject.openStencil" title="Permalink to this definition"></a></dt>
+<dd><p>open a stencil in visio document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stencil</strong> (<em>str</em>) – stencil file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>visio stencil object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>visioStencil</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.selectNdrop">
+<span class="sig-name descname"><span class="pre">selectNdrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posY</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject.selectNdrop" title="Permalink to this definition"></a></dt>
+<dd><p>Selects item <cite>item</cite> from provided stencil <cite>stencil</cite> for selected visio object.
+And drops that item on visio Object at given position index ( posX and posY )
+usage: icon = visObj.selectNdrop(stencil,item,posX,posY)
+format = shape formatting (see _format() for type of formats available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stencil</strong> (<em>str</em>) – name of stencil</p></li>
+<li><p><strong>item</strong> (<em>str</em><em>, </em><em>int</em>) – icon name or number from stencil</p></li>
+<li><p><strong>posX</strong> (<em>int</em>) – plane x-coordinate</p></li>
+<li><p><strong>posY</strong> (<em>int</em>) – plane y-coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dropped icon object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iconObject</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.shapeDrow">
+<span class="sig-name descname"><span class="pre">shapeDrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.VisioObject.shapeDrow" title="Permalink to this definition"></a></dt>
+<dd><p>Drops provided shape to visio page.
+Usage: shape = visObj.shapeDrow(shape, lx, lr, rx, rr, format)
+format = shape formatting (see _format() for type of formats available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>str</em>) – [description]</p></li>
+<li><p><strong>lx</strong> (<em>int</em>) – x1 - coordinate</p></li>
+<li><p><strong>lr</strong> (<em>int</em>) – y1 - coordinate</p></li>
+<li><p><strong>rx</strong> (<em>int</em>) – x2 - coordinate</p></li>
+<li><p><strong>rr</strong> (<em>int</em>) – y2 - coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>shape object from visio</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>shapeObject</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.stn">
+<span class="sig-name descname"><span class="pre">stn</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pyVig.visio.VisioObject.stn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.visio.device">
+<span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVig.visio.device" title="Permalink to this definition"></a></dt>
+<dd><p>Drop an item from stencil given to visio object at given x,y co-ordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stencil</strong> (<em>str</em>) – stencil name</p></li>
+<li><p><strong>visObj</strong> (<em>Visio</em>) – Visio Object</p></li>
+<li><p><strong>item</strong> (<em>str</em>) – name or number of device/item from stencil</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – y coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Device Object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device">Device</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stencils.html" class="btn btn-neutral float-left" title="6.1.7. stencils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, ALIASGAR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
