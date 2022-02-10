@@ -157,7 +157,8 @@ Define Variables:
 		'sheet_filters': {
 			'draw_type': ('core', 'dist', 'building-a',),
 			'dist': 'x',
-			# Add more filter / tabs as necessary.... },
+			# Add more filter / tabs as necessary.... 
+		},
 	}
 
 
