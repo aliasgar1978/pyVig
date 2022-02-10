@@ -3,6 +3,16 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+docs_extras = [
+    'Sphinx >= 3.0.0',  # Force RTD to use >= 3.0.0
+    'docutils',
+    'pylons-sphinx-themes >= 1.0.8',  # Ethical Ads
+    'pylons_sphinx_latesturl',
+    'repoze.sphinx.autointerface',
+    'sphinx-copybutton',
+    'sphinxcontrib-autoprogram',
+]
+
 setuptools.setup(
     name="pyVig",
     version="0.0.5",
@@ -19,6 +29,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
-    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit', 'pywin32']
+    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit', 'pywin32'],
+    extras_require={'docs': docs_extras},
 )
 
