@@ -1,4 +1,4 @@
-Welcome to pyVig ver documentation!
+Welcome to pyVig documentation!
 ==========================================
 
 
