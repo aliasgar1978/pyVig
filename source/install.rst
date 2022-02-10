@@ -16,7 +16,7 @@ Installation
 
 Install the pyVig package::
 
-    pip install -u pyVig
+    pip install --upgrade pyVig
 	
 
 
