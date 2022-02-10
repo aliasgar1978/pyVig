@@ -1,3 +1,5 @@
+"""Module to interact with MS-Visio
+"""
 # ------------------------------------------------------------------------------
 #  IMPORTS
 # ------------------------------------------------------------------------------
@@ -12,12 +14,12 @@ from pyVig.common import get_filename
 # ------------------------------------------------------------------------------
 #  VisioObject class
 # ------------------------------------------------------------------------------
-class VisioObject:
-	'''Creates a Visio Object. 
-	Param : stencils  - object stancils
-	example : oVis = VisioObject(stencils=[stencil1, stencil2])
-			  stencil1 and stencil2 are two different stencils.
-	'''
+class VisioObject():
+	# """Creates a Visio Object. 
+	# Param : stencils  - object stancils
+	# example : oVis = VisioObject(stencils=[stencil1, stencil2])
+	# 		  stencil1 and stencil2 are two different stencils.
+	# """
 
 	# stencils dictionary
 	stn = {}
@@ -187,10 +189,10 @@ class VisioObject:
 			pass
 
 	def selectNdrop(self, stencil, item, posX, posY, **format):
-		"""Selects item 'item' from provided stencil 'stencil' for selected visio object.
+		"""Selects item `item` from provided stencil `stencil` for selected visio object.
 		And drops that item on visio Object at given position index ( posX and posY )
 		usage: icon = visObj.selectNdrop(stencil,item,posX,posY)
-		**format = shape formatting (see _format() for type of formats available)
+		format = shape formatting (see _format() for type of formats available)
 		
 		Args:
 			stencil (str): name of stencil
@@ -209,8 +211,8 @@ class VisioObject:
 
 	def shapeDrow(self, shape, lx, lr, rx, rr, **format):
 		"""Drops provided shape to visio page.
-		Usage: shape = visObj.shapeDrow(shape, lx, lr, rx, rr, **format)
-		**format = shape formatting (see _format() for type of formats available)
+		Usage: shape = visObj.shapeDrow(shape, lx, lr, rx, rr, format)
+		format = shape formatting (see _format() for type of formats available)
 
 		Args:
 			shape (str): [description]
@@ -321,7 +323,6 @@ class Connector():
 		"""		
 		self.description(aport_info)
 		if connector_type and connector_type != "angled":
-			# print(connector_type)
 			self.text_rotate(at_angle)
 		if indent: self.text_indent()
 

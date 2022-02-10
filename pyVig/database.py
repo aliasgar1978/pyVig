@@ -207,7 +207,6 @@ class CableMatrixData(Data):
 		df2b = merged_df_on_hostname(dev_df, self.df, self.dev_b, 'index_y')
 		mdf = pd.merge(df2a, df2b, on=[self.dev_a, self.dev_b])
 		mdf = mdf[mdf.index_x_x==mdf.index_x_y]		
-		# self.df = df_with_slops_and_angles(mdf, 'y_x', 'y_y', 'x_x', 'x_y')
 		yx = DD.y + "_x"
 		yy = DD.y + "_y"
 		xx = DD.x + "_x"
