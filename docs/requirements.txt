@@ -1,2 +1,7 @@
 sphinx>=2.2.0
 sphinx-rtd-theme>=0.4.3
+nettoolkit>=0.0.8
+pandas>=0.25.0
+pywin32
+PySimpleGUI>=4.0.0
+numpy>=1.21.0
