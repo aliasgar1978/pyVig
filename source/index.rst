@@ -8,12 +8,12 @@ Welcome to pyVig documentation!
    :maxdepth: 2
    :numbered:
    
-   preface
-   install
-   executions
-   gui_executions
-   sample
-   tech_doc
+   Preface <preface>
+   Install <install>
+   CLI Executions <executions>
+   GUI Executions <gui_executions>
+   Samples <sample>
+   API Documentation <tech_doc>
    
 
 
