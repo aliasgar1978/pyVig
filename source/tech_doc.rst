@@ -9,11 +9,12 @@ Welcome to pyVig project's technical documentation!
    
    common
    database
+   entities
    gui
    maths
    static
    stencils
-
+   visio
    
 
 
