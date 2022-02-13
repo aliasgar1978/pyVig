@@ -20,6 +20,6 @@ from .stencils import get_list_of_stencils
 from .database import DeviceData, CableMatrixData
 from .gui import UserForm
 from .entities import ItemObjects, Connectors
-# from .visio import VisioObject
+from .visio import VisioObject
 # ------------------------------------------------------------------------------
 
