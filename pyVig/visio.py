@@ -493,6 +493,8 @@ class Device():
 			remarks (str, memo): remark for the object.
 		"""		
 		try:
+			if not self.is_rectangle:
+				remarks = "\n" * len(remarks.split("\n")) + remarks
 			self.obj.Characters.Text = remarks
 		except:
 			dev = device(						# drop rectangle
