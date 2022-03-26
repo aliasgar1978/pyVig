@@ -29,7 +29,7 @@ declaration = """
 
 class UserForm():
 	'''Inititates a UserForm asking user inputs.	'''
-	version  = 'Visio Generator : ver: 0.0.2'
+	version  = 'Visio Generator : ver: 0.0.5'
 	header = 'Visio Generator'
 
 	# Object Initializer
@@ -599,7 +599,7 @@ class UserForm():
 if __name__ == '__main__':
 	pass
 	# Test UI #
-	u = UserForm()
-	pprint(u.dic)
-	del(u)
+	# u = UserForm()
+	# pprint(u.dic)
+	# del(u)
 # ------------------------------------------------------------------------------
