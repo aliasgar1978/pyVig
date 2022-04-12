@@ -599,7 +599,7 @@ class UserForm():
 if __name__ == '__main__':
 	pass
 	# Test UI #
-	# u = UserForm()
-	# pprint(u.dic)
-	# del(u)
+	u = UserForm()
+	pprint(u.dic)
+	del(u)
 # ------------------------------------------------------------------------------

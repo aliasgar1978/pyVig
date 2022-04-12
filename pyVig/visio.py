@@ -159,14 +159,23 @@ class VisioObject():
 	def _format(self, icon,
 		text=None, textColor=None, textSize=0, vAlign=1, hAlign=0, style=None,
 		fillColor=None, fillTransparency=None,
-		borderLineColor=None, borderLinePattern=None, borderLineWeight=0  
+		borderLineColor=None, borderLinePattern=None, borderLineWeight=0,
+		iconHeight=0, iconWidth=0  
 		):
 		''' Formatting Parameters '''
 		self._border(icon, borderLineColor, borderLinePattern, borderLineWeight)
 		self._fill(icon, fillColor, fillTransparency)
 		self._text(icon, text, textColor, textSize, vAlign, hAlign, style)
+		self._resize(icon, iconWidth, iconHeight)
 		self.no_of_icons += 1
 		self.icons[self.no_of_icons] = icon
+
+	@staticmethod
+	def _resize(item, width, height):
+		if width:
+			item.CellsSRC(visSectionObject, visRowXFormOut, visXFormWidth).FormulaU = f"{width} in"
+		if height:
+			item.CellsSRC(visSectionObject, visRowXFormOut, visXFormHeight).FormulaU = f"{height} in"
 
 	# --------------------------------------------------------------------------
 	#  External
@@ -206,7 +215,7 @@ class VisioObject():
 		itm = self._selectItemfromStencil(item, stencil)
 		if itm is not None:
 			icon = self._dropItemtoPage(itm, posX, posY)
-			self._format(icon=icon, **format)
+			self._format(icon=icon, iconHeight=1, iconWidth=2.2, **format)
 			return icon
 
 	def shapeDrow(self, shape, lx, lr, rx, rr, **format):
@@ -446,10 +455,12 @@ class Device():
 		if stencil and self.item:
 			self.obj = self.visObj.selectNdrop(stencil=stencil, 
 				item=self.item, posX=self.y, posY=self.x, textSize=.8)
+			self.is_rectangle = False
 		else:
 			self.obj = self.visObj.shapeDrow('rectangle', 
-				self.x, self.y, self.x+1.7, self.y+1.2,
+				self.x, self.y, self.x+2.7, self.y+1.7,
 				vAlign=1, hAlign=1)
+			self.is_rectangle = True
 
 	@property
 	def object(self):
