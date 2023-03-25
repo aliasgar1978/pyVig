@@ -21,5 +21,12 @@ from .database import DeviceData, CableMatrixData
 from .gui import UserForm
 from .entities import ItemObjects, Connectors
 from .visio import VisioObject
+
+from .oper import DFGen
+from .devices import AdevDevices
+from .cablings import ADevCablings
+from .general import get_physical_if_up, get_physical_if_relevants
+from .general import get_patterns, update_pattern
+from .pyVig import pyVig
 # ------------------------------------------------------------------------------
 

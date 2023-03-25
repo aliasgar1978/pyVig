@@ -211,11 +211,13 @@ class VisioObject():
 
 		Returns:
 			iconObject: dropped icon object
-		"""		
+		"""
+		ICON_HEIGHT = 1
+		ICON_WEIGHT = 2.2
 		itm = self._selectItemfromStencil(item, stencil)
 		if itm is not None:
 			icon = self._dropItemtoPage(itm, posX, posY)
-			self._format(icon=icon, iconHeight=1, iconWidth=2.2, **format)
+			self._format(icon=icon, iconHeight=ICON_HEIGHT, iconWidth=ICON_WEIGHT, **format)
 			return icon
 
 	def shapeDrow(self, shape, lx, lr, rx, rr, **format):
