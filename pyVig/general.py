@@ -5,7 +5,10 @@ import nettoolkit as nt
 
 
 def get_physical_if_up(df):
-	return df[ (df['link_status'] != 'administratively down')| (df['link_status'] != 'Enabled')].fillna("")
+	try:
+		return df[ (df['link_status'] != 'administratively down')| (df['link_status'] != 'Enabled')].fillna("")
+	except:
+		return df
 
 def get_physical_if_relevants(df):
 	relevant_cols = ['interface', 'nbr_dev_type', 
@@ -16,16 +19,25 @@ def get_physical_if_relevants(df):
 	'vlan_members', 
 	# 'channel_group_interface', 'channel_grp'
 	]
-	return df[relevant_cols]
+	try:
+		return df[relevant_cols]
+	except:
+		return df
 
 # --------------------------------------------- 
 
 def get_vlan_if_up(df):
-	return df[ (df['link_status'] != 'administratively down')| (df['link_status'] != 'Enabled')].fillna("")
+	try:
+		return df[ (df['link_status'] != 'administratively down')| (df['link_status'] != 'Enabled')].fillna("")
+	except:
+		return df
 
 def get_vlan_if_relevants(df):
 	relevant_cols = ['int_number', 'interface', 'intvrf', 'subnet' ]
-	return df[relevant_cols]
+	try:
+		return df[relevant_cols]
+	except:
+		return df
 
 # --------------------------------------------- 
 
@@ -53,7 +65,10 @@ def series_item_0_value(s):
 		return x
 
 def get_vlans_info(vlan_members, vlan_df):
-	vlan_members = nt.LST.remove_empty_members(vlan_members.split(","))
+	if isinstance(vlan_members, float):
+		vlan_members = [int(vlan_members)]
+	else:
+		vlan_members = nt.LST.remove_empty_members(vlan_members.split(","))
 	s = ''
 	if len(vlan_members) == 0: return s
 	for vlan in vlan_members:

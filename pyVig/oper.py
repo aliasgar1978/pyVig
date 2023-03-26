@@ -1,7 +1,7 @@
 
 import pandas as pd
 import nettoolkit as nt
-from .devices import AdevDevices
+from .devices import AdevDevices, device_df_drop_empty_duplicates, update_var_df_details_to_table_df
 from .cablings import ADevCablings
 from .general import *
 
@@ -18,6 +18,7 @@ class DFGen():
 		self.line_pattern_style_separation_on = None
 		self.line_pattern_style_shift_no = 2
 		self.func_dict = {}
+		self.var_func_dict = {}
 		self.blank_dfs()
 
 	def blank_dfs(self):
@@ -33,21 +34,33 @@ class DFGen():
 		for k, v in kwargs.items():
 			self.func_dict[k] = v
 
+	def update_var_functions(self, **kwargs):
+		for k, v in kwargs.items():
+			self.var_func_dict[k] = v
+
 	def iterate_over_files(self):
+		self.DCT = {}
 		for file in self.files:
 			DCT = DF_ConverT(file, self.default_stencil, self.line_pattern_style_separation_on, self.line_pattern_style_shift_no)
+			DCT.get_self_details(self.var_func_dict)
 			DCT.convert(self.func_dict)
 			self.update_devices_df(DCT, file)
 			self.update_cabling_df(DCT, file)
+			self.DCT[DCT.hostname] = DCT
+
+		self.devices_merged_df = device_df_drop_empty_duplicates(self.devices_merged_df)
+		self.devices_merged_df = update_var_df_details_to_table_df(self.devices_merged_df, self.DCT, self.var_func_dict)
 		self.calculate_cordinates()
 
 	def update_devices_df(self, DCT, file):
 		ddf = DCT.update_devices()
-		self.devices_merged_df = self.devices_merged_df.merge(ddf, how='outer', validate='many_to_many')
+		# self.devices_merged_df = self.devices_merged_df.merge(ddf, how='outer', validate='many_to_many')
+		self.devices_merged_df = pd.concat([self.devices_merged_df, ddf], axis=0, join='outer')
 
 	def update_cabling_df(self, DCT, file):
 		cdf = DCT.update_cablings(**self.__dict__)
-		self.cabling_merged_df = self.cabling_merged_df.merge(cdf, how='outer', validate='many_to_many')
+		# self.cabling_merged_df = self.cabling_merged_df.merge(cdf, how='outer', validate='many_to_many')
+		self.cabling_merged_df = pd.concat([self.cabling_merged_df, cdf], axis=0, join='outer')
 
 	def calculate_cordinates(self):
 		CXY = CalculateXY(self.devices_merged_df, self.default_x_spacing, self.default_y_spacing)
@@ -78,6 +91,12 @@ class DF_ConverT():
 		self.line_pattern_style_shift_no = line_pattern_style_shift_no
 
 
+	def get_self_details(self, var_func_dict):
+		for k,  f in var_func_dict.items():
+			v = f(self.full_df['var'])
+			if not v: v = 'N/A'
+			self.__dict__[k] = v
+
 	def convert(self, func_dict):
 		# physical
 		df = get_physical_if_up(self.full_df['physical'])
@@ -88,6 +107,7 @@ class DF_ConverT():
 		#
 		for k, f in func_dict.items():
 			df[k] = f(df)
+		#
 		self.patterns = get_patterns(df, self.line_pattern_style_separation_on, self.line_pattern_style_shift_no)
 		df = update_pattern(df, self.patterns, self.line_pattern_style_separation_on)
 		#
@@ -111,8 +131,10 @@ class DF_ConverT():
 			kwargs = {}
 			for x, y in v.items():
 				kwargs[x] = y
-			self.D.add_to_devices(**kwargs)
-		self.D.device_dataframe()
+			devices = self.D.add_to_devices(**kwargs)
+
+		# self.D.int_df = self.D.device_dataframe()
+		self.D.int_df = device_df_drop_empty_duplicates(self.D.devices)
 		self.D.add_vlan_info(self.vlan_df)
 		return self.D.merged_df
 

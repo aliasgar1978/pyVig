@@ -48,3 +48,28 @@ class AdevDevices():
 		return df
 
 # --------------------------------------------- 
+def device_df_drop_empty_duplicates(devices):
+	df = pd.DataFrame(devices)
+	df = drop_empty(df, column='hostname')
+	df.drop_duplicates('hostname', inplace=True)
+	return df
+
+
+# --------------------------------------------- 
+def update_var_df_details_to_table_df(merged_df, DCT_dict, var_func_dict):
+
+	for hostname, DCT in DCT_dict.items():
+		for key, value in DCT.__dict__.items():
+			if key not in var_func_dict: continue
+			if key == 'hostname': continue
+			func = var_func_dict[key]
+			merged_df[key] = merged_df.apply(lambda x: 
+				func(update=True, 
+					merged_df_ser_hostname=x['hostname'], 
+					merged_df_series_key=x[key], 
+					key=key, 
+					value=value, 
+					hostname=hostname), 
+				axis=1)
+	
+	return merged_df

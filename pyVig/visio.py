@@ -213,7 +213,7 @@ class VisioObject():
 			iconObject: dropped icon object
 		"""
 		ICON_HEIGHT = 1
-		ICON_WEIGHT = 2.2
+		ICON_WEIGHT = 2.5
 		itm = self._selectItemfromStencil(item, stencil)
 		if itm is not None:
 			icon = self._dropItemtoPage(itm, posX, posY)

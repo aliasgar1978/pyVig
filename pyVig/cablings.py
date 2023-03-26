@@ -41,7 +41,8 @@ class ADevCablings():
 					self.cablings[k].append(kwargs[mandatory_col_maps[k]])
 				except:
 					self.cablings[k].append("")
-					print(f"Mandatory requirement missing, df gen may fails {k}")
+					if k != 'b_device':
+						print(f"Mandatory requirement missing, df gen may fails {k}")
 
 		for k in self.cabling_optional_columns:
 			try:
