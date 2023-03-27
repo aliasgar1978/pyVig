@@ -59,8 +59,16 @@ def slop_to_angled_connector(m):
 # Co-ordinate calculator
 # --------------------------------------------- 
 class CalculateXY():
-
+	"""Co-ordinate calculator
+	"""	
 	def __init__(self, dev_df, default_x_spacing, default_y_spacing):
+		"""initialize object by providing device DataFrame, default x & y - axis spacing values.
+
+		Args:
+			dev_df (DataFrame): Device DataFrame
+			default_x_spacing (int, float): horizontal spacing between two devices
+			default_y_spacing (int, float): vertical spacing between two devices
+		"""		
 		self.df = dev_df
 		#
 		self.spacing_x = default_x_spacing
@@ -69,15 +77,21 @@ class CalculateXY():
 
 
 	def calc(self):
+		"""calculation sequences
+		"""		
 		self.sort()
 		self.count_of_ho()
 		self.update_ys()
 		self.update_xs()
 
 	def sort(self):
+		"""sort the Device DataFrame based on ['hierarchical_order', 'hostname']
+		"""		
 		self.df.sort_values(by=['hierarchical_order', 'hostname'], inplace=True)
 
 	def count_of_ho(self):
+		"""counts hierarchical_order items and stores it in local dict 
+		"""		
 		self.ho_dict = {}
 		vc = self.df['hierarchical_order'].value_counts()
 		for ho, c in vc.items():
@@ -85,6 +99,11 @@ class CalculateXY():
 
 	# -----------------------------------------------
 	def calc_ys(self):
+		"""calculates y axis placement for each hierarchical order
+
+		Returns:
+			dict: dictionary with y axis placement values for hierarchical_order
+		"""
 		i, y = 0, {}
 		for ho in sorted(self.ho_dict):
 			for r in range(1, 3):
@@ -98,11 +117,33 @@ class CalculateXY():
 		return y
 
 	def inverse_y(self, y):
+		"""inverses the y axis values (turn upside down)
+
+		Args:
+			y (dict): dictionary with y axis placement values based on hierarchical_order
+
+		Returns:
+			dict: inversed dictionary with y axis placement values based on reversed hierarchical_order
+		"""
 		return {k: max(y.values()) - v+2 for k, v in y.items()}
 
-	def get_y(self, ho): return self.y[ho]
+	def get_y(self, ho): 
+		"""get the y axis value for the given hierarchical_order
+
+		Args:
+			ho (int): hierarchical order number
+
+		Returns:
+			int, float: y axis value
+		"""		
+		return self.y[ho]
 
 	def update_ys(self):
+		"""add `y-axis` column to Device DataFrame
+
+		Returns:
+			DataFrame: updated Device DataFrame
+		"""		
 		self.y = self.calc_ys()
 		self.df['y-axis'] = self.df['hierarchical_order'].apply(self.get_y)
 		return self.df
@@ -110,6 +151,14 @@ class CalculateXY():
 	# -----------------------------------------------
 
 	def get_x(self, ho): 
+		"""get the x axis value for a device from given hierarchical order number
+
+		Args:
+			ho (int): hierarchical order number
+
+		Returns:
+			int, float: x axis value
+		"""		
 		for i, v in enumerate(sorted(self.xs[ho])):
 			value = self.xs[ho][v]
 			break
@@ -117,6 +166,11 @@ class CalculateXY():
 		return value
 
 	def calc_xs(self):
+		"""calculates x axis placement for each devices
+
+		Returns:
+			dict: nested dictionary with x axis placement values based on hierarchical_order and its index 
+		"""		
 		xs = {}
 		middle = self.full_width/2
 		halfspacing = self.spacing_x/2
@@ -128,10 +182,14 @@ class CalculateXY():
 			for i, x in enumerate(range(c)):
 				pos = x*self.spacing_x + b 
 				xs[ho][i] = pos
-		# print(xs)
 		return xs
 
 	def update_xs(self):
+		"""add `x-axis` column to Device DataFrame
+
+		Returns:
+			DataFrame: updated Device DataFrame
+		"""		
 		self.full_width = (max(self.ho_dict.values())+2) * self.spacing_x
 		self.xs = self.calc_xs()
 		self.df['x-axis'] = self.df['hierarchical_order'].apply(self.get_x)

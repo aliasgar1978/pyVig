@@ -9,8 +9,15 @@ DEFAULT_LINE_WT = 3
 DEFAULT_LINE_PATTERN = 1
 # --------------------------------------------- 
 class ADevCablings():
+	"""A single Device Cabling details
+	"""	
 
 	def __init__(self, self_device, **kwargs):
+		"""Object Initializer for A single device cabling details.
+
+		Args:
+			self_device (str): device hostname (self)
+		"""		
 		self.self_device = self_device
 		self.cablings = {}
 		self.cablings['a_device'] = []
@@ -23,11 +30,15 @@ class ADevCablings():
 		self.update_attrib(**kwargs)
 
 	def update_attrib(self, **kwargs):
+		"""update object attributes
+		"""
 		for k, v in kwargs.items():
 			if v is not None:
 				self.__dict__[k] = v
 
 	def add_to_cablings(self, **kwargs):
+		"""add provided keyword arguments to cablings (dictionary)
+		"""
 		mandatory_col_maps = {
 			'b_device': 'nbr_hostname' ,
 			'a_device_port': 'interface',
@@ -66,6 +77,11 @@ class ADevCablings():
 				self.cablings[k].append("")
 
 	def cabling_dataframe(self):
+		"""generate the dataframe for the cablings details captured in cablings dictionary of self.
+
+		Returns:
+			DataFrame: Pandas DataFrame object
+		"""
 		df =  pd.DataFrame(self.cablings)
 		df = drop_empty(df, column='b_device')
 		return df

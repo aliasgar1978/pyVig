@@ -6,8 +6,9 @@ from .entities import ItemObjects, Connectors
 from .visio import VisioObject
 
 
-
-
+# ------------------------------------------------------------------------- 
+# ## DICTIONARY - DEFAULT INPUTS 
+# ------------------------------------------------------------------------- 
 
 DEFAULT_DIC = {
 
@@ -47,6 +48,14 @@ DEFAULT_DIC = {
 # ## pyvig boiler plate code.
 # ------------------------------------------------------------------------- 
 def cabling_data_operations(dic):
+	"""create and return cabling data object
+
+	Args:
+		dic (dict): cabling tab column names idenfier dictionary
+
+	Returns:
+		CableMatrixData: Cablings data object
+	"""	
 	cable_matrix_data = CableMatrixData(
 		dic['data_file'],               # mandatory: file name (with full path)
 		sheet_name=dic['cabling_sheet_name'],           # mandatory: tab/sheet name
@@ -62,6 +71,14 @@ def cabling_data_operations(dic):
 
 
 def device_data_operations(dic):
+	"""creates and returns devices data object after merging columns of the list provided for `cols_to_merge` key  
+
+	Args:
+		dic (dict): devices tab column names identifier dictionary.
+
+	Returns:
+		DeviceData: Devices data object
+	"""	
 	devices_data = DeviceData(
 		dic['data_file'],
 		sheet_name=dic['devices_sheet_name'],
@@ -75,6 +92,17 @@ def device_data_operations(dic):
 	return devices_data
 
 def visio_operations(dic, devices_data, cable_matrix_data, stencils):
+	"""create a VisioObject
+
+	Args:
+		dic (dict): dictionary with sheet filters (if needed), for multi page output
+		devices_data (DeviceData): Devices data object
+		cable_matrix_data (CableMatrixData): Cablings data object
+		stencils (list): list of visio stencils 
+
+	Returns:
+		None: None
+	"""	
 	with VisioObject(stencils=stencils, outputFile=dic['op_file']) as v:
 		print("Visio Drawing Inprogress, Do not close Visio Drawing while its running...")
 		if dic['sheet_filters']:
@@ -91,12 +119,33 @@ def visio_operations(dic, devices_data, cable_matrix_data, stencils):
 
 def repeat_for_filter(v, devices_data, cable_matrix_data,
 	dic, filt_key, filt_value, page_key):
+	"""starts visio page operation for the given filter
+
+	Args:
+		v (VisioObject): Visio Object
+		devices_data (DeviceData): Devices data object
+		cable_matrix_data (CableMatrixData): Cablings data object
+		dic (dict): input dictionary
+		filt_key (str): filter key
+		filt_value (str, tuple, list, set): filter value(s)
+		page_key (str): page key (suffix for filter values in case if multiple filt_values)
+	"""	
 	flt ={filt_key:filt_value}
 	cmd = deepcopy(cable_matrix_data)
 	visio_page_operation(v, devices_data, cmd, flt, dic, page_key=page_key)
 
 
 def visio_page_operation(v, devices_data, cable_matrix_data, flt, dic, page_key=None):
+	"""operate on visio page
+
+	Args:
+		v (VisioObject): Visio Object
+		devices_data (DeviceData): Devices data object
+		cable_matrix_data (CableMatrixData): Cablings data object
+		flt (dict): filters {key: value} pairs
+		dic (dict): input dictionary
+		page_key (str, optional): page key (suffix for filter values in case if multiple filt_values). Defaults to None.
+	"""	
 	if dic['filter_on_include_col']:
 		cable_matrix_data.filter_eligible_cables_only() # [Optional]
 	if dic['is_sheet_filter']:
@@ -112,6 +161,14 @@ def visio_page_operation(v, devices_data, cable_matrix_data, flt, dic, page_key=
 
 
 def pyVig(dic):
+	"""main function starting the python based visio generation
+
+	Args:
+		dic (dict): inputs dictionary ( valid and mandatory keys = stencil_folder, data_file ) (valid but optional keys = default_stencil, cols_to_merge, is_sheet_filter, sheet_filters ... and many more from DEFAULT_DIC )
+
+	Returns:
+		None: None
+	"""	
 	DEFAULT_DIC.update(dic)
 	devices_data = device_data_operations(DEFAULT_DIC)
 	cable_matrix_data = cabling_data_operations(DEFAULT_DIC)
