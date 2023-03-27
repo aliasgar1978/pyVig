@@ -1,5 +1,6 @@
 
 import pandas as pd
+from .general import drop_empty
 # --------------------------------------------- 
 
 DEFAULT_CONNECTOR_TYPE = 'straight'  ## other options = 'curved', 'angled'
@@ -66,6 +67,7 @@ class ADevCablings():
 
 	def cabling_dataframe(self):
 		df =  pd.DataFrame(self.cablings)
+		df = drop_empty(df, column='b_device')
 		return df
 
 # --------------------------------------------- 

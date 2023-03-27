@@ -3,6 +3,7 @@ import pandas as pd
 import nettoolkit as nt
 from .devices import AdevDevices, device_df_drop_empty_duplicates, update_var_df_details_to_table_df
 from .cablings import ADevCablings
+from .maths import CalculateXY
 from .general import *
 
 # --------------------------------------------- 
@@ -54,12 +55,15 @@ class DFGen():
 
 	def update_devices_df(self, DCT, file):
 		ddf = DCT.update_devices()
-		# self.devices_merged_df = self.devices_merged_df.merge(ddf, how='outer', validate='many_to_many')
+		#
+		# ddf_dev = DCT.update_device_self_detils(self.func_dict)
+		# ddf = pd.concat([ddf, ddf_dev], axis=0, join='outer')
+		#
 		self.devices_merged_df = pd.concat([self.devices_merged_df, ddf], axis=0, join='outer')
 
 	def update_cabling_df(self, DCT, file):
 		cdf = DCT.update_cablings(**self.__dict__)
-		# self.cabling_merged_df = self.cabling_merged_df.merge(cdf, how='outer', validate='many_to_many')
+		#
 		self.cabling_merged_df = pd.concat([self.cabling_merged_df, cdf], axis=0, join='outer')
 
 	def calculate_cordinates(self):
@@ -92,27 +96,36 @@ class DF_ConverT():
 
 
 	def get_self_details(self, var_func_dict):
+		self.var_func_dict = var_func_dict
 		for k,  f in var_func_dict.items():
 			v = f(self.full_df['var'])
 			if not v: v = 'N/A'
 			self.__dict__[k] = v
 
 	def convert(self, func_dict):
-		# physical
-		df = get_physical_if_up(self.full_df['physical'])
-		df = get_physical_if_relevants(df)
+
 		# vlan
 		vlan_df = get_vlan_if_up(self.full_df['vlan'])
 		vlan_df = get_vlan_if_relevants(vlan_df)
+		self.vlan_df = vlan_df
+
+		# physical
+		df = get_physical_if_up(self.full_df['physical'])
+		df = get_physical_if_relevants(df)
 		#
+		df = self.update_devices_df_pattern_n_custom_func(df, func_dict)
+		#
+		self.u_ph_df = df
+
+
+	def update_devices_df_pattern_n_custom_func(self, df, func_dict, test=False):
 		for k, f in func_dict.items():
 			df[k] = f(df)
 		#
 		self.patterns = get_patterns(df, self.line_pattern_style_separation_on, self.line_pattern_style_shift_no)
 		df = update_pattern(df, self.patterns, self.line_pattern_style_separation_on)
 		#
-		self.u_ph_df = df
-		self.vlan_df = vlan_df
+		return df
 
 
 	def update_cablings(self, **default_dic):
@@ -126,101 +139,28 @@ class DF_ConverT():
 		return df
 
 	def update_devices(self):
-		self.D = AdevDevices(self.stencils)
-		for k, v in self.u_ph_df.iterrows():
-			kwargs = {}
-			for x, y in v.items():
-				kwargs[x] = y
-			devices = self.D.add_to_devices(**kwargs)
-
-		# self.D.int_df = self.D.device_dataframe()
-		self.D.int_df = device_df_drop_empty_duplicates(self.D.devices)
+		self.D = AdevDevices(self.stencils, self.var_func_dict, self.full_df['var'])
+		self.D.int_df = self.update_devices_for(df=self.u_ph_df, dic=self.D.devices)
 		self.D.add_vlan_info(self.vlan_df)
 		return self.D.merged_df
 
+	def update_device_self_detils(self, func_dict):
+		self_device_df = self.D.get_self_device_df()
+		self_dev_df = self.update_devices_for(df=self_device_df, dic=self.D.self_device)
+		self_dev_df = self.update_devices_df_pattern_n_custom_func(self_dev_df, func_dict, True)
+		return self_dev_df
 
+	def update_devices_for(self, df, dic):
 
-# --------------------------------------------- 
-# Co-ordinate calculator
-# --------------------------------------------- 
-class CalculateXY():
+		for k, v in df.iterrows():
+			kwargs = {}
+			for x, y in v.items():
+				kwargs[x] = y
+			self.D.add_to_devices(what=dic, **kwargs)
 
-	def __init__(self, dev_df, default_x_spacing, default_y_spacing):
-		self.df = dev_df
-		#
-		self.spacing_x = default_x_spacing
-		self.spacing_y = default_y_spacing
-		#
+		u_df = device_df_drop_empty_duplicates(dic)
+		return u_df
 
-
-	def calc(self):
-		self.sort()
-		self.count_of_ho()
-		self.update_ys()
-		self.update_xs()
-
-	def sort(self):
-		self.df.sort_values(by=['hierarchical_order', 'hostname'], inplace=True)
-
-	def count_of_ho(self):
-		self.ho_dict = {}
-		vc = self.df['hierarchical_order'].value_counts()
-		for ho, c in vc.items():
-			self.ho_dict[ho] = c
-
-	# -----------------------------------------------
-	def calc_ys(self):
-		i, y = 0, {}
-		for ho in sorted(self.ho_dict):
-			for r in range(1, 3):
-				if self.ho_dict.get(ho+r):
-					c = self.ho_dict[ho+r]
-					next_i = c/2 * self.spacing_y
-					break
-			y[ho] = i
-			i = next_i
-		y = self.inverse_y(y)
-		return y
-
-	def inverse_y(self, y):
-		return {k: max(y.values()) - v+2 for k, v in y.items()}
-
-	def get_y(self, ho): return self.y[ho]
-
-	def update_ys(self):
-		self.y = self.calc_ys()
-		self.df['y-axis'] = self.df['hierarchical_order'].apply(self.get_y)
-		return self.df
-
-	# -----------------------------------------------
-
-	def get_x(self, ho): 
-		for i, v in enumerate(sorted(self.xs[ho])):
-			value = self.xs[ho][v]
-			break
-		del(self.xs[ho][v])
-		return value
-
-	def calc_xs(self):
-		xs = {}
-		middle = self.full_width/2
-		halfspacing = self.spacing_x/2
-		for ho in sorted(self.ho_dict):
-			if not xs.get(ho):
-				xs[ho] = {}
-			c = self.ho_dict[ho]
-			b = middle - (c/2*self.spacing_x) - halfspacing
-			for i, x in enumerate(range(c)):
-				pos = x*self.spacing_x + b 
-				xs[ho][i] = pos
-		# print(xs)
-		return xs
-
-	def update_xs(self):
-		self.full_width = (max(self.ho_dict.values())+2) * self.spacing_x
-		self.xs = self.calc_xs()
-		self.df['x-axis'] = self.df['hierarchical_order'].apply(self.get_x)
-		return self.df
 
 
 # --------------------------------------------- 
