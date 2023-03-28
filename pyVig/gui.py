@@ -20,7 +20,8 @@ declaration = """
  from trust center setting of MS-visio.
 
 
- Please reachout to me, [Aliasgar Lokhandwala] for any Qs.
+ Please reachout to me, @ aholo2000@gmail.com for any Qs.
+ Owner of code: [Aliasgar Lokhandwala]
 """
 
 # -----------------------------------------------------------------------------
@@ -29,7 +30,7 @@ declaration = """
 
 class UserForm():
 	'''Inititates a UserForm asking user inputs.	'''
-	version  = 'Visio Generator : ver: 0.0.5'
+	version  = 'Visio Generator : gui ver: 0.0.8'
 	header = 'Visio Generator'
 
 	# Object Initializer

@@ -4,6 +4,7 @@ from .stencils import get_list_of_stencils
 from .database import DeviceData, CableMatrixData
 from .entities import ItemObjects, Connectors
 from .visio import VisioObject
+from .gui import UserForm
 
 
 # ------------------------------------------------------------------------- 
@@ -161,7 +162,7 @@ def visio_page_operation(v, devices_data, cable_matrix_data, flt, dic, page_key=
 
 
 def pyVig(dic):
-	"""main function starting the python based visio generation
+	"""main function starting the python based cli - visio generation
 
 	Args:
 		dic (dict): inputs dictionary ( valid and mandatory keys = stencil_folder, data_file ) (valid but optional keys = default_stencil, cols_to_merge, is_sheet_filter, sheet_filters ... and many more from DEFAULT_DIC )
@@ -178,6 +179,25 @@ def pyVig(dic):
 	)
 	visio_operations(DEFAULT_DIC, devices_data, cable_matrix_data, stencils)
 	return None
+
+def pyVig_gui():
+	"""main function starting the gui input - visio generation
+
+	Returns:
+		None: None
+	"""	
+	u = UserForm()
+	try: dic = u.dic
+	except: return None
+	devices_data = device_data_operations(dic)
+	cable_matrix_data = cabling_data_operations(dic)
+	stencils = get_list_of_stencils(
+		folder=dic['stencil_folder'], 
+		devices_data=devices_data, 
+	)
+	visio_operations(dic, devices_data, cable_matrix_data, stencils)
+	return None
+
 
 # ------------------------------------------------------------------------- 
 

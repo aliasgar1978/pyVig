@@ -7,8 +7,9 @@ User documentation!
    :caption: Contents:
 
 
-   CLI Executions <u_doc/executions>
-   GUI Executions <u_doc/gui_executions>
+   CLI Exec - General <u_doc/cli_general>
+   GUI Exec - General <u_doc/gui_general>
+   pyVig Excel Preparation <u_doc/cli_facts>
    Samples <u_doc/sample>
 
 

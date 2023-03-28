@@ -7,11 +7,16 @@ Welcome to pyVig project's technical documentation!
 .. toctree:: 
    :maxdepth: 4
    
+   cablings <t_doc/cablings>
    common <t_doc/common>
    database <t_doc/database>
+   devices <t_doc/devices>
    entities <t_doc/entities>
+   general <t_doc/general>
    gui <t_doc/gui>
    maths <t_doc/maths>
+   oper <t_doc/oper>
+   pyVig <t_doc/pyvig>
    static <t_doc/static>
    stencils <t_doc/stencils>
    visio <t_doc/visio>
@@ -23,4 +28,5 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
+* :ref:`search`
 
