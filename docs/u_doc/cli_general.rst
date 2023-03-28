@@ -6,20 +6,25 @@ Command Line Execution steps
 ----------------------------
 
 
-Import pyVig module from pyVig::
+Import pyVig module from pyVig
+------------------------------
 
 	.. code-block:: python
 	
 		import pyVig
 
 
-Prepare Excel Database::
+Prepare Excel Database
+----------------------
+
 
 	#. Excel Database should contain two tabs ``Devices``, ``Cablings``.
 	#. Refer to Samples section for more details on Excel database requirements.
 
 
-Define Variables::
+Define Variables
+----------------
+
 
 	.. code-block:: python
 		:emphasize-lines: 5,6,36,37
@@ -68,7 +73,9 @@ Define Variables::
 		}
 
 
-Execute Now::
+Execute Now
+-----------
+
 
 	.. code-block:: python
 
