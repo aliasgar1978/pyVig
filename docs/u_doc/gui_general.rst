@@ -1,9 +1,7 @@
 GUI Execution Instructions
 ===========================
 
-Quick and User-Friendly way of execution steps
-
-
+Steps for Quick and User-Friendly way of generating visio using database
 
 
 ----------------------------------------
@@ -14,8 +12,8 @@ Prepare Excel Database
 ----------------------
 
 
-	#. Excel Database should contain two tabs ``Devices``, ``Cablings``.
-	#. Refer to Samples section for more details on Excel database requirements.
+	#. Excel Database should contain two tabs **Devices**, **Cablings**.
+	#. Refer to ``Samples`` section for more details on Excel database requirements.
 
 
 Import and run pyVig_gui module from pyVig
@@ -27,6 +25,8 @@ Import and run pyVig_gui module from pyVig
 		import pyVig_gui
 		pyVig_gui()
 
+
+	Provide the information in selection windows and click Run.
 
 
 	.. tip::
@@ -43,7 +43,7 @@ Import and run pyVig_gui module from pyVig
 
 
 
-Captures
+A Few Snaps
 ---------------
 
 
@@ -63,17 +63,13 @@ Captures
 
 *	Select Data from this tab
 
-	**database file:** select Excel data file
-
-	**stencil folder:** select folder, where all visio stencil files are stored.
-
-	**default stencil file:** *[optional]* select default stencil file.  It will be used if no stencil mentioned in excel data.
-
-	**devices sheet name:** ``Devices`` details tab name in excel data.
-	**Cabling sheet name:** ``Cabling`` details tab name in excel data.
-	**Other column names:** select correct respective *column names* if it is differ from standard.
-
-
+	* **database file:** select Excel data file
+	* **stencil folder:** select folder, where all visio stencil files are stored.
+	* **default stencil file:** *[optional]* select default stencil file.  It will be used if no stencil mentioned in excel data.
+	* **devices sheet name:** ``Devices`` details tab name in excel data.
+	* **Cabling sheet name:** ``Cabling`` details tab name in excel data.
+	* **Other column names:** select correct respective *column names* if it is differ from standard.
+	
 	**see also:** Excel Details page on standard way of creating data
 
 	**Note:** Missing stencil/device type will display information in ``rectangle box``.

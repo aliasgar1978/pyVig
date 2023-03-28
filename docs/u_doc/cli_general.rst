@@ -21,8 +21,8 @@ Prepare Excel Database
 ----------------------
 
 
-	#. Excel Database should contain two tabs ``Devices``, ``Cablings``.
-	#. Refer to Samples section for more details on Excel database requirements.
+	#. Excel Database should contain two tabs **Devices**, **Cablings**.
+	#. Refer to ``Samples`` section for more details on Excel database requirements.
 
 
 Define Variables
@@ -30,7 +30,7 @@ Define Variables
 
 
 	.. code-block:: python
-		:emphasize-lines: 5,6,36,37
+		:emphasize-lines: 5,6,37,38
 
 		# Define necessary input variables.
 		dic = {
@@ -76,8 +76,8 @@ Define Variables
 		}
 
 
-Execute Now
------------
+Execute/Generate Visio Now
+--------------------------
 
 
 	.. code-block:: python

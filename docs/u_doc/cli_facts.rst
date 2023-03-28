@@ -8,10 +8,14 @@ to generate the Excel Database for us.  Follow me as below for the same
 
 -----
 
+Pre-Requisites before generating pyVig Excel
+--------------------------------------------
+
+
 Here below are two Pre-Requisite steps to be done before generating visio.
 
 Capture
--------
+^^^^^^^
 
 	Use capture-it to capture a few commands output and to prepare commands parsed Excel Files as a first step. 
 
@@ -22,8 +26,7 @@ Capture
 	
 	
 Clean files generation
-----------------------
-
+^^^^^^^^^^^^^^^^^^^^^^
 
 	Using the captures and parsed Excel files, generate clean excel files (-clean.xlsx).
 
@@ -36,13 +39,15 @@ Clean files generation
 
 -----
 
-#. Create pyVig Excel file
+Create pyVig Excel file
+-----------------------
+
 
 	Now Create a python file using below steps, snippets.
 
 
-Import necessary modules
-------------------------
+module imports
+^^^^^^^^^^^^^^
 
 	.. code-block:: python
 
@@ -70,7 +75,7 @@ Import necessary modules
 
 
 Generate pyVig readable Excel Database
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 	.. code-block:: python
 
