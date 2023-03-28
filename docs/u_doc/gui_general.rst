@@ -9,16 +9,24 @@ Quick and User-Friendly way of execution steps
 
 
 Prepare Excel Database
+<<<<<<< HEAD
 ----------------------
+=======
+
+>>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 
 	#. Excel Database should contain two tabs ``Devices``, ``Cablings``.
 	#. Refer to Samples section for more details on Excel database requirements.
 
 
+<<<<<<< HEAD
 Import and run pyVig_gui module from pyVig
 ------------------------------------------
 
+=======
+2. Import and run pyVig_gui module from pyVig::
+>>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 	.. code-block:: python
 	
