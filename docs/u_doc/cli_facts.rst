@@ -18,7 +18,7 @@ Capture
 	.. tip::
 
 		You can use ``capture-it`` package for the purpose of the same.
-		`Refer: <https://capture-it.readthedocs.io>`_
+		`Refer: capture-it documentation <https://capture-it.readthedocs.io>`_
 	
 	
 Clean files generation
@@ -30,7 +30,7 @@ Clean files generation
 	.. tip::
 		
 		You can use ``facts_finder`` package for the purpose of the same.
-		`Refer: <https://facts-finder.readthedocs.io>`_
+		`Refer: facts-finder documentation <https://facts-finder.readthedocs.io>`_
 
 
 
@@ -43,6 +43,8 @@ Clean files generation
 
 Import necessary modules
 ------------------------
+
+	.. code-block:: python
 
 			# -------------------------------------
 			# general imports
@@ -70,6 +72,7 @@ Import necessary modules
 Generate pyVig readable Excel Database
 --------------------------------------
 
+	.. code-block:: python
 
 			# provide an output pyVig Excel file name 
 			XL_PYVIG_OP_FILE = 'excel-pyVig.xlsx'
