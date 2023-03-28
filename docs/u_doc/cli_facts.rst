@@ -10,13 +10,8 @@ to generate the Excel Database for us.  Follow me as below for the same
 
 Here below are two Pre-Requisite steps to be done before generating visio.
 
-<<<<<<< HEAD
 Capture
 -------
-
-=======
-#. Capture
->>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 	Use capture-it to capture a few commands output and to prepare commands parsed Excel Files as a first step. 
 
@@ -26,13 +21,9 @@ Capture
 		`Refer: <https://capture-it.readthedocs.io>`_
 	
 	
-<<<<<<< HEAD
 Clean files generation
 ----------------------
 
-=======
-#. Clean files generation::
->>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 	Using the captures and parsed Excel files, generate clean excel files (-clean.xlsx).
 
@@ -50,12 +41,8 @@ Clean files generation
 	Now Create a python file using below steps, snippets.
 
 
-<<<<<<< HEAD
 Import necessary modules
 ------------------------
-=======
-	Import necessary modules::
->>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 			# -------------------------------------
 			# general imports
@@ -80,15 +67,9 @@ Import necessary modules
 			from custom_pyvig.optional_var import get_dev_model, get_dev_serial
 
 
-<<<<<<< HEAD
 Generate pyVig readable Excel Database
 --------------------------------------
 
-=======
-			# -------------------------------------
-			#. Define static input Variables First
-			# -------------------------------------
->>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 			# provide an output pyVig Excel file name 
 			XL_PYVIG_OP_FILE = 'excel-pyVig.xlsx'
@@ -170,13 +151,9 @@ Generate pyVig readable Excel Database
 
 
 
-<<<<<<< HEAD
 Generate Visio using pyVig Excel Database created above
 -------------------------------------------------------
 
-=======
-#. Generate Visio using pyVig Excel Database created above
->>>>>>> 86268143894e2f3d988d94beea9d4740f104a021
 
 	Now create visio using ``CLI Execution General Instructions`` page **Define Variables** & **Execute Now** sections.  
 	Where provide,
