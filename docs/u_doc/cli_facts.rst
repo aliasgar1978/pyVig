@@ -162,16 +162,18 @@ Generate pyVig readable Excel Database
 -----
 
 
+Show time
+---------
 
-Generate Visio using pyVig Excel Database created above
--------------------------------------------------------
+**Generate Visio using pyVig Excel Database created above.**
 
+Now, we can create visio using,
 
-	Now, we can create visio using,
 	* ``Way1: CLI with Manual XL`` page **Define Variables** & **Execute Now** sections.
 	* ``Way2: GUI with Manual XL`` page **Import and run pyVig_gui from pyVig** section.
 	
 	Where provide, as defined above static/global variables
+	
     	* *'data_file': XL_PYVIG_OP_FILE*,
     	* *'stencil_folder': STENCIL_FOLDER*,
     	* *'default_stencil': DEFAULT_STENCIL*,
