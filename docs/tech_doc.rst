@@ -6,6 +6,7 @@ Technical documentation
    
 .. toctree:: 
    :maxdepth: 4
+   :caption: Contents:
    
    cablings <t_doc/cablings>
    common <t_doc/common>
@@ -28,4 +29,5 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
+* :ref:`search`
 
