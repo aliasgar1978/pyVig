@@ -1,6 +1,6 @@
 
 common
--------------
+========
 
 .. automodule:: pyVig.common
    :members:

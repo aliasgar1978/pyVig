@@ -1,5 +1,6 @@
 Technical documentation
-===================================================
+###########################
+
    
 **Welcome to pyVig project's technical documentation!**
    
@@ -23,7 +24,7 @@ Technical documentation
 
 
 Indices and tables
-==================
+###########################
 
 * :ref:`genindex`
 * :ref:`modindex`

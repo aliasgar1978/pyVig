@@ -1,7 +1,7 @@
 
 
 devices
--------------
+========
 
 .. automodule:: pyVig.devices
    :members:

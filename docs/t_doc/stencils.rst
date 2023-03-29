@@ -1,6 +1,6 @@
 
 stencils
------------------
+========
 
 .. automodule:: pyVig.stencils
    :members:

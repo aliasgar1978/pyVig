@@ -1,5 +1,6 @@
 pyVig
-#######
+###########################
+
 
 **Welcome to pyVig's documentation!**
 

@@ -1,6 +1,6 @@
 
 maths
------------------
+========
 
 .. automodule:: pyVig.maths
    :members:

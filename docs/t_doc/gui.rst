@@ -1,6 +1,6 @@
 
 gui
------------------
+========
 
 .. automodule:: pyVig.gui
    :members:

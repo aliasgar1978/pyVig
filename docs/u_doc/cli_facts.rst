@@ -2,6 +2,7 @@ Way3: CLI Execution with auto pyVig Excel Readable file preparation using facts 
 =====================================================================================
 
 
+
 In this method we do not need to prepare the Excel Database manually by ourself. Instead of that we can use the Excel files (aka: -clean.xlsx generated using facts-finder) 
 to generate the Excel Database for us.  
 
@@ -9,7 +10,8 @@ to generate the Excel Database for us.
 -----
 
 Pre-Requisites
---------------------------------------------
+--------------
+
 
 
 Here below are two Pre-Requisite steps to be done before generating pyVig understandable Excel generation.

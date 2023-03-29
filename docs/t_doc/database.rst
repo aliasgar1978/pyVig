@@ -1,7 +1,7 @@
 
 
 database
--------------
+========
 
 .. automodule:: pyVig.database
    :members:

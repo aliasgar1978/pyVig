@@ -1,7 +1,7 @@
 
 
 general
--------------
+========
 
 .. automodule:: pyVig.general
    :members:

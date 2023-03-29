@@ -1,6 +1,6 @@
 
 static
------------------
+========
 
 .. automodule:: pyVig.static
    :members:

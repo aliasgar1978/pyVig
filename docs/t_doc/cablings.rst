@@ -1,6 +1,7 @@
 
 cablings
--------------
+========
+
 
 .. automodule:: pyVig.cablings
    :members:

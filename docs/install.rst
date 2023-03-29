@@ -1,8 +1,11 @@
 Installation & Requirements
-=============================
+###########################
+
+
 
 Requirements
---------------------
+************
+
 
 	1. python >= 3.7
 	2. Excel.
@@ -14,7 +17,8 @@ Requirements
 ------------------
 
 Installation / Update
----------------------
+*********************
+
 
 
 Install the pyVig package::
@@ -26,7 +30,8 @@ Install the pyVig package::
 ---------------------------
 
 Inherited python packages
----------------------------
+*************************
+
 
 	1. pandas
 	2. nettoolkit
@@ -38,10 +43,13 @@ Inherited python packages
 -------------------------------------
 
 Do this: Enable Macros for MS-Visio
--------------------------------------
+***********************************
+
 
 Enable all macros from Trust Center settings in order to allow visio access for script.
 
 .. image:: u_doc/img/trust.png
   :width: 400
   :alt: trust macros from trust center settings.
+
+-------------------------------------

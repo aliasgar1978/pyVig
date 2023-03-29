@@ -1,6 +1,6 @@
 
 visio
------------------
+========
 
 .. automodule:: pyVig.visio
    :members:

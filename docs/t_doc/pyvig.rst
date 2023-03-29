@@ -1,7 +1,7 @@
 
 
 pyVig
--------------
+========
 
 .. automodule:: pyVig.pyVig
    :members:

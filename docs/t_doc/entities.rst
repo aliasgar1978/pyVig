@@ -1,6 +1,6 @@
 
 entities
------------------
+========
 
 .. automodule:: pyVig.entities
    :members:

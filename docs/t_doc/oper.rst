@@ -1,7 +1,7 @@
 
 
 oper
--------------
+========
 
 .. automodule:: pyVig.oper
    :members:
