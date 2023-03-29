@@ -7,7 +7,7 @@ Requirements
 ************
 
 
-	1. python >= 3.7
+	1. python >= 3.8
 	2. Excel.
 	3. MS-Visio
 	4. Visio stencil(s)
@@ -37,7 +37,7 @@ Inherited python packages
 	2. nettoolkit
 	3. numpy
 	4. pySimplyGUI
-	5. pywin32, win32com
+	5. pywin32, win32com ( may require manual install )
  
 
 -------------------------------------

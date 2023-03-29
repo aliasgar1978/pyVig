@@ -28,7 +28,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.7',
+    python_requires='>=3.8',
     install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit',  'PySimpleGUI'],
     extras_require={'docs': docs_extras},
 )
