@@ -1,3 +1,5 @@
+"""pyVig Excel Preparation -  A Single Device Cabling Details.
+"""
 
 import pandas as pd
 from .general import drop_empty
