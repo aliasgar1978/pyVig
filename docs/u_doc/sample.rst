@@ -3,7 +3,13 @@ Excel database Samples
 ===========================
 
 
-Devices Table
+pyVig readable sample excel file 
+---------------------------------
+
+:download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
+
+
+Devices Table Sample
 ---------------------------------
 
 .. csv-table:: Devices
@@ -12,7 +18,7 @@ Devices Table
 
 
 
-Cablings Table
+Cablings Table Sample
 ---------------------------------
 
 .. csv-table:: Cablings
@@ -20,3 +26,29 @@ Cablings Table
    :header-rows: 1
 
 
+Output: when no sheet_filters provided
+--------------------------------
+
+Here is a sample output with given database when no filters selected in input.
+
+.. image:: img/all.png
+  :width: 400
+  :alt: all.png.
+
+Output2: Tab1 when sheet_filters applied
+--------------------------------
+
+Here is a sample output of `core` tab when **sheet_filters** is enabled in input.
+
+.. image:: img/all.png
+  :width: 400
+  :alt: core.png.
+
+Output3: Tab2 when sheet_filters applied
+--------------------------------
+
+Here is a sample output of `access` tab when **sheet_filters** is enabled in input.
+
+.. image:: img/all.png
+  :width: 400
+  :alt: access.png.

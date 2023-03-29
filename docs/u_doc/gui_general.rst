@@ -1,5 +1,5 @@
-GUI Execution Instructions
-===========================
+Way2: GUI Execution with manual Excel Database preparation
+==========================================================
 
 Steps for Quick and User-Friendly way of generating visio using database
 
@@ -12,17 +12,18 @@ Prepare Excel Database
 ----------------------
 
 
-	#. Excel Database should contain two tabs **Devices**, **Cablings**.
-	#. Refer to ``Samples`` section for more details on Excel database requirements.
+   #. Excel Database should contain two tabs **Devices**, **Cablings**.
+   #. Refer to ``Database Sample`` section for more details on Excel database requirements.
+   #. :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
 
 
-Import and run pyVig_gui module from pyVig
+Import and run pyVig_gui from pyVig
 ------------------------------------------
 
 
 	.. code-block:: python
 	
-		import pyVig_gui
+		from pyVig import pyVig_gui
 		pyVig_gui()
 
 
@@ -104,17 +105,14 @@ A Few Snaps
 -------------------------------
 
 *	Excel Devices tab
-	
-	**hostname:** [mandatory] device names
 
-	**x-axis, y-axis:** [mandatory] device co-ordinates in visio page. *column names can be different, however need to update it in menu if different*
+	* **hostname:** [mandatory] device names
+	* **x-axis, y-axis:** [mandatory] device co-ordinates in visio page. *column names can be different, however need to update it in menu if different*
+	* **stencils:** [optional] stencil file name (without extension) for each device. No stencil will use default stencil provided. And if no default stencil as well than details will go in a rectangle box.  *column name can be different, however need to update it in menu if different*
+	* **device_type:** [optional] icon name/number from stencil.  *column name can be different, however need to update it in menu if different*
 
-	**stencils:** [optional] stencil file name (without extension) for each device. No stencil will use default stencil provided. And if no default stencil as well than details will go in a rectangle box.  *column name can be different, however need to update it in menu if different*
-
-	**device_type:** [optional] icon name/number from stencil.  *column name can be different, however need to update it in menu if different*
-
-	++ add n-number of **additional columns** to add an additional details to device descriptions. Required columns needed to be selected and added from ``Other Options`` tab.
-
+	++ add n-number of **additional columns** to add an additional details to device descriptions. 
+	Required columns needed to be selected and added from ``Other Options`` tab.
 
 	.. image:: img/sample_excel_devices_tab.png
 	  :width: 400
@@ -123,26 +121,17 @@ A Few Snaps
 -------------------------------
 
 
-*	Excel Devices tab
+*	Excel Cabling tab
 
-	**a_device:**  [mandatory] device name for a leg of a cable. *column name can be different, however need to update it in menu if different*
+	* **a_device:**  [mandatory] device name for a leg of a cable. *column name can be different, however need to update it in menu if different***b_device:** [mandatory] device name for b leg of a cable. *column name can be different, however need to update it in menu if different*
+	* **a_device_port:** [optional] port information for a leg device. *column name can be different, however need to update it in menu if different*
+	* **connector:** [optional]  connector/cable line type (select either one: straight, angled, curved) (default=angled)
+	* **color:** [optional] color of connector/line ( red, blue, gray, darkgray, lightgray) (default=black);  Or provide RGB number color in tuple format (R,G,B)
+	* **weight:** [optional] line thickness in number	(default=1)
+	* **pattern:** [optional] line pattern in number	(default=solid line)
 
-	**b_device:** [mandatory] device name for b leg of a cable. *column name can be different, however need to update it in menu if different*
-
-	**a_device_port:** [optional] port information for a leg device. *column name can be different, however need to update it in menu if different*
-
-	**connector:** [optional]  connector/cable line type (select either one: straight, angled, curved) (default=angled)
-
-	**color:** [optional] color of connector/line ( red, blue, gray, darkgray, lightgray) (default=black)
-	Or provide RGB number color in tuple format (R,G,B)
-
-	**weight:** [optional] line thickness in number	(default=1)
-
-	**pattern:** [optional] line pattern in number	(default=solid line)
-
-	++ add n-number of **additional columns**: to add an additional filters and /or *multi-sheet output*.  Required columns filter needed to be added from ``Apply Filters``.
-
-
+	++ add n-number of **additional columns**: to add an additional filters and /or *multi-sheet output*.  
+	Required columns filter needed to be added from ``Apply Filters``.
 
 
 	.. image:: img/sample_excel_cabling_tab.png

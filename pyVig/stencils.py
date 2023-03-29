@@ -34,12 +34,12 @@ def get_list_of_stencils(folder, devices_data):
 	if folder:
 		for file in os.listdir(folder):
 			if file.startswith("~$$"): continue
-			if default_stencil and file.startswith(default_stencil):
+			if default_stencil and default_stencil == ".".join(file.split(".")[:-1]):
 				found_stn.append(folder+"/"+file)
 				stn_file.add(".".join(file.split(".")[:-1]))
 				continue
 			for stn in used_stn:
-				if file.find(stn) > -1 :
+				if ".".join(file.split(".")[:-1]) == stn:
 					found_stn.append(folder+"/"+file)
 					stn_file.add(".".join(file.split(".")[:-1]))
 					break
@@ -52,9 +52,11 @@ def get_list_of_stencils(folder, devices_data):
 	elif len(used_stn) == 0:
 		return found_stn
 	else:
+		pass
 		print("Below mentioned stencil(s) are missing; ",
 		"Kindly update/correct data before re-run.\n",
-		used_stn.difference(stn_file), "\n")
+		used_stn.difference(stn_file), "\n",
+		)
 		Popup("Below mentioned stencil(s) are missing; ",
 		"Kindly update/correct data before re-run.\n",
 		used_stn.difference(stn_file), "\n")

@@ -5,16 +5,17 @@ Requirements
 --------------------
 
 	1. python >= 3.7
-	2. MS-Excel database with devices and cabling details.
+	2. Excel.
 	3. MS-Visio
-	4. MS-Visio stencil(s)
+	4. Visio stencil(s)
 	5. facts-finder (python package)
 	6. capture-it (python package)
 
------------------
+------------------
 
-Installation
------------------
+Installation / Update
+---------------------
+
 
 Install the pyVig package::
 
@@ -38,7 +39,8 @@ Inherited python packages
 
 Do this: Enable Macros for MS-Visio
 -------------------------------------
-Enable all macros from Trust Center settings.
+
+Enable all macros from Trust Center settings in order to allow visio access for script.
 
 .. image:: u_doc/img/trust.png
   :width: 400

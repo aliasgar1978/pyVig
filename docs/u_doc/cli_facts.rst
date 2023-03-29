@@ -1,28 +1,26 @@
-pyVig Excel Readable file preparation using facts files
-=======================================================
+Way3: CLI Execution with auto pyVig Excel Readable file preparation using facts files
+=====================================================================================
 
 
-In this method we do not need to prepare the Excel Database manually by ourself. Instead of that we can use the Excel files (aka: -clean.xlsx) 
-to generate the Excel Database for us.  Follow me as below for the same  
+In this method we do not need to prepare the Excel Database manually by ourself. Instead of that we can use the Excel files (aka: -clean.xlsx generated using facts-finder) 
+to generate the Excel Database for us.  
 
 
 -----
 
-Pre-Requisites before generating pyVig Excel
+Pre-Requisites
 --------------------------------------------
 
 
-Here below are two Pre-Requisite steps to be done before generating visio.
+Here below are two Pre-Requisite steps to be done before generating pyVig understandable Excel generation.
 
 Capture
 ^^^^^^^
 
 	Use capture-it to capture a few commands output and to prepare commands parsed Excel Files as a first step. 
 
-	.. tip::
-
-		You can use ``capture-it`` package for the purpose of the same.
-		`Refer: capture-it documentation <https://capture-it.readthedocs.io>`_
+		* You can use ``capture-it`` package for the purpose of the same.
+		* `Refer: capture-it documentation <https://capture-it.readthedocs.io>`_
 	
 	
 Clean files generation
@@ -30,10 +28,8 @@ Clean files generation
 
 	Using the captures and parsed Excel files, generate clean excel files (-clean.xlsx).
 
-	.. tip::
-		
-		You can use ``facts_finder`` package for the purpose of the same.
-		`Refer: facts-finder documentation <https://facts-finder.readthedocs.io>`_
+		* You can use ``facts_finder`` package for the purpose of the same.
+		* `Refer: facts-finder documentation <https://facts-finder.readthedocs.io>`_
 
 
 
@@ -43,7 +39,7 @@ Create pyVig Excel file
 -----------------------
 
 
-	Now Create a python file using below steps, snippets.
+	Now Create a python file using below snippet steps.
 
 
 module imports
@@ -54,7 +50,7 @@ module imports
 			# -------------------------------------
 			# general imports
 			# -------------------------------------
-			from pyVig import pyVig, DFGen
+			from pyVig import pyVig, pyVig_gui, DFGen
 			import nettoolkit as nt
 			import os
 
@@ -79,20 +75,23 @@ Generate pyVig readable Excel Database
 
 	.. code-block:: python
 
+			# -------------------------------------
+			# Define some static/global variables input
+			# -------------------------------------
 			# provide an output pyVig Excel file name 
 			XL_PYVIG_OP_FILE = 'excel-pyVig.xlsx'
 
 			# stencils - <folder is mandatory, default stencil optional if excel database populated properly> 		
 			STENCIL_FOLDER  = 'fullpath/where/stencilfiles/stored'
-			DEFAULT_STENCIL = 'Network and Peripherals'			    # notice no path, no extension here (default: None)
+			DEFAULT_STENCIL = 'Network and Peripherals'	# notice no path, no extension here (default: None)
 
 			# define (optional) icon spacing
-			SPACING_X = horizontal spacing (inch) between two adjacent icons (default: 3.5)
-			SPACING_Y = vertical spacing (inch) between two adjacent icons  (default: 2)
+			SPACING_X = 4 # horizontal spacing (inch) between two adjacent icons  (default: 3.5)
+			SPACING_Y = 4 # vertical spacing (inch) between two adjacent icons   (default: 2)
 
 			# define (optional) the `column name` on which line pattern separation should be decided, and shift count step for each change
 			LINE_PATTERN_STYLE_SEPARATION_ON_COLUMN = 'int_filter'		# (default: None)
-			LINE_PATTERN_STYLE_SHIFT = 3	# (default: 2)
+			LINE_PATTERN_STYLE_SHIFT = 3			# (default: 2)
 
 			# define (optional) some other cable properties.
 			DEFAULT_CONNECTOR_TYPE = 'straight'  # options = 'curved', 'angled', 'straight' (default: straight)
@@ -106,17 +105,19 @@ Generate pyVig readable Excel Database
 			# -------------------------------------
 			# provide folder where all clean excel files stoerd, and store those names in a form of list
 			capture_folder = "Capturefolder/where/all/clean-files-stored"
-			files = [f'{capture_folder}/{file}' for file in os.listdir(capture_folder) if file.endswith("-clean.xlsx") ]
+			files = [f'{capture_folder}/{file}' 
+			         for file in os.listdir(capture_folder) 
+			         if file.endswith("-clean.xlsx") ]
 
 
 			# -------------------------------------
-			#. create DataFrame Object  
+			# create DataFrame Object  
 			# -------------------------------------
 			DFG = DFGen(files)
 
 
 			# -------------------------------------
-			#. add - custom attributes, custom functions, custom var functions						
+			# add - custom attributes, custom functions, custom var functions						
 			# -------------------------------------
 
 			DFG.update_attributes(			                        # optional
@@ -138,7 +139,7 @@ Generate pyVig readable Excel Database
 				# .add more as desired
 			)
 
-			DFG.update_var_functions(                               # optional: custom var functions
+			DFG.update_var_functions(                            	   # optional: custom var functions
 				device_model=get_dev_model,
 				serial_number=get_dev_serial,
 				# .add more as desired
@@ -146,13 +147,16 @@ Generate pyVig readable Excel Database
 
 
 			# -------------------------------------
-			#. go thru all provided files,  generate a single pyVig readable Excel file
+			# go thru all provided files,  generate a single pyVig readable Excel file
 			# -------------------------------------
 			DFG.iterate_over_files()
 			nt.write_to_xl(XL_PYVIG_OP_FILE, DFG.df_dict, index=False, overwrite=True)
 
 
-	An excel file with provided *XL_PYVIG_OP_FILE* name will be generated. Verify it and update as necessary.
+
+
+	* An excel file with provided *XL_PYVIG_OP_FILE* name will be generated.
+	* Verify it and update as necessary.
 
 
 -----
@@ -163,14 +167,14 @@ Generate Visio using pyVig Excel Database created above
 -------------------------------------------------------
 
 
-	Now create visio using ``CLI Execution General Instructions`` page **Define Variables** & **Execute Now** sections.  
-	Where provide,
-
+	Now, we can create visio using,
+	* ``Way1: CLI with Manual XL`` page **Define Variables** & **Execute Now** sections.
+	* ``Way2: GUI with Manual XL`` page **Import and run pyVig_gui from pyVig** section.
+	
+	Where provide, as defined above static/global variables
     	* *'data_file': XL_PYVIG_OP_FILE*,
     	* *'stencil_folder': STENCIL_FOLDER*,
     	* *'default_stencil': DEFAULT_STENCIL*,
-
-	Or create visio using ``GUI Execution Instructions`` page **Import and run pyVig_gui module from pyVig** section.
 
 
 

@@ -1,9 +1,9 @@
-CLI Execution General Instructions
-==================================
+Way1: CLI Execution with manual Excel Database preparation
+==========================================================
 
 
-Command Line Execution steps
-
+Follow below steps for Command Line Execution steps
+Copy python commands to a .py file for repeatative use.
 
 
 ----------------------------
@@ -14,15 +14,16 @@ Import pyVig module from pyVig
 
 	.. code-block:: python
 	
-		import pyVig
+		from pyVig import pyVig
 
 
 Prepare Excel Database
 ----------------------
 
+   #. Excel Database should contain two tabs **Devices**, **Cablings**.
+   #. Refer to ``Databse Sample`` section for more details on Excel database requirements.
+   #. :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
 
-	#. Excel Database should contain two tabs **Devices**, **Cablings**.
-	#. Refer to ``Samples`` section for more details on Excel database requirements.
 
 
 Define Variables

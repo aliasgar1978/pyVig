@@ -7,9 +7,9 @@ User documentation!
    :caption: Contents:
 
 
-   CLI Exec - General <u_doc/cli_general>
-   GUI Exec - General <u_doc/gui_general>
-   pyVig Excel Preparation <u_doc/cli_facts>
-   Samples <u_doc/sample>
+   Way1: CLI with Manual XL <u_doc/cli_general>
+   Way2: GUI with Manual XL <u_doc/gui_general>
+   Way3: CLI with auto XL <u_doc/cli_facts>
+   Database Sample <u_doc/sample>
 
 

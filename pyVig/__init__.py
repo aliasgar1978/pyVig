@@ -12,7 +12,7 @@ Stencils: [optional] folder from where project can find visio stencils.
 
 """
 
-__ver__ = "0.0.9"
+__ver__ = "0.0.10"
 
 # ------------------------------------------------------------------------------
 
