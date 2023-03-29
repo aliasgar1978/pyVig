@@ -69,7 +69,7 @@ module imports
 			# custom functions imports - part 2
 			# There can be n-number of optional var custom functions defined and can be imported for additional informations on device. such as 'serial', 'model'  from 'var' tab of -clean excel file.
 			# ... add more as necessary
-			from custom_pyvig.optional_var import get_dev_model, get_dev_serial
+			from custom_pyvig.optional_var import get_hostname, get_dev_model, get_dev_serial
 
 
 Generate pyVig readable Excel Database
