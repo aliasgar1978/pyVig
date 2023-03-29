@@ -1,0 +1,7 @@
+pyVig
+=====
+
+.. toctree::
+   :maxdepth: 4
+
+   pyVig

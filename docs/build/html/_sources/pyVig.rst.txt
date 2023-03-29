@@ -1,0 +1,117 @@
+pyVig package
+=============
+
+Submodules
+----------
+
+pyVig.cablings module
+---------------------
+
+.. automodule:: pyVig.cablings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.common module
+-------------------
+
+.. automodule:: pyVig.common
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.database module
+---------------------
+
+.. automodule:: pyVig.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.devices module
+--------------------
+
+.. automodule:: pyVig.devices
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.entities module
+---------------------
+
+.. automodule:: pyVig.entities
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.general module
+--------------------
+
+.. automodule:: pyVig.general
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.gui module
+----------------
+
+.. automodule:: pyVig.gui
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.maths module
+------------------
+
+.. automodule:: pyVig.maths
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.oper module
+-----------------
+
+.. automodule:: pyVig.oper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.pyVig module
+------------------
+
+.. automodule:: pyVig.pyVig
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.static module
+-------------------
+
+.. automodule:: pyVig.static
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.stencils module
+---------------------
+
+.. automodule:: pyVig.stencils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyVig.visio module
+------------------
+
+.. automodule:: pyVig.visio
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pyVig
+   :members:
+   :undoc-members:
+   :show-inheritance:
