@@ -9,6 +9,12 @@ pyVig readable sample excel file
 :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
 
 
+A Sample Stencil : Network and Peripherals
+---------------------------------
+
+:download:`Stencil <samples/Network and Peripherals.vssx>`. Sample stencil used in above database example.
+
+
 Devices Table Sample
 ---------------------------------
 
