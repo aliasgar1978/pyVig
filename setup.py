@@ -29,7 +29,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.8',
-    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit',  'PySimpleGUI', 'pywin32'],
+    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit',  'PySimpleGUI',],
     extras_require={'docs': docs_extras},
 )
 
