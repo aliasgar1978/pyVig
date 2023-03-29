@@ -1,22 +1,24 @@
 pyVig
 #######
 
-Welcome to pyVig's documentation!
-**********************************
+**Welcome to pyVig's documentation!**
 
 What is pyVig?
-================
+**************
+
 
 pyVig is an open python project to help Generate Visio Network Drawing using Excel database.
 
 
 What is Visio?
-====================
+**************
+
 Visio is product of Microsoft, which helps creating diagrams, schemas and lot more..
 
 
 What is Stencils?
-===================
+*****************
+
 Stencils are collection of objects required to create the drawing in visio.
 
 
