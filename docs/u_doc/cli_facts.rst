@@ -141,9 +141,10 @@ Generate pyVig readable Excel Database
 				# .add more as desired
 			)
 
-			DFG.update_var_functions(                            	   # optional: custom var functions
-				device_model=get_dev_model,
-				serial_number=get_dev_serial,
+			DFG.update_var_functions(
+				hostname=get_hostname,              # mandatory
+				device_model=get_dev_model,         # optional
+				serial_number=get_dev_serial,       # optional
 				# .add more as desired
 			)
 
