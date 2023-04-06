@@ -17,7 +17,7 @@ Import pyVig module from pyVig
 		from pyVig import pyVig
 
 
-Prepare Excel Database
+Prepare Excel
 ----------------------
 
    #. Excel Database should contain two tabs **Devices**, **Cablings**.

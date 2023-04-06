@@ -10,7 +10,7 @@ pyVig readable sample excel file
 
 
 A Sample Stencil : Network and Peripherals
----------------------------------
+------------------------------------------
 
 :download:`Stencil <samples/Network and Peripherals.vssx>`. Sample stencil used in above database example.
 
@@ -33,7 +33,7 @@ Cablings Table Sample
 
 
 Output: when no sheet_filters provided
---------------------------------
+--------------------------------------
 
 Here is a sample output with given database when no filters selected in input.
 
@@ -42,7 +42,7 @@ Here is a sample output with given database when no filters selected in input.
   :alt: all.png
 
 Output2: Tab1 when sheet_filters applied
---------------------------------
+----------------------------------------
 
 Here is a sample output of `core` tab when **sheet_filters** is enabled in input.
 
@@ -51,7 +51,7 @@ Here is a sample output of `core` tab when **sheet_filters** is enabled in input
   :alt: core.png
 
 Output3: Tab2 when sheet_filters applied
---------------------------------
+----------------------------------------
 
 Here is a sample output of `access` tab when **sheet_filters** is enabled in input.
 

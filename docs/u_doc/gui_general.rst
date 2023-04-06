@@ -4,7 +4,9 @@ Way2: GUI Execution with manual Excel Database preparation
 Steps for Quick and User-Friendly way of generating visio using database
 
 
-----------------------------------------
+
+-----
+
 
 
 
@@ -60,7 +62,10 @@ A Few Snaps
 	  :width: 400
 	  :alt: A declaration page will be displayed
 
---------------------------------
+
+-----
+
+
 
 *	Select Data from this tab
 
@@ -80,7 +85,10 @@ A Few Snaps
 	  :width: 400
 	  :alt: Select appropriate data from this tab
 
--------------------------------
+
+
+-----
+
 
 *	Enable various **filters** from here.
 
@@ -91,7 +99,10 @@ A Few Snaps
 	  :width: 400
 	  :alt: Enable various filters from here
 
--------------------------------
+
+
+-----
+
 
 *	Select and add **additional columns** to append those to a device descriptions.
 
@@ -102,7 +113,10 @@ A Few Snaps
 	  :width: 400
 	  :alt: Add additional description columns here
 
--------------------------------
+
+-----
+
+
 
 *	Excel Devices tab
 
@@ -118,7 +132,10 @@ A Few Snaps
 	  :width: 400
 	  :alt: Sample Excel Devices tab
 
--------------------------------
+
+
+-----
+
 
 
 *	Excel Cabling tab
@@ -137,7 +154,4 @@ A Few Snaps
 	.. image:: img/sample_excel_cabling_tab.png
 	  :width: 400
 	  :alt: Sample Excel Cabling tab
-
-
-
 

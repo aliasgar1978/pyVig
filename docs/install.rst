@@ -51,5 +51,3 @@ Enable all macros from Trust Center settings in order to allow visio access for 
 .. image:: u_doc/img/trust.png
   :width: 400
   :alt: trust macros from trust center settings.
-
--------------------------------------
