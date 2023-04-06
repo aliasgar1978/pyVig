@@ -3,25 +3,17 @@ Technical documentation
 
    
 **Welcome to pyVig project's technical documentation!**
-   
+
+due to usage of win32com package, and its limited support on read the docs technical documentation is limited here
+
 .. toctree:: 
    :maxdepth: 4
    :caption: Contents:
    
-   cablings <t_doc/cablings>
-   common <t_doc/common>
    database <t_doc/database>
-   devices <t_doc/devices>
-   entities <t_doc/entities>
-   general <t_doc/general>
    gui <t_doc/gui>
    maths <t_doc/maths>
-   oper <t_doc/oper>
-   pyVig <t_doc/pyvig>
-   static <t_doc/static>
    stencils <t_doc/stencils>
-   visio <t_doc/visio>
-   
 
 
 Indices and tables
