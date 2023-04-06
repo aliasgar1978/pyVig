@@ -212,12 +212,21 @@ class VisioObject():
 		Returns:
 			iconObject: dropped icon object
 		"""
-		ICON_HEIGHT = 1
-		ICON_WEIGHT = 2.5
+		#
+		defaults = {
+			'iconWidth': 2.5,
+			'iconHeight': 1,
+			# add more as and when need.
+		}
+		#
+		for k, v in defaults.items():
+			if k not in format :
+				format[k] = v
+		#
 		itm = self._selectItemfromStencil(item, stencil)
 		if itm is not None:
 			icon = self._dropItemtoPage(itm, posX, posY)
-			self._format(icon=icon, iconHeight=ICON_HEIGHT, iconWidth=ICON_WEIGHT, **format)
+			self._format(icon=icon, **format)
 			return icon
 
 	def shapeDrow(self, shape, lx, lr, rx, rr, **format):
@@ -432,7 +441,7 @@ class Device():
 	"""A Device Object
 	"""		
 
-	def __init__(self, visObj, item, x, y):
+	def __init__(self, visObj, item, x, y, **kwargs):
 		"""Initialize Device Object
 
 		Args:
@@ -445,6 +454,7 @@ class Device():
 		self.item = item
 		self.x = x
 		self.y = y
+		self.kwargs = kwargs
 
 	def drop_from(self, stencil):
 		"""drop an item from stencil, if item not found in stencil then it will drop a rectangle.
@@ -454,7 +464,8 @@ class Device():
 		"""		
 		if stencil and self.item:
 			self.obj = self.visObj.selectNdrop(stencil=stencil, 
-				item=self.item, posX=self.y, posY=self.x, textSize=.8)
+				item=self.item, posX=self.y, posY=self.x, textSize=.8, **self.kwargs
+			)
 			self.is_rectangle = False
 		else:
 			self.obj = self.visObj.shapeDrow('rectangle', 
@@ -520,7 +531,7 @@ class Device():
 # ------------------------------------------------------------------------------
 # Device class object return by dropping it to given position
 # ------------------------------------------------------------------------------
-def device(stencil, visObj, item, x, y):
+def device(stencil, visObj, item, x, y, **kwargs):
 	"""Drop an item from stencil given to visio object at given x,y co-ordinates.
 
 	Args:
@@ -529,11 +540,12 @@ def device(stencil, visObj, item, x, y):
 		item (str): name or number of device/item from stencil
 		x (int): x coordinate
 		y (int): y coordinate
+		**kwargs (kwargs): keyword arguments
 
 	Returns:
 		Device: Device Object
 	"""	
-	D = Device(visObj, item, x, y)
+	D = Device(visObj, item, x, y, **kwargs)
 	D.drop_from(stencil)
 	return D
 

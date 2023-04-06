@@ -111,6 +111,13 @@ class ItemObjects(Multi_Execution):
 		item=get_col_value(dev, self.devices_data.dev_type, isMerged=False)
 		stencil=get_col_value(dev, self.devices_data.stencil, isMerged=False)
 
+		# ---- get additional column values from row of a device info --- #
+		format = {}
+		format_columns = self.devices_data.format_columns
+		for k, v in self.devices_data.kwargs.items():
+			if k not in format_columns: continue
+			format[k] = v
+
 		# // adhoc, add corordinates for future calculation purpose.
 		self.x_coordinates.append(x)
 		self.y_coordinates.append(y)
@@ -126,6 +133,7 @@ class ItemObjects(Multi_Execution):
 			item=item,
 			x=x,
 			y=y,
+			**format
 			)
 		# -- add description ---
 		self.devices[dev.hostname].description(dev.description)	# description of device

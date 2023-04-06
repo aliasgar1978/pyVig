@@ -83,6 +83,10 @@ def device_data_operations(dic):
 	Returns:
 		DeviceData: Devices data object
 	"""	
+	kwargs = {}
+	if dic.get('device_format_columns'):
+		kwargs.update(dic['device_format_columns'])
+	#
 	devices_data = DeviceData(
 		dic['data_file'],
 		sheet_name=dic['devices_sheet_name'],
@@ -90,7 +94,9 @@ def device_data_operations(dic):
 		y=dic['y-coordinates_col'],
 		stencil_colname=dic['stencils_col'],
 		device_type_colname=dic['device_type_col'],
-		default_stencil=dic['default_stencil'], )
+		default_stencil=dic['default_stencil'], 
+		**kwargs
+	)
 
 	devices_data.add_description(dic['cols_to_merge'])
 	return devices_data

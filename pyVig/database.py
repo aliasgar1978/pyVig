@@ -34,6 +34,7 @@ class Data():
 class DeviceData(Data):
 	"""Devices Data Object Building
 	"""		
+	format_columns = ('iconWidth', 'iconHeight',)
 
 	def __init__(self, 
 		data_file, 
@@ -43,6 +44,7 @@ class DeviceData(Data):
 		stencil_colname=None,
 		device_type_colname=None,
 		default_stencil=None,
+		**kwargs
 		):
 		super().__init__(data_file)
 		self.x = x
@@ -51,6 +53,7 @@ class DeviceData(Data):
 		self.dev_type = device_type_colname
 		self.default_stencil = default_stencil
 		self.read(sheet_name)
+		self.kwargs = kwargs
 
 	def read(self, sheet_name):
 		"""read data from given excel sheet containing device data and set dataframe for the object.
