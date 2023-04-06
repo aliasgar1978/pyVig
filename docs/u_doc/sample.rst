@@ -39,22 +39,22 @@ Here is a sample output with given database when no filters selected in input.
 
 .. image:: img/all.png
   :width: 400
-  :alt: all.png.
+  :alt: all.png
 
 Output2: Tab1 when sheet_filters applied
 --------------------------------
 
 Here is a sample output of `core` tab when **sheet_filters** is enabled in input.
 
-.. image:: img/all.png
+.. image:: img/core.png
   :width: 400
-  :alt: core.png.
+  :alt: core.png
 
 Output3: Tab2 when sheet_filters applied
 --------------------------------
 
 Here is a sample output of `access` tab when **sheet_filters** is enabled in input.
 
-.. image:: img/all.png
+.. image:: img/access.png
   :width: 400
-  :alt: access.png.
+  :alt: access.png
