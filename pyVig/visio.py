@@ -15,11 +15,11 @@ from pyVig.common import get_filename
 #  VisioObject class
 # ------------------------------------------------------------------------------
 class VisioObject():
-	# """Creates a Visio Object. 
-	# Param : stencils  - object stancils
-	# example : oVis = VisioObject(stencils=[stencil1, stencil2])
-	# 		  stencil1 and stencil2 are two different stencils.
-	# """
+	"""Creates a Visio Object. 
+
+	Returns:
+		_type_: _description_
+	"""	
 
 	# stencils dictionary
 	stn = {}
@@ -292,8 +292,6 @@ class VisioObject():
 class Connector():
 	'''s1_s2_Connector = self.connector()
 	Drops a connector to visio page.
-	param : connector_type = ( eg - straight, curved, default=angled )
-	param : x, u = coordinates where to drop connector (default=0,0)
 	'''
 
 	def __init__(self, visObj, connector_type=None):

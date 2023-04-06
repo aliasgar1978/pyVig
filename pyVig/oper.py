@@ -1,4 +1,5 @@
-
+""" Operations
+"""
 import pandas as pd
 import nettoolkit as nt
 from .devices import AdevDevices, device_df_drop_empty_duplicates, update_var_df_details_to_table_df

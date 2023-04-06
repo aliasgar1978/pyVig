@@ -3,13 +3,18 @@
 
 import pandas as pd
 from .general import drop_empty
-# --------------------------------------------- 
 
+# ----------------------------------------------------------------------------------------------------
+# Some of static fixed / default values
+# ----------------------------------------------------------------------------------------------------
 DEFAULT_CONNECTOR_TYPE = 'straight'  ## other options = 'curved', 'angled'
 DEFAULT_LINE_COLOR = 'blue'
 DEFAULT_LINE_WT = 3
 DEFAULT_LINE_PATTERN = 1
-# --------------------------------------------- 
+
+# ----------------------------------------------------------------------------------------------------
+# A single device cabling details.
+# ----------------------------------------------------------------------------------------------------
 class ADevCablings():
 	"""A single Device Cabling details
 	"""	

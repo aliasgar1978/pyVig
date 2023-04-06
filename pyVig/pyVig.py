@@ -1,3 +1,6 @@
+"""python visio genrator boiler plate code
+"""
+
 
 from copy import deepcopy
 from .stencils import get_list_of_stencils

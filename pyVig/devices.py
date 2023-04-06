@@ -1,3 +1,6 @@
+"""activities on devices tab on databse
+"""
+
 
 import pandas as pd
 from .general import update_vlans_info, drop_empty

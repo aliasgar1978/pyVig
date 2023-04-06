@@ -1,3 +1,6 @@
+"""general functions
+"""
+
 
 import nettoolkit as nt
 

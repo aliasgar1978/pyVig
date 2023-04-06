@@ -1,4 +1,5 @@
-
+"""Visio Entities item objects, connector objects etc.
+"""
 # -----------------------------------------------------------------------------------
 
 from nettoolkit import Multi_Execution
