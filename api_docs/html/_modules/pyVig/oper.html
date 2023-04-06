@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyVig.oper &mdash; pyVig 0.0.10 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pyVig
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyVig</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyVig.oper</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyVig.oper</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Operations</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">nettoolkit</span> <span class="k">as</span> <span class="nn">nt</span>
+<span class="kn">from</span> <span class="nn">.devices</span> <span class="kn">import</span> <span class="n">AdevDevices</span><span class="p">,</span> <span class="n">device_df_drop_empty_duplicates</span><span class="p">,</span> <span class="n">update_var_df_details_to_table_df</span>
+<span class="kn">from</span> <span class="nn">.cablings</span> <span class="kn">import</span> <span class="n">ADevCablings</span>
+<span class="kn">from</span> <span class="nn">.maths</span> <span class="kn">import</span> <span class="n">CalculateXY</span>
+<span class="kn">from</span> <span class="nn">.general</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># --------------------------------------------- </span>
+<span class="c1"># Data Frame Generator</span>
+<span class="c1"># --------------------------------------------- </span>
+<div class="viewcode-block" id="DFGen"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen">[docs]</a><span class="k">class</span> <span class="nc">DFGen</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;DataFrame generator</span>
+<span class="sd">	&quot;&quot;&quot;</span>	
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;initializer of DF Generator</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			files (list): list of input excel -clean files </span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="n">files</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">default_stencil</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">default_x_spacing</span> <span class="o">=</span> <span class="mf">3.5</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">default_y_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_separation_on</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_shift_no</span> <span class="o">=</span> <span class="mi">2</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">func_dict</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">var_func_dict</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">blank_dfs</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DFGen.blank_dfs"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.blank_dfs">[docs]</a>	<span class="k">def</span> <span class="nf">blank_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;creates devices/cabling blank DataFrames</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;hostname&#39;</span><span class="p">:[]})</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">cabling_merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a_device&#39;</span><span class="p">:[]})</span></div>
+
+<div class="viewcode-block" id="DFGen.update_attributes"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.update_attributes">[docs]</a>	<span class="k">def</span> <span class="nf">update_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;add/update custom attributes for object</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="k">if</span> <span class="n">v</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="DFGen.update_functions"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.update_functions">[docs]</a>	<span class="k">def</span> <span class="nf">update_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;add/update custom functions for object</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">func_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="DFGen.update_var_functions"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.update_var_functions">[docs]</a>	<span class="k">def</span> <span class="nf">update_var_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;add/update custom `var` tab functions for object</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">var_func_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="DFGen.iterate_over_files"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.iterate_over_files">[docs]</a>	<span class="k">def</span> <span class="nf">iterate_over_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;iterate over all files for generating devices/cabling DataFrame details.</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">DCT</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+			<span class="n">DCT</span> <span class="o">=</span> <span class="n">DF_ConverT</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_stencil</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_separation_on</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_shift_no</span><span class="p">)</span>
+			<span class="n">DCT</span><span class="o">.</span><span class="n">get_self_details</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var_func_dict</span><span class="p">)</span>
+			<span class="n">DCT</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func_dict</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">update_devices_df</span><span class="p">(</span><span class="n">DCT</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">update_cabling_df</span><span class="p">(</span><span class="n">DCT</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">DCT</span><span class="p">[</span><span class="n">DCT</span><span class="o">.</span><span class="n">hostname</span><span class="p">]</span> <span class="o">=</span> <span class="n">DCT</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span> <span class="o">=</span> <span class="n">device_df_drop_empty_duplicates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span> <span class="o">=</span> <span class="n">update_var_df_details_to_table_df</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DCT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">var_func_dict</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">calculate_cordinates</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DFGen.update_devices_df"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.update_devices_df">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DCT</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;update Devices DataFrame</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			DCT (DF_ConverT): DataFrame Convertor object</span>
+<span class="sd">			file (str): a single database. -clean excel file.</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="n">ddf</span> <span class="o">=</span> <span class="n">DCT</span><span class="o">.</span><span class="n">update_devices</span><span class="p">()</span>
+		<span class="c1">#</span>
+		<span class="c1"># ddf_dev = DCT.update_device_self_detils(self.func_dict)</span>
+		<span class="c1"># ddf = pd.concat([ddf, ddf_dev], axis=0, join=&#39;outer&#39;)</span>
+		<span class="c1">#</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span><span class="p">,</span> <span class="n">ddf</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DFGen.update_cabling_df"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.update_cabling_df">[docs]</a>	<span class="k">def</span> <span class="nf">update_cabling_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DCT</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;update Cabling DataFrame</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			DCT (DF_ConverT): DataFrame Convertor object</span>
+<span class="sd">			file (str): a single database. -clean excel file.</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="n">cdf</span> <span class="o">=</span> <span class="n">DCT</span><span class="o">.</span><span class="n">update_cablings</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+		<span class="c1">#</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">cabling_merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">cabling_merged_df</span><span class="p">,</span> <span class="n">cdf</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DFGen.calculate_cordinates"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DFGen.calculate_cordinates">[docs]</a>	<span class="k">def</span> <span class="nf">calculate_cordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;calculate the x,y coordinate values for each devices and keep Devices, Cablings DataFrame Dictionary ready.</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="n">CXY</span> <span class="o">=</span> <span class="n">CalculateXY</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices_merged_df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_x_spacing</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_y_spacing</span><span class="p">)</span>
+		<span class="n">CXY</span><span class="o">.</span><span class="n">calc</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">df_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Devices&#39;</span><span class="p">:</span> <span class="n">CXY</span><span class="o">.</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Cablings&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">cabling_merged_df</span> <span class="p">}</span></div></div>
+
+
+
+<span class="c1"># --------------------------------------------- </span>
+<span class="c1"># Data Frame Converter</span>
+<span class="c1"># --------------------------------------------- </span>
+<div class="viewcode-block" id="DF_ConverT"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT">[docs]</a><span class="k">class</span> <span class="nc">DF_ConverT</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;Data Frame Converter</span>
+<span class="sd">	&quot;&quot;&quot;</span>	
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> 
+		<span class="n">default_stencil</span><span class="p">,</span> 
+		<span class="n">line_pattern_style_separation_on</span><span class="p">,</span> 
+		<span class="n">line_pattern_style_shift_no</span><span class="p">,</span>
+		<span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;object initializer</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			file (str): a single database. -clean excel file.</span>
+<span class="sd">			default_stencil (str): default visio stencil file.</span>
+<span class="sd">			line_pattern_style_separation_on (str): column name on which line pattern separation should be decided on</span>
+<span class="sd">			line_pattern_style_shift_no (int): line pattern change/shift number/steps</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">full_df</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">read_xl</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+		<span class="n">file</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">self_device</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-clean&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="c1">#</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">stencils</span> <span class="o">=</span> <span class="n">default_stencil</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_separation_on</span> <span class="o">=</span> <span class="n">line_pattern_style_separation_on</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_shift_no</span> <span class="o">=</span> <span class="n">line_pattern_style_shift_no</span>
+
+
+<div class="viewcode-block" id="DF_ConverT.get_self_details"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.get_self_details">[docs]</a>	<span class="k">def</span> <span class="nf">get_self_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_func_dict</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;update the value from var tab of var function dictionary</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			var_func_dict (dict): custom var functions dictionary</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">var_func_dict</span> <span class="o">=</span> <span class="n">var_func_dict</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span>  <span class="n">f</span> <span class="ow">in</span> <span class="n">var_func_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="n">v</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">full_df</span><span class="p">[</span><span class="s1">&#39;var&#39;</span><span class="p">])</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="s1">&#39;N/A&#39;</span>
+			<span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></div>
+
+<div class="viewcode-block" id="DF_ConverT.convert"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.convert">[docs]</a>	<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_dict</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;create physical DataFrame, update with patterns  </span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			func_dict (dict): custom functions dictionary</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="c1"># vlan</span>
+		<span class="n">vlan_df</span> <span class="o">=</span> <span class="n">get_vlan_if_up</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">full_df</span><span class="p">[</span><span class="s1">&#39;vlan&#39;</span><span class="p">])</span>
+		<span class="n">vlan_df</span> <span class="o">=</span> <span class="n">get_vlan_if_relevants</span><span class="p">(</span><span class="n">vlan_df</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">vlan_df</span> <span class="o">=</span> <span class="n">vlan_df</span>
+
+		<span class="c1"># physical</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">get_physical_if_up</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">full_df</span><span class="p">[</span><span class="s1">&#39;physical&#39;</span><span class="p">])</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">get_physical_if_relevants</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+		<span class="c1">#</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_devices_df_pattern_n_custom_func</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">func_dict</span><span class="p">)</span>
+		<span class="c1">#</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">u_ph_df</span> <span class="o">=</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="DF_ConverT.update_devices_df_pattern_n_custom_func"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.update_devices_df_pattern_n_custom_func">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_df_pattern_n_custom_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">func_dict</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;updates Devices DataFrame patterns as per custom functions provided in func_dict</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			df (DataFrame): pandas DataFrame for devices</span>
+<span class="sd">			func_dict (dict): custom functions dictionary</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			DataFrame: updated DataFrame</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">func_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+		<span class="c1">#</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">patterns</span> <span class="o">=</span> <span class="n">get_patterns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_separation_on</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_shift_no</span><span class="p">)</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">update_pattern</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">patterns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_pattern_style_separation_on</span><span class="p">)</span>
+		<span class="c1">#</span>
+		<span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="DF_ConverT.update_cablings"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.update_cablings">[docs]</a>	<span class="k">def</span> <span class="nf">update_cablings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">default_dic</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;creates Cabling object and its DataFrame, adds cabling details</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			DataFrame: pandas DataFrame</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">ADevCablings</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">self_device</span><span class="p">,</span> <span class="o">**</span><span class="n">default_dic</span><span class="p">)</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_ph_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+			<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+			<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+				<span class="n">kwargs</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="o">.</span><span class="n">add_to_cablings</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="o">.</span><span class="n">cabling_dataframe</span><span class="p">()</span>
+		<span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="DF_ConverT.update_devices"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.update_devices">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;creates Devices object, and its DataFrame, adds vlan informations.</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			DataFrame: updated pandas DataFrame for interface connected devices</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">AdevDevices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stencils</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">var_func_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">full_df</span><span class="p">[</span><span class="s1">&#39;var&#39;</span><span class="p">])</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">int_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_devices_for</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">u_ph_df</span><span class="p">,</span> <span class="n">dic</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">devices</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">add_vlan_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vlan_df</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">merged_df</span></div>
+
+<div class="viewcode-block" id="DF_ConverT.update_device_self_detils"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.update_device_self_detils">[docs]</a>	<span class="k">def</span> <span class="nf">update_device_self_detils</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_dict</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;create a pandas DataFrame object for the self object using `var` tab and custom functions</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			func_dict (dict): custom var functions</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			DataFrame: pandas DataFrame for self device</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="n">self_device_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">get_self_device_df</span><span class="p">()</span>
+		<span class="n">self_dev_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_devices_for</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">self_device_df</span><span class="p">,</span> <span class="n">dic</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">self_device</span><span class="p">)</span>
+		<span class="n">self_dev_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_devices_df_pattern_n_custom_func</span><span class="p">(</span><span class="n">self_dev_df</span><span class="p">,</span> <span class="n">func_dict</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">self_dev_df</span></div>
+
+<div class="viewcode-block" id="DF_ConverT.update_devices_for"><a class="viewcode-back" href="../../t_doc/oper.html#pyVig.oper.DF_ConverT.update_devices_for">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;update DataFrame for the provided dictionary (dic) objects, and removes empty and duplicate hostname value rows.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			df (DataFrame): variable DataFrame</span>
+<span class="sd">			dic (dict): variable dictionary</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			DataFame: updated DataFrame</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+			<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+			<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+				<span class="n">kwargs</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">add_to_devices</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="n">dic</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+		<span class="n">u_df</span> <span class="o">=</span> <span class="n">device_df_drop_empty_duplicates</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">u_df</span></div></div>
+
+
+
+<span class="c1"># --------------------------------------------- </span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, ALIASGAR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

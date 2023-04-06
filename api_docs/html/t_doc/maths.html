@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. maths &mdash; pyVig 0.0.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. oper" href="oper.html" />
+    <link rel="prev" title="7. gui" href="gui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyVig
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cablings.html">1. cablings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">2. common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">3. database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devices.html">4. devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">6. general</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">7. gui</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oper.html">9. oper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyvig.html">10. pyVig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="static.html">11. static</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stencils.html">12. stencils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visio.html">13. visio</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyVig</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8. </span>maths</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/t_doc/maths.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyVig.maths">
+<span id="maths"></span><h1><span class="section-number">8. </span>maths<a class="headerlink" href="#module-pyVig.maths" title="Permalink to this heading"></a></h1>
+<p>Some Maths</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">CalculateXY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dev_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_x_spacing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_y_spacing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Co-ordinate calculator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.calc">
+<span class="sig-name descname"><span class="pre">calc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.calc" title="Permalink to this definition"></a></dt>
+<dd><p>calculation sequences</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.calc_xs">
+<span class="sig-name descname"><span class="pre">calc_xs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.calc_xs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.calc_xs" title="Permalink to this definition"></a></dt>
+<dd><p>calculates x axis placement for each devices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nested dictionary with x axis placement values based on hierarchical_order and its index</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.calc_ys">
+<span class="sig-name descname"><span class="pre">calc_ys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.calc_ys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.calc_ys" title="Permalink to this definition"></a></dt>
+<dd><p>calculates y axis placement for each hierarchical order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dictionary with y axis placement values for hierarchical_order</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.count_of_ho">
+<span class="sig-name descname"><span class="pre">count_of_ho</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.count_of_ho"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.count_of_ho" title="Permalink to this definition"></a></dt>
+<dd><p>counts hierarchical_order items and stores it in local dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.get_x">
+<span class="sig-name descname"><span class="pre">get_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ho</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.get_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.get_x" title="Permalink to this definition"></a></dt>
+<dd><p>get the x axis value for a device from given hierarchical order number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ho</strong> (<em>int</em>) – hierarchical order number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>x axis value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.get_y">
+<span class="sig-name descname"><span class="pre">get_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ho</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.get_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.get_y" title="Permalink to this definition"></a></dt>
+<dd><p>get the y axis value for the given hierarchical_order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ho</strong> (<em>int</em>) – hierarchical order number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>y axis value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.inverse_y">
+<span class="sig-name descname"><span class="pre">inverse_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.inverse_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.inverse_y" title="Permalink to this definition"></a></dt>
+<dd><p>inverses the y axis values (turn upside down)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>dict</em>) – dictionary with y axis placement values based on hierarchical_order</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>inversed dictionary with y axis placement values based on reversed hierarchical_order</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.sort" title="Permalink to this definition"></a></dt>
+<dd><p>sort the Device DataFrame based on [‘hierarchical_order’, ‘hostname’]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.update_xs">
+<span class="sig-name descname"><span class="pre">update_xs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.update_xs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.update_xs" title="Permalink to this definition"></a></dt>
+<dd><p>add <cite>x-axis</cite> column to Device DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated Device DataFrame</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.update_ys">
+<span class="sig-name descname"><span class="pre">update_ys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#CalculateXY.update_ys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.update_ys" title="Permalink to this definition"></a></dt>
+<dd><p>add <cite>y-axis</cite> column to Device DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated Device DataFrame</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.maths.df_with_slops_and_angles">
+<span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">df_with_slops_and_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#df_with_slops_and_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.df_with_slops_and_angles" title="Permalink to this definition"></a></dt>
+<dd><p>add the dataframe with slop and angle for the given co-ordinates on plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – Input DataFrame</p></li>
+<li><p><strong>x1_col</strong> (<em>str</em>) – column name for point 1 - x axis</p></li>
+<li><p><strong>x2_col</strong> (<em>str</em>) – column name for point 2 - x axis</p></li>
+<li><p><strong>y1_col</strong> (<em>str</em>) – column name for point 1 - y axis</p></li>
+<li><p><strong>y2_col</strong> (<em>str</em>) – column name for point 2 - y axis</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated Output DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.maths.slop_to_angled_connector">
+<span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">slop_to_angled_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#slop_to_angled_connector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.slop_to_angled_connector" title="Permalink to this definition"></a></dt>
+<dd><p>calculate angle from given slop(m) of an angled line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>float</em>) – slop of an angled line</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>degree/slop of line</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.maths.slop_to_straight_connector">
+<span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">slop_to_straight_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyVig/maths.html#slop_to_straight_connector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.slop_to_straight_connector" title="Permalink to this definition"></a></dt>
+<dd><p>calculate angle from given slop(m) of a straight line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>float</em>) – slop of a straight line</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>degree/slop of line</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gui.html" class="btn btn-neutral float-left" title="7. gui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="oper.html" class="btn btn-neutral float-right" title="9. oper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, ALIASGAR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
