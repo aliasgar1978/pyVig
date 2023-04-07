@@ -196,8 +196,10 @@ def pyVig_gui():
 		None: None
 	"""	
 	u = UserForm()
-	try: dic = u.dic
-	except: return None
+	try: 
+		dic = u.dic
+	except: 
+		return None
 	devices_data = device_data_operations(dic)
 	cable_matrix_data = cabling_data_operations(dic)
 	stencils = get_list_of_stencils(
