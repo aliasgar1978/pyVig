@@ -101,47 +101,44 @@ class ItemObjects(Multi_Execution):
 		# filter to only drop connected devices.
 		if (self.filterOnCables 
 			and (not (
-				(dev.hostname == self.connectors.df[self.connectors.dev_a]).any() 
-				or (dev.hostname == self.connectors.df[self.connectors.dev_b]).any()) ) ):
+					(dev.hostname == self.connectors.df[self.connectors.dev_a]).any() 
+				or 	(dev.hostname == self.connectors.df[self.connectors.dev_b]).any()) ) ):
 			return None
 
 		# ---- get column values from row of a device info --- #
 		x=get_col_value(dev, self.devices_data.x, isMerged=False)
 		y=get_col_value(dev, self.devices_data.y, isMerged=False)
-		item=get_col_value(dev, self.devices_data.dev_type, isMerged=False)
-		stencil=get_col_value(dev, self.devices_data.stencil, isMerged=False)
 
-		# ---- get additional column values from row of a device info --- #
+		# # ---------- ADD FORMATTING AND OPTIONALS ----------------------- #
 		format = {}
+
+		# OPTIONAL
+		optional_columns = self.devices_data.optional_columns
+		for k, v in optional_columns.items():
+			_cc = get_col_value(dev, k, isMerged=False)
+			format[k] = _cc if _cc else v
+			continue
+
+
+		# FORMATTING
 		format_columns = self.devices_data.format_columns
-		for _c in format_columns:
+		for k, v in format_columns.items():
+			_cc = get_col_value(dev, k, isMerged=False)
+			format[k] = _cc if _cc else v
+			continue
 
-			# from Excel Columns
-			if self.devices_data.__dict__.get(_c): 
-				_cc = get_col_value(dev, self.devices_data.__dict__[_c], isMerged=False)
-				if _cc:
-					format[_c] = get_col_value(dev, self.devices_data.__dict__[_c], isMerged=False)
-				continue
-
-			# else default values
-			for k, v in self.devices_data.kwargs.items():
-				if k != format_columns: continue
-				format[_c] = v
-				break
 
 		# // adhoc, add corordinates for future calculation purpose.
 		self.x_coordinates.append(x)
 		self.y_coordinates.append(y)
 
-		if not stencil: stencil = self.devices_data.default_stencil
-		if not stencil:
+		# if not format['stencil']: stencil = self.devices_data.default_stencil
+		if not format['stencil']:
 			print(f"no stencil or no default-stencil found for {dev.hostname} ")
 
 		# -- start drops ---
 		self.devices[dev.hostname] = device(						# drop device
-			stencil=stencil, 
 			visObj=self.visObj, 
-			item=item,
 			x=x,
 			y=y,
 			**format
@@ -156,6 +153,7 @@ class ItemObjects(Multi_Execution):
 class Connectors(Multi_Execution):
 	"""Execution of Cabling/Connector objects on visio
 	"""		
+
 
 	def __init__(self, cable_matrix_data, devices):
 		self.connectors = cable_matrix_data
@@ -175,23 +173,33 @@ class Connectors(Multi_Execution):
 			None: None
 		"""		
 		if connector[self.connectors.dev_a] and connector[self.connectors.dev_b]:
-			aport_y = get_col_value(connector, self.connectors.dev_a_port + "_y")
-			conn_type_x = get_col_value(connector, self.connectors.conn_type + "_x")
-			color_x = get_col_value(connector, self.connectors.color + "_x")
-			weight_x = get_col_value(connector, self.connectors.weight + "_x")
-			pattern_x = get_col_value(connector, self.connectors.pattern + "_x")
-			angle = connector.angle_straight_connector if conn_type_x == "straight" else connector.angle_angled_connector
+			# angle = connector.angle_straight_connector if conn_type_x == "straight" else connector.angle_angled_connector
+			kwargs = self.get_optional_columns_value(connector)
 
-			# connect the two devices	
+			# # connect the two devices	
 			self.devices[connector[self.connectors.dev_a]].connect(
 				self.devices[connector[self.connectors.dev_b]],
-					connector_type=conn_type_x, 
-					angle=angle, 
-					aport=aport_y,
-					color=color_x,
-					weight=weight_x,
-					pattern=pattern_x,
+					# connector_type=conn_type_x, 
+					**kwargs
 			)
+
+	def get_optional_columns_value(self, connector):
+		"""get the value of all optional columns for given row
+
+		Args:
+			connector (dict): a single row information from a DataFrame
+
+		Returns:
+			dict: dictionary with found values else default
+		"""		
+		dic = {}
+		for k, v in self.connectors.__dict__.items():
+			if k in self.connectors.optional_columns:
+				uv = get_col_value(connector, k+"_x", isMerged=False)
+				dic[k] = uv if uv else v
+		return dic
+				
+
 
 def get_col_value(row_info, column, isMerged=True):
 	"""get the value of provided column from given row details
@@ -207,10 +215,10 @@ def get_col_value(row_info, column, isMerged=True):
 	try:
 		return row_info[column]
 	except:
-		if isMerged:
-			print(f"column information incorrect, check column existance `{column[:-2]}`")
-		else:
-			print(f"column information incorrect, check column existance `{column}`")
+		# if isMerged:
+		# 	print(f"column information incorrect, check column existance `{column[:-2]}`")
+		# else:
+		# 	print(f"column information incorrect, check column existance `{column}`")
 		return ""
 
 

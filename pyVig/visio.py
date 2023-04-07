@@ -439,7 +439,8 @@ class Connector():
 
 		Returns:
 			None: None
-		"""		
+		"""	
+		clr = "THEMEGUARD(RGB(255,255,255))"
 		if isinstance(color, str):
 			if color.lower() == "red": clr = "THEMEGUARD(RGB(255,0,0))"
 			if color.lower() == "green": clr = "THEMEGUARD(RGB(0,255,0))"
@@ -453,16 +454,19 @@ class Connector():
 			return None
 		try:
 			self.obj.CellsSRC(visSectionObject, visRowLine, visLineColor).FormulaU = clr
-		except: 
-			print(f"Error: Line color formatting failed `{visRowLine}` , `{clr}`")
+		except:
+			print(f"Error: Line color formatting failed, `{visRowLine}`, for color `{color}`")
 
 	def line_weight(self, weight=None):
 		"""set weight/thickness of a line
 
 		Args:
 			weight (int, optional): thickness of line. Defaults to None=1.
-		"""		
-		self.obj.CellsSRC(visSectionObject, visRowLine, visLineWeight).FormulaU = f"{weight} pt"
+		"""
+		try:
+			self.obj.CellsSRC(visSectionObject, visRowLine, visLineWeight).FormulaU = f"{weight} pt"
+		except:
+			pass
 
 	def line_pattern(self, pattern=None):
 		"""set line pattern
@@ -470,8 +474,10 @@ class Connector():
 		Args:
 			pattern (int, optional): pattern number. Defaults to solid line.
 		"""		
-		self.obj.CellsSRC(visSectionObject, visRowLine, visLinePattern).FormulaU = pattern
-
+		try:
+			self.obj.CellsSRC(visSectionObject, visRowLine, visLinePattern).FormulaU = pattern
+		except:
+			pass
 
 # ------------------------------------------------------------------------------
 # A Single Visio Item Class defining its properties and methods.
@@ -480,7 +486,7 @@ class Device():
 	"""A Device Object
 	"""		
 
-	def __init__(self, visObj, item, x, y, **kwargs):
+	def __init__(self, visObj, x, y, **kwargs):
 		"""Initialize Device Object
 
 		Args:
@@ -490,7 +496,6 @@ class Device():
 			y (int): y-coordinate
 		"""		
 		self.visObj = visObj
-		self.item = item
 		self.x = x
 		self.y = y
 		self.kwargs = kwargs
@@ -501,9 +506,11 @@ class Device():
 		Args:
 			stencil (str): stencil name
 		"""		
-		if stencil and self.item:
-			self.obj = self.visObj.selectNdrop(stencil=stencil, 
-				item=self.item, posX=self.y, posY=self.x, textSize=.8, **self.kwargs
+		if stencil and self.kwargs['item']:
+			self.obj = self.visObj.selectNdrop(
+				posX=self.y, posY=self.x, 
+				textSize=.8, 
+				**self.kwargs
 			)
 			self.is_rectangle = False
 		else:
@@ -570,7 +577,7 @@ class Device():
 # ------------------------------------------------------------------------------
 # Device class object return by dropping it to given position
 # ------------------------------------------------------------------------------
-def device(stencil, visObj, item, x, y, **kwargs):
+def device(visObj, x, y, **kwargs):
 	"""Drop an item from stencil given to visio object at given x,y co-ordinates.
 
 	Args:
@@ -584,8 +591,8 @@ def device(stencil, visObj, item, x, y, **kwargs):
 	Returns:
 		Device: Device Object
 	"""	
-	D = Device(visObj, item, x, y, **kwargs)
-	D.drop_from(stencil)
+	D = Device(visObj, x, y, **kwargs)
+	D.drop_from(kwargs['stencil'])
 	return D
 
 

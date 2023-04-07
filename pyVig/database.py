@@ -4,7 +4,11 @@
 import pandas as pd
 
 from pyVig.maths import df_with_slops_and_angles
+from .general import *
+
 # -----------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------------
 
 class Data():
 	'''
@@ -18,6 +22,22 @@ class Data():
 			data_file (str): file name of excel database containing devices and cabling details.
 		"""		
 		self.data_file = data_file
+
+	def add_optional_columnnames_attributes(self):
+		"""add optional columns to object attributes with default values
+		"""		
+		for k, v in self.optional_columns.items():
+			self.add_attribute(k, v)
+
+	def add_attribute(self, attr_name, attr_value):
+		"""set the keyword arguments as attribute of object 
+
+		Args:
+			attr_name (str): attribute
+			attr_value (str): attribute value
+		"""		
+		if attr_name:
+			self.__dict__[attr_name] = attr_value
 
 	def read(self, sheet_name):
 		"""read data from given excel sheet and set dataframe for the object.
@@ -34,36 +54,36 @@ class Data():
 class DeviceData(Data):
 	"""Devices Data Object Building
 	"""		
-	format_columns = ('iconWidth', 'iconHeight',)
+	format_columns = {	'iconWidth': 2.5, 
+						'iconHeight': 1,
+	}
+
+	optional_columns = {'stencil': DEFAULT_STENCIL,
+						'item': None,
+	}
 
 	def __init__(self, 
 		data_file, 
-		sheet_name,
-		x="x",
-		y="y",
-		stencil_colname=None,
-		device_type_colname=None,
-		default_stencil=None,
+		sheet_name=DEFAULT_DEVICES_TAB,
+		x=DEFAULT_X_COLUMN,
+		y=DEFAULT_Y_COLUMN,
+		default_stencil=DEFAULT_STENCIL,
 		**kwargs
 		):
 		super().__init__(data_file)
 		self.x = x
 		self.y = y
-		self.stencil = stencil_colname
-		self.dev_type = device_type_colname
 		self.default_stencil = default_stencil
 		self.read(sheet_name)
 		self.kwargs = kwargs
 		self.add_format_columnnames_attributes()
+		self.add_optional_columnnames_attributes()
 
 	def add_format_columnnames_attributes(self):
-		for _c in self.format_columns:
-			if _c in self.df.columns:
-				self.add_attribute(_c, _c)
-
-	def add_attribute(self, attr_name, attr_value):
-		if attr_name:
-			self.__dict__[attr_name] = attr_value
+		"""add optional formatting columns to object attributes with default values
+		"""		
+		for k, v in self.format_columns.items():
+			self.add_attribute(k, v)
 
 	def read(self, sheet_name):
 		"""read data from given excel sheet containing device data and set dataframe for the object.
@@ -72,17 +92,7 @@ class DeviceData(Data):
 			sheet_name (str): Excel sheet name
 		"""		
 		super().read(sheet_name)
-		self.add_missing_cols()
 
-	def add_missing_cols(self):
-		"""add the additional blank columns to dataframe if missing.
-		"""		
-		if not self.stencil:
-			self.stencil = "stencil"
-			self.df[self.stencil] = ""
-		if not self.dev_type:
-			self.dev_type = "dev_type"
-			self.df[self.dev_type] = ""
 
 	def add_description(self, columns_to_merge):
 		"""add a description column to dataframe, which will be output of merged data of provided columns
@@ -142,26 +152,25 @@ class CableMatrixData(Data):
 	"""Cabling Data Object Building
 	"""		
 
+	optional_columns = {'connector_type': DEFAULT_CONNECTOR_TYPE,
+						'color': DEFAULT_LINE_COLOR,
+						'weight': DEFAULT_LINE_WT,
+						'pattern': DEFAULT_LINE_PATTERN,
+						# 'angle': "straight",
+						'aport': "",
+	}
+
 	def __init__(self, 
 		data_file, 
 		sheet_name,
 		a_device_colname, 
 		b_device_colname,
-		a_device_port_colname=None,
-		connector_type_colname=None,
-		cable_color_colname=None,
-		cable_weight_colname=None,
-		cable_line_pattern_colname=None,
 		):
 		super().__init__(data_file)
 		self.dev_a = a_device_colname
 		self.dev_b = b_device_colname
-		self.dev_a_port = a_device_port_colname
-		self.conn_type = connector_type_colname
-		self.color = cable_color_colname		
-		self.weight = cable_weight_colname
-		self.pattern = cable_line_pattern_colname
 		self.read(sheet_name)
+		self.add_optional_columnnames_attributes()
 
 	def read(self, sheet_name):
 		"""read data from given excel sheet containing cabling data and set dataframe for the object.
@@ -170,26 +179,7 @@ class CableMatrixData(Data):
 			sheet_name (str): Excel sheet name
 		"""		
 		super().read(sheet_name)
-		self.add_missing_cols()
 
-	def add_missing_cols(self):
-		"""add the additional blank columns to dataframe if missing.
-		"""		
-		if not self.dev_a_port:
-			self.dev_a_port = "a_device_port"
-			self.df[self.dev_a_port] = ""
-		if not self.conn_type:
-			self.conn_type = "conn_type"
-			self.df[self.conn_type] = ""
-		if not self.color:
-			self.color = "color"
-			self.df[self.color] = ""
-		if not self.weight:
-			self.weight = "weight"
-			self.df[self.weight] = ""
-		if not self.pattern:
-			self.pattern = "pattern"
-			self.df[self.pattern] = ""
 
 	# optional
 	def filter_eligible_cables_only(self):

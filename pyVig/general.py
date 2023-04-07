@@ -4,7 +4,19 @@
 
 import nettoolkit as nt
 
-# --------------------------------------------- 
+# ----------------------------------------------------------------------------------------------------
+# Some of static fixed / default values
+# ----------------------------------------------------------------------------------------------------
+DEFAULT_CONNECTOR_TYPE = 'straight'  ## other options = 'curved', 'angled'
+DEFAULT_LINE_COLOR = 'blue'
+DEFAULT_LINE_WT = 3
+DEFAULT_LINE_PATTERN = 1
+DEFAULT_STENCIL = None
+DEFAULT_X_COLUMN = 'x-axis'
+DEFAULT_Y_COLUMN = 'y-axis'
+DEFAULT_DEVICES_TAB = 'Devices'
+DEFAULT_CABLINGS_TAB = 'Cablings'
+# ----------------------------------------------------------------------------------------------------
 
 
 def get_physical_if_up(df):

@@ -24,13 +24,13 @@ DEFAULT_DIC = {
 	'devices_sheet_name': 'Devices',
 	'x-coordinates_col': 'x-axis',
 	'y-coordinates_col': 'y-axis',
-	'stencils_col': 'stencils',
-	'device_type_col': 'device_type',
+	'stencils_col': 'stencil',
+	'device_type_col': 'item',
 
 	# Optional / edit only if differ from actual database
 	'cabling_sheet_name': 'Cablings',
 	'a_device_col': 'a_device',
-	'a_device_port_col': 'a_device_port',
+	'a_device_port_col': 'aport',
 	'b_device_col': 'b_device',
 	'color_col': 'color',
 	'connector_type_col': 'connector_type',
@@ -65,11 +65,7 @@ def cabling_data_operations(dic):
 		sheet_name=dic['cabling_sheet_name'],           # mandatory: tab/sheet name
 		a_device_colname=dic['a_device_col'],           # mandatory: a side device of cable
 		b_device_colname=dic['b_device_col'],           # mandatory: b side device of cable
-		a_device_port_colname=dic['a_device_port_col'],
-		connector_type_colname=dic['connector_type_col'],
-		cable_color_colname=dic['color_col'],
-		cable_weight_colname=dic['weight_col'],
-		cable_line_pattern_colname=dic['pattern_col'],)
+	)
 
 	return cable_matrix_data
 
@@ -92,8 +88,6 @@ def device_data_operations(dic):
 		sheet_name=dic['devices_sheet_name'],
 		x=dic['x-coordinates_col'],
 		y=dic['y-coordinates_col'],
-		stencil_colname=dic['stencils_col'],
-		device_type_colname=dic['device_type_col'],
 		default_stencil=dic['default_stencil'], 
 		**kwargs
 	)
