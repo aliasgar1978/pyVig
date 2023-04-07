@@ -54,6 +54,16 @@ class DeviceData(Data):
 		self.default_stencil = default_stencil
 		self.read(sheet_name)
 		self.kwargs = kwargs
+		self.add_format_columnnames_attributes()
+
+	def add_format_columnnames_attributes(self):
+		for _c in self.format_columns:
+			if _c in self.df.columns:
+				self.add_attribute(_c, _c)
+
+	def add_attribute(self, attr_name, attr_value):
+		if attr_name:
+			self.__dict__[attr_name] = attr_value
 
 	def read(self, sheet_name):
 		"""read data from given excel sheet containing device data and set dataframe for the object.

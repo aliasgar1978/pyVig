@@ -114,9 +114,20 @@ class ItemObjects(Multi_Execution):
 		# ---- get additional column values from row of a device info --- #
 		format = {}
 		format_columns = self.devices_data.format_columns
-		for k, v in self.devices_data.kwargs.items():
-			if k not in format_columns: continue
-			format[k] = v
+		for _c in format_columns:
+
+			# from Excel Columns
+			if self.devices_data.__dict__.get(_c): 
+				_cc = get_col_value(dev, self.devices_data.__dict__[_c], isMerged=False)
+				if _cc:
+					format[_c] = get_col_value(dev, self.devices_data.__dict__[_c], isMerged=False)
+				continue
+
+			# else default values
+			for k, v in self.devices_data.kwargs.items():
+				if k != format_columns: continue
+				format[_c] = v
+				break
 
 		# // adhoc, add corordinates for future calculation purpose.
 		self.x_coordinates.append(x)
