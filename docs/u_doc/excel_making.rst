@@ -11,24 +11,32 @@ Excel database Preparation Guidelines
 
 -----
 
-* There are certain mandatory columns for each of these tabs
+mandatory columns
+-----------------
 
-  #. **Devices Tab** Mandatory columns list
+**Devices Tab**
+^^^^^^^^^^^^^^^
+
 
      #. ``hostname`` defines hostname / identity of device ( No Exception and column name modification not allowed )
      #. ``x-axis`` defines the horizontal position of device on visio page. ( column name can be changed by providing var argument `x` in input)
      #. ``y-axis`` defines the vertical position of device on visio page. ( column name can be changed by providing var argument `y` in input)
 
-  #. **Cablings Tab** Mandatory columns list
+**Cablings Tab**
+^^^^^^^^^^^^^^^
 
      #. ``a_device`` defines hostname / identity of device for a-end of a connector/cable. (column name can be changed by providing var argument `dev_a` as input)
      #. ``b_device`` defines hostname / identity of device for b-end of a connector/cable. (column name can be changed by providing var argument `dev_b` as input)
 
 -----
 
-* There can be certain optional columns as well for each of these tabs
+optional columns
+----------------
 
-  #. **Devices Tab** Optional columns list
+
+
+**Devices Tab**
+^^^^^^^^^^^^^^^
 
      #. ``stencil`` defines stencil for each individual device ( column name modification not allowed )
      #. ``item`` defines stencil item for each individual device ( column name modification not allowed )
@@ -41,7 +49,9 @@ Excel database Preparation Guidelines
         * Provide list of column names as a value to above var argument.
         * Arrange those in list as desired sequence.
 
-  #. **Cablings Tab** Optional columns list
+**Cablings Tab**
+^^^^^^^^^^^^^^^
+
 
      #. ``aport`` defines port number for a-end device of a connector/cable. And will appear on middle of it. ( column name modification not allowed )
      #. ``connector_type`` defines connector type for a connector/cable. (default: *straight*, other options: angled, curved). ( column name modification not allowed )
@@ -85,14 +95,14 @@ Excel database Preparation Guidelines
 -----
 
 
-* By default, any device with no connectivity on Cablings tab, will be excluded.
+* By default, any device with no connectivity on `Cablings` tab, will be excluded.
 * Change this behaviour using input var argument ``filter_on_cable``.
 
 -----
 
 
 
-pyVig readable sample excel file 
+sample excel database 
 ---------------------------------
 
 :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with *Devices* and *Cablings* tabs *prefilled* with some *sample* data.
