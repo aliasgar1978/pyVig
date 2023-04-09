@@ -8,15 +8,6 @@ Copy python commands to a .py file for repeatative use.
 
 ----------------------------
 
-
-Import pyVig module from pyVig
-------------------------------
-
-	.. code-block:: python
-	
-		from pyVig import pyVig
-
-
 Prepare Excel
 ----------------------
 
@@ -25,65 +16,58 @@ Prepare Excel
    #. :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
 
 
-
-Define Variables
-----------------
-
+Prepare your code
+------------------------------
 
 	.. code-block:: python
-		:emphasize-lines: 5,6,37,38
-
-		# Define necessary input variables.
-		dic = {
-
+	
+		# --------------------------------------------------------------------------------------
+		# 1. Import package
+		# 2. Call pyVig with necessary inputs ( you can remove optional, undesired inputs )
+		# --------------------------------------------------------------------------------------
+		from pyVig import pyVig
+		pyVig(
 			# Mandatory
-			'stencil_folder': '/fullpath_stencil_folder',			## folder path where visio stencils are placed
-			'data_file': '/fullpath/data_file',						## folder path where Excel Database is placed
+			stencil_folder = '/fullpath_stencil_folder',
+			data_file = '/fullpath/data_file',
 
-			# Optional
-			'default_stencil': 'Network and Peripherals',			## Provide a Stencil name, which will be default if no stencil name given in Excel database
-			'op_file': 'None',										## Some of visio versions doesn't support file save
+			# Optional - inputs
+			default_stencil = 'Network and Peripherals',    #(default: None)
+			op_file = 'filename.vsdx',    # (default: None)
 
-			# Optional / provide only if differ from actual Devices - database
-			'devices_sheet_name': 'Devices',
-			'x-coordinates_col': 'x-axis',
-			'y-coordinates_col': 'y-axis',
-			'stencils_col': 'stencils',
-			'device_type_col': 'device_type',
+			devices_sheet_name = 'Devices',    # (default: 'Deviecs')
+			x-coordinates_col = 'x-axis',    # (default: 'x-axis')
+			y-coordinates_col = 'y-axis',    # (default: 'y-axis')
+			stencils_col = 'stencil',    # (default: 'stencil')
+			device_type_col = 'item',    # (default: 'item')
 
-			# Optional / provide only if differ from actual Cabling - database
-			'cabling_sheet_name': 'Cablings',
-			'a_device_col': 'a_device',
-			'a_device_port_col': 'a_device_port',
-			'b_device_col': 'b_device',
-			'color_col': 'color',
-			'connector_type_col': 'connector_type',
-			'weight_col': 'weight',
-			'pattern_col': 'pattern',
+			cabling_sheet_name = 'Cablings',    #(default: 'Cablings')
+			a_device_col = 'a_device',    # (default: 'a_device')
+			b_device_col = 'b_device',    # (default: 'b_device')
 
-			# Optional / if differ from actual database
-			'cols_to_merge': ['COLUMNS_TO_BE_MERGED_WITH_HOSTNAME', 'IP', 'SERIAL', ... ],
-			'filter_on_cable': True,
-			'filter_on_include_col': False,
-			'is_sheet_filter': True,								## Eanables sheet_filters and multipage drawing
+			# Optional - Devices tab columns to be merged to form device description 
+			cols_to_merge = ['COLUMNS_TO_BE_MERGED_WITH_HOSTNAME', 'IP', 'SERIAL', ... ],
 
-			# Optional / for only selected rows from Cabling tab and for multiplage drawing
-			'sheet_filters': {
+			# Optional - Device icon formatting 
+			device_format_columns = {
+				'iconHeight': 1,    # sets default iconHeight (default: 1)
+				'iconWidth': 2.5,    # sets default iconWidth (default: 2.5) 
+			},
+
+			# Optional - Filter options
+			filter_on_cable = True,    # (default: True)
+			filter_on_include_col = False,    # (default: False, will look for column name 'include' to select cablings)
+			is_sheet_filter = True,    # (Default: True, enables filtering on 'sheet_filters' input)
+			sheet_filters = {
 				'draw_type': ('core', 'dist', 'building-a',),		## Here column name = 'draw_type' , matching and filtering rows value as per given in tuple. 
 				'dist': 'x',										## Here column name = 'dist',  matching and filtering an 'x' marked rows.
 				# Add more filters as required.... 
 			},
 
-		}
+		)
 
+		# --------------------------------------------------------------------------------------
 
-Execute/Generate Visio Now
---------------------------
-
-
-	.. code-block:: python
-
-		pyVig(dic)
 
 
 	.. tip::

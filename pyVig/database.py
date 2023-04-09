@@ -15,27 +15,25 @@ class Data():
 	Parent class defining device and connectors.
 	'''
 
-	def __init__(self, data_file):
+	def __init__(self, **kwargs):
 		"""Initialize the object
 
 		Args:
 			data_file (str): file name of excel database containing devices and cabling details.
 		"""		
-		self.data_file = data_file
+		self.kwargs = kwargs
+		self.data_file = kwargs['data_file']
+		self.read(self.sheet_name)
+
+	def add_kwargs_attributes(self):
+		for k, v in self.kwargs.items():
+			self.add_attribute(k, v)
 
 	def add_optional_columnnames_attributes(self):
-		"""add optional columns to object attributes with default values
-		"""		
 		for k, v in self.optional_columns.items():
 			self.add_attribute(k, v)
 
 	def add_attribute(self, attr_name, attr_value):
-		"""set the keyword arguments as attribute of object 
-
-		Args:
-			attr_name (str): attribute
-			attr_value (str): attribute value
-		"""		
 		if attr_name:
 			self.__dict__[attr_name] = attr_value
 
@@ -61,27 +59,18 @@ class DeviceData(Data):
 	optional_columns = {'stencil': DEFAULT_STENCIL,
 						'item': None,
 	}
+	x = 'x-axis'
+	y = 'y-axis'
+	default_stencil = None
+	sheet_name = 'Devices'
 
-	def __init__(self, 
-		data_file, 
-		sheet_name=DEFAULT_DEVICES_TAB,
-		x=DEFAULT_X_COLUMN,
-		y=DEFAULT_Y_COLUMN,
-		default_stencil=DEFAULT_STENCIL,
-		**kwargs
-		):
-		super().__init__(data_file)
-		self.x = x
-		self.y = y
-		self.default_stencil = default_stencil
-		self.read(sheet_name)
-		self.kwargs = kwargs
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
 		self.add_format_columnnames_attributes()
 		self.add_optional_columnnames_attributes()
+		self.add_kwargs_attributes()
 
 	def add_format_columnnames_attributes(self):
-		"""add optional formatting columns to object attributes with default values
-		"""		
 		for k, v in self.format_columns.items():
 			self.add_attribute(k, v)
 
@@ -159,18 +148,14 @@ class CableMatrixData(Data):
 						# 'angle': "straight",
 						'aport': "",
 	}
+	dev_a = 'a_device'
+	dev_b = 'b_device'
+	sheet_name = 'Cablings'
 
-	def __init__(self, 
-		data_file, 
-		sheet_name,
-		a_device_colname, 
-		b_device_colname,
-		):
-		super().__init__(data_file)
-		self.dev_a = a_device_colname
-		self.dev_b = b_device_colname
-		self.read(sheet_name)
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
 		self.add_optional_columnnames_attributes()
+		self.add_kwargs_attributes()
 
 	def read(self, sheet_name):
 		"""read data from given excel sheet containing cabling data and set dataframe for the object.
