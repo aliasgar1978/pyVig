@@ -22,18 +22,28 @@ class Data():
 			data_file (str): file name of excel database containing devices and cabling details.
 		"""		
 		self.kwargs = kwargs
+		self.add_kwargs_attributes()
 		self.data_file = kwargs['data_file']
-		self.read(self.sheet_name)
 
 	def add_kwargs_attributes(self):
+		"""adds all keyword arguments as object attributes
+		"""		
 		for k, v in self.kwargs.items():
 			self.add_attribute(k, v)
 
 	def add_optional_columnnames_attributes(self):
+		"""adds default optional columns as object attributes
+		"""		
 		for k, v in self.optional_columns.items():
 			self.add_attribute(k, v)
 
 	def add_attribute(self, attr_name, attr_value):
+		"""adds an attribute to object instance
+
+		Args:
+			attr_name (str): attribute name
+			attr_value (str): attribute value
+		"""		
 		if attr_name:
 			self.__dict__[attr_name] = attr_value
 
@@ -43,7 +53,27 @@ class Data():
 		Args:
 			sheet_name (str): Excel sheet name
 		"""		
-		self.df = pd.read_excel(self.data_file, sheet_name=sheet_name).fillna("")
+		try:
+			self.df = pd.read_excel(self.data_file, sheet_name=sheet_name).fillna("")
+		except Exception as e:
+			print(f'Critical:\tMandatory sheet "{sheet_name}" missing or invalid, Please check data')
+			quit("")
+
+	def verify_mandatory_declared_cols_availabilty(self, declared=[]):
+		"""verifies if mandatory and declared columns (cols_to_merge) are available in provided database.
+		Raise error if unavailable any.
+
+		Args:
+			declared (list, optional): list of extra declared columns (if any). Defaults to [].
+		"""		
+		missing_cols = set()
+		self.cols_to_check.extend(declared)
+		for col in self.cols_to_check:
+			if col not in self.df.columns:
+				missing_cols.add(col)
+		if missing_cols:
+			print(f"Critical:\tMandatory and/or Declared column(s) {missing_cols} missing or invalid, Please check data")
+			quit()
 
 
 # -----------------------------------------------------------------------------------
@@ -68,19 +98,26 @@ class DeviceData(Data):
 		super().__init__(**kwargs)
 		self.add_format_columnnames_attributes()
 		self.add_optional_columnnames_attributes()
-		self.add_kwargs_attributes()
+		self.read(self.sheet_name)		
+		self.cols_to_check = [self.x, self.y, 'hostname']
+		self.verify_mandatory_declared_cols_availabilty(self._declared_cols())
+
+	def _declared_cols(self):
+		"""get a list of declared columns from input 'cols_to_merge' if defined.
+		This is to check the existance of those columns in database further
+
+		Returns:
+			list: list of declared columns (to be merged)
+		"""		
+		if self.kwargs.get('cols_to_merge'):
+			return self.kwargs['cols_to_merge']
+		return []
 
 	def add_format_columnnames_attributes(self):
+		"""add default format columns {iconWidth, iconHeight} as object attributes
+		"""		
 		for k, v in self.format_columns.items():
 			self.add_attribute(k, v)
-
-	def read(self, sheet_name):
-		"""read data from given excel sheet containing device data and set dataframe for the object.
-
-		Args:
-			sheet_name (str): Excel sheet name
-		"""		
-		super().read(sheet_name)
 
 
 	def add_description(self, columns_to_merge):
@@ -98,15 +135,15 @@ class DeviceData(Data):
 			try:
 				cols.append(self.df[x])
 			except:
-				print(f"column `{x}` is missing in input file")
+				print(f"Warning:\t\tcolumn `{x}` is missing in input file")
 		try:
 			self.df['description'] = self.df.hostname
 		except:
-			raise ValueError("Missing mandatory column `hostname` ")
+			raise ValueError("Critical:\tMissing mandatory column `hostname` ")
 
 		for col in cols:
 			if col.empty:  continue
-			self.df.description += "\n"+ col.str.strip().fillna("invalid datatype")
+			self.df.description += "\n"+ col.astype(str).str.strip().fillna("invalid datatype")
 
 
 # -----------------------------------------------------------------------------------
@@ -129,7 +166,7 @@ def merged_df_on_hostname(devices_df, cablemtx_df, hostname_col_hdr, sortby):
 	try:
 		cablemtx_df['hostname'] = cablemtx_df[hostname_col_hdr]
 	except:
-		raise ValueError(f"Missing mandatory column `{hostname_col_hdr}`")
+		raise ValueError(f"Critical:\tMissing mandatory column `{hostname_col_hdr}`")
 	cablemtx_df = cablemtx_df.reset_index()
 	return pd.merge(cablemtx_df, devices_df, 
 		on=["hostname",], 
@@ -148,22 +185,17 @@ class CableMatrixData(Data):
 						# 'angle': "straight",
 						'aport': "",
 	}
-	dev_a = 'a_device'
-	dev_b = 'b_device'
 	sheet_name = 'Cablings'
 
 	def __init__(self, **kwargs):
+		self.dev_a = 'a_device'
+		self.dev_b = 'b_device'
 		super().__init__(**kwargs)
 		self.add_optional_columnnames_attributes()
-		self.add_kwargs_attributes()
-
-	def read(self, sheet_name):
-		"""read data from given excel sheet containing cabling data and set dataframe for the object.
-
-		Args:
-			sheet_name (str): Excel sheet name
-		"""		
-		super().read(sheet_name)
+		# self.add_kwargs_attributes()
+		self.read(self.sheet_name)
+		self.cols_to_check = [self.dev_a, self.dev_b]
+		self.verify_mandatory_declared_cols_availabilty()
 
 
 	# optional
@@ -171,7 +203,7 @@ class CableMatrixData(Data):
 		"""optional filter: filters DataFrame for the column `include` with values as `y`
 		"""				
 		if "include" in self.df.columns:
-			self.df = self.df[ self.df.include == "y"]
+			self.df = self.df[ self.df.include != ""]
 
 	# optional
 	def filter(self, **kwargs):

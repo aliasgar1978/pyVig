@@ -98,11 +98,14 @@ class ItemObjects(Multi_Execution):
 		Returns:
 			None: None
 		"""		
+		#
 		# filter to only drop connected devices.
 		if (self.filterOnCables 
 			and (not (
 					(dev.hostname == self.connectors.df[self.connectors.dev_a]).any() 
-				or 	(dev.hostname == self.connectors.df[self.connectors.dev_b]).any()) ) ):
+				or 	(dev.hostname == self.connectors.df[self.connectors.dev_b]).any()) 
+				) 
+			):
 			return None
 
 		# ---- get column values from row of a device info --- #

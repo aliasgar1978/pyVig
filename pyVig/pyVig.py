@@ -54,8 +54,10 @@ def visio_operations(devices_data, cable_matrix_data, stencils, **dic):
 	"""	
 	outputFile = dic['op_file'] if 'op_file' in dic else None
 	with VisioObject(stencils, outputFile) as v:
-		print(f"Information: Visio Drawing Inprogress, Do not close Visio Drawing while its running...")
-		if dic.get('sheet_filters'):
+		print(f"Information:\tVisio Drawing Inprogress, Do not close Visio Drawing while its running...")
+		if (	(  'sheet_filters' in dic and dic['sheet_filters'])           and
+			not ('is_sheet_filter' in dic and dic['is_sheet_filter'] != True) 			
+			) :
 			for kv in dic['sheet_filters'].items():
 				if isinstance(kv[1], str):
 					repeat_for_filter(v, devices_data, cable_matrix_data, kv[0], kv[1], kv[0], **dic)
@@ -97,16 +99,17 @@ def visio_page_operation(v, devices_data, cable_matrix_data, flt, page_key=None,
 		page_key (str, optional): page key (suffix for filter values in case if multiple filt_values). Defaults to None.
 		dic (**dic): keyword arguments
 	"""	
-	if dic.get('filter_on_include_col'):
+	if 'filter_on_include_col' in dic:
 		cable_matrix_data.filter_eligible_cables_only() # [Optional]
-	if dic.get('is_sheet_filter'):
+	if 'is_sheet_filter' in dic and dic['is_sheet_filter'] == True:   ## condition unnecessary, remove condition in future since taken care by parent function
 		cable_matrix_data.filter(**flt)               # [Optional] column=records
 	cable_matrix_data.calc_slop(devices_data)         # [Mandatory] calculate cable slop/angle
 	if flt:
 		v.insert_new_page(page_key)
 	else:
 		v.insert_new_page("PhysicalDrawing")
-	filterOnCables = dic['filter_on_cable'] if dic.get('filter_on_cable') else True
+	filterOnCables = dic['filter_on_cable'] if 'filter_on_cable' in dic else True
+	#
 	item_objects = ItemObjects(v, devices_data, cable_matrix_data, filterOnCables=filterOnCables)
 	Connectors(cable_matrix_data, item_objects)
 	v.fit_to_draw(item_objects.page_height, item_objects.page_width)
