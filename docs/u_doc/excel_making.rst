@@ -11,26 +11,26 @@ Excel database Preparation Guidelines
 
 -----
 
-mandatory columns
+Mandatory columns
 -----------------
 
 **Devices Tab**
 ^^^^^^^^^^^^^^^
 
 
-     #. ``hostname`` defines hostname / identity of device ( No Exception and column name modification not allowed )
-     #. ``x-axis`` defines the horizontal position of device on visio page. ( column name can be changed by providing var argument `x` in input)
-     #. ``y-axis`` defines the vertical position of device on visio page. ( column name can be changed by providing var argument `y` in input)
+     #. ``hostname`` defines hostname / identity of device *( No Exception and column name modification not allowed )*
+     #. ``x-axis`` defines the horizontal position of device on visio page. *( column name can be changed by providing var argument `x` in input)*
+     #. ``y-axis`` defines the vertical position of device on visio page. *( column name can be changed by providing var argument `y` in input)*
 
 **Cablings Tab**
 ^^^^^^^^^^^^^^^
 
-     #. ``a_device`` defines hostname / identity of device for a-end of a connector/cable. (column name can be changed by providing var argument `dev_a` as input)
-     #. ``b_device`` defines hostname / identity of device for b-end of a connector/cable. (column name can be changed by providing var argument `dev_b` as input)
+     #. ``a_device`` defines hostname / identity of device for a-end of a connector/cable. *(column name can be changed by providing var argument `dev_a` as input)*
+     #. ``b_device`` defines hostname / identity of device for b-end of a connector/cable. *(column name can be changed by providing var argument `dev_b` as input)*
 
 -----
 
-optional columns
+Optional columns
 ----------------
 
 
@@ -38,13 +38,13 @@ optional columns
 **Devices Tab**
 ^^^^^^^^^^^^^^^
 
-     #. ``stencil`` defines stencil for each individual device ( column name modification not allowed )
-     #. ``item`` defines stencil item for each individual device ( column name modification not allowed )
-     #. ``iconHeight`` defines vertical resizing of device icon ( column name modification not allowed )
-     #. ``iconWidth`` defines horizontal resizing of device icon ( column name modification not allowed )
+     #. ``stencil`` defines stencil for each individual device *( column name modification not allowed )*
+     #. ``item`` defines stencil item for each individual device *( column name modification not allowed )*
+     #. ``iconHeight`` defines vertical resizing of device icon *( column name modification not allowed )*
+     #. ``iconWidth`` defines horizontal resizing of device icon *( column name modification not allowed )*
      #. There can be **many other** columns with any other arbitrarily named columns with other details.
 
-        * Such as: (device_model, serial_number, ip_address, rack_details, . . . and many more ).
+        * Such as: *(device_model, serial_number, ip_address, rack_details, . . . and many more ).*
         * All of these columns details can be clubbed in device output using var argument ``cols_to_merge``.
         * Provide list of column names as a value to above var argument.
         * Arrange those in list as desired sequence.
@@ -53,12 +53,12 @@ optional columns
 ^^^^^^^^^^^^^^^
 
 
-     #. ``aport`` defines port number for a-end device of a connector/cable. And will appear on middle of it. ( column name modification not allowed )
-     #. ``connector_type`` defines connector type for a connector/cable. (default: *straight*, other options: angled, curved). ( column name modification not allowed )
-     #. ``color`` defines color of a connector/cable. (default: *blue*). ( column name modification not allowed )
-     #. ``weight`` defines weigth of a connector/cable. (default: *3*). ( column name modification not allowed )
-     #. ``pattern`` defines line pattern of a connector/cable. (default: *1*). ( column name modification not allowed )
-     #. There can be **many other filter** columns as described below.
+     #. ``aport`` defines port number for a-end device of a connector/cable. And will appear on middle of it. *( column name modification not allowed )*
+     #. ``connector_type`` defines connector type for a connector/cable. (default: *straight*, other options: angled, curved). *( column name modification not allowed )*
+     #. ``color`` defines color of a connector/cable. (default: *blue*). *( column name modification not allowed )*
+     #. ``weight`` defines weigth of a connector/cable. (default: *3*). *( column name modification not allowed )*
+     #. ``pattern`` defines line pattern of a connector/cable. (default: *1*). *( column name modification not allowed )*
+     #. There can be **other filter** columns as described below.
 
         #. ``include`` to display only selected cable connectivities.
 
@@ -105,5 +105,5 @@ optional columns
 sample excel database 
 ---------------------------------
 
-:download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with *Devices* and *Cablings* tabs *prefilled* with some *sample* data.
+:download:`Sample <samples/Excel-pyvig-sample.xlsx>`. Sample Excel file with *Devices* and *Cablings* tabs *prefilled*.
 
