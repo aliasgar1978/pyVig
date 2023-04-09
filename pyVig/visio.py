@@ -138,7 +138,7 @@ class VisioObject():
 		try:
 			return self.stn[stencil].Masters.Item(item)
 		except:
-			print(f"Error:\t\titem {item} not found in stencil {stencil}.., You may see a text box instead")
+			print(f"Error:\t\titem `{item}` not found in stencil `{stencil}`.., You may see a text box instead")
 
 	# Drops 'item' on visio page at given position index ( posX and posY )
 	def _dropItemtoPage(self, item, posX, posY):
@@ -205,10 +205,13 @@ class VisioObject():
 
 	@staticmethod
 	def _resize(item, width, height):
-		if width:
-			item.CellsSRC(visSectionObject, visRowXFormOut, visXFormWidth).FormulaU = f"{width} in"
-		if height:
-			item.CellsSRC(visSectionObject, visRowXFormOut, visXFormHeight).FormulaU = f"{height} in"
+		try:
+			if width:
+				item.CellsSRC(visSectionObject, visRowXFormOut, visXFormWidth).FormulaU = f"{width} in"
+			if height:
+				item.CellsSRC(visSectionObject, visRowXFormOut, visXFormHeight).FormulaU = f"{height} in"
+		except:
+			print(f"Error:\t\tResizing of item {item} not allowed for gaurded stencil items. Match text box size manually")
 
 	# --------------------------------------------------------------------------
 	#  External

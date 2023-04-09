@@ -56,13 +56,13 @@ def get_list_of_stencils(folder, devices_data):
 		return found_stn
 	else:
 		pass
-		print("Below mentioned stencil(s) are missing; ",
+		print("Error:\t\tBelow mentioned stencil(s) are missing; ",
 		"Kindly update/correct data before re-run.\n",
 		used_stn.difference(stn_file), "\n",
 		)
 		Popup("Below mentioned stencil(s) are missing; ",
 		"Kindly update/correct data before re-run.\n",
 		used_stn.difference(stn_file), "\n")
-		raise ValueError("Stencil is/are Missing or Invalid")
-
+		# raise ValueError("Stencil is/are Missing or Invalid")
+		quit()
 
