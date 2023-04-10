@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyVig.devices &mdash; pyVig 0.0.10 documentation</title>
+  <title>pyVig.devices &mdash; pyVig 0.0.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,19 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Documentation</a></li>
 </ul>
 
         </div>
@@ -90,7 +78,7 @@
 
 <span class="c1"># --------------------------------------------- </span>
 
-<div class="viewcode-block" id="AdevDevices"><a class="viewcode-back" href="../../t_doc/devices.html#pyVig.devices.AdevDevices">[docs]</a><span class="k">class</span> <span class="nc">AdevDevices</span><span class="p">():</span>
+<div class="viewcode-block" id="AdevDevices"><a class="viewcode-back" href="../../pyVig.html#pyVig.devices.AdevDevices">[docs]</a><span class="k">class</span> <span class="nc">AdevDevices</span><span class="p">():</span>
 	<span class="sd">&quot;&quot;&quot;A single Device details</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 
@@ -107,10 +95,10 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">var_df</span> <span class="o">=</span> <span class="n">var_df</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">self_device</span> <span class="o">=</span> <span class="p">{}</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="o">=</span><span class="p">{}</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">mandatory_columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hostname&#39;</span><span class="p">,</span> <span class="s1">&#39;stencils&#39;</span><span class="p">,</span> <span class="s1">&#39;device_type&#39;</span><span class="p">}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mandatory_columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hostname&#39;</span><span class="p">,</span> <span class="s1">&#39;stencil&#39;</span><span class="p">,</span> <span class="s1">&#39;item&#39;</span><span class="p">}</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">optional_columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ip_address&#39;</span><span class="p">,</span> <span class="s1">&#39;device_model&#39;</span><span class="p">,</span> <span class="s1">&#39;serial_number&#39;</span><span class="p">,</span> <span class="s1">&#39;hierarchical_order&#39;</span><span class="p">,</span> <span class="s1">&#39;vlan_members&#39;</span><span class="p">,}</span>
 
-<div class="viewcode-block" id="AdevDevices.add_to_devices"><a class="viewcode-back" href="../../t_doc/devices.html#pyVig.devices.AdevDevices.add_to_devices">[docs]</a>	<span class="k">def</span> <span class="nf">add_to_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">what</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="AdevDevices.add_to_devices"><a class="viewcode-back" href="../../pyVig.html#pyVig.devices.AdevDevices.add_to_devices">[docs]</a>	<span class="k">def</span> <span class="nf">add_to_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">what</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;add the key word arguments to dictionary refered by `what`</span>
 
 <span class="sd">		Args:</span>
@@ -132,7 +120,7 @@
 				<span class="k">if</span> <span class="ow">not</span> <span class="n">what</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
 					<span class="n">what</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 				<span class="k">try</span><span class="p">:</span>
-					<span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;stencils&#39;</span><span class="p">:</span>
+					<span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;stencil&#39;</span><span class="p">:</span>
 						<span class="n">what</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stencil</span><span class="p">)</span>
 					<span class="k">else</span><span class="p">:</span>
 						<span class="n">what</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
@@ -140,7 +128,7 @@
 					<span class="n">what</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="AdevDevices.get_self_device_df"><a class="viewcode-back" href="../../t_doc/devices.html#pyVig.devices.AdevDevices.get_self_device_df">[docs]</a>	<span class="k">def</span> <span class="nf">get_self_device_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AdevDevices.get_self_device_df"><a class="viewcode-back" href="../../pyVig.html#pyVig.devices.AdevDevices.get_self_device_df">[docs]</a>	<span class="k">def</span> <span class="nf">get_self_device_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;generate the pandas DataFrame object with single row detail for the self device. </span>
 
 <span class="sd">		Returns:</span>
@@ -162,7 +150,7 @@
 
 
 
-<div class="viewcode-block" id="AdevDevices.add_vlan_info"><a class="viewcode-back" href="../../t_doc/devices.html#pyVig.devices.AdevDevices.add_vlan_info">[docs]</a>	<span class="k">def</span> <span class="nf">add_vlan_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlan_df</span><span class="p">):</span>
+<div class="viewcode-block" id="AdevDevices.add_vlan_info"><a class="viewcode-back" href="../../pyVig.html#pyVig.devices.AdevDevices.add_vlan_info">[docs]</a>	<span class="k">def</span> <span class="nf">add_vlan_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vlan_df</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;add identified vlan-vrf-subnet information for the devices using vlan DataFrame.</span>
 
 <span class="sd">		Args:</span>
@@ -176,7 +164,7 @@
 
 
 <span class="c1"># --------------------------------------------- </span>
-<div class="viewcode-block" id="device_df_drop_empty_duplicates"><a class="viewcode-back" href="../../t_doc/devices.html#pyVig.devices.device_df_drop_empty_duplicates">[docs]</a><span class="k">def</span> <span class="nf">device_df_drop_empty_duplicates</span><span class="p">(</span><span class="n">devices</span><span class="p">):</span>
+<div class="viewcode-block" id="device_df_drop_empty_duplicates"><a class="viewcode-back" href="../../pyVig.html#pyVig.devices.device_df_drop_empty_duplicates">[docs]</a><span class="k">def</span> <span class="nf">device_df_drop_empty_duplicates</span><span class="p">(</span><span class="n">devices</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;generate pandas DataFrame from provides `devices` dictionary of lists. </span>
 <span class="sd">	Removes empty entries from hostname column,</span>
 <span class="sd">	Convert case to lowercases,</span>
@@ -197,7 +185,7 @@
 
 
 <span class="c1"># --------------------------------------------- </span>
-<div class="viewcode-block" id="update_var_df_details_to_table_df"><a class="viewcode-back" href="../../t_doc/devices.html#pyVig.devices.update_var_df_details_to_table_df">[docs]</a><span class="k">def</span> <span class="nf">update_var_df_details_to_table_df</span><span class="p">(</span><span class="n">merged_df</span><span class="p">,</span> <span class="n">DCT_dict</span><span class="p">,</span> <span class="n">var_func_dict</span><span class="p">):</span>
+<div class="viewcode-block" id="update_var_df_details_to_table_df"><a class="viewcode-back" href="../../pyVig.html#pyVig.devices.update_var_df_details_to_table_df">[docs]</a><span class="k">def</span> <span class="nf">update_var_df_details_to_table_df</span><span class="p">(</span><span class="n">merged_df</span><span class="p">,</span> <span class="n">DCT_dict</span><span class="p">,</span> <span class="n">var_func_dict</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;updates custom details from `var` tab to `devices`. </span>
 
 <span class="sd">	Args:</span>
@@ -232,7 +220,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ALIASGAR.</p>
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

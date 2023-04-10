@@ -1,28 +1,16 @@
+.. pyVig documentation master file, created by
+   sphinx-quickstart on Wed Mar 29 10:32:46 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-Welcome to pyVig's API documentation!
-=====================================
+Welcome to pyVig's documentation!
+=================================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents:
-   :numbered:
 
-   cablings <t_doc/cablings>
-   common <t_doc/common>
-   database <t_doc/database>
-   devices <t_doc/devices>
-   entities <t_doc/entities>
-   general <t_doc/general>
-   gui <t_doc/gui>
-   maths <t_doc/maths>
-   oper <t_doc/oper>
-   pyVig <t_doc/pyvig>
-   static <t_doc/static>
-   stencils <t_doc/stencils>
-   visio <t_doc/visio>
-   
-
-
+   API Documentation <modules.rst>
 
 
 Indices and tables

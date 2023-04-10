@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyVig.database &mdash; pyVig 0.0.10 documentation</title>
+  <title>pyVig.database &mdash; pyVig 0.0.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,19 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Documentation</a></li>
 </ul>
 
         </div>
@@ -87,74 +75,123 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">pyVig.maths</span> <span class="kn">import</span> <span class="n">df_with_slops_and_angles</span>
+<span class="kn">from</span> <span class="nn">.general</span> <span class="kn">import</span> <span class="o">*</span>
+
 <span class="c1"># -----------------------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="Data"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.Data">[docs]</a><span class="k">class</span> <span class="nc">Data</span><span class="p">():</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Data"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.Data">[docs]</a><span class="k">class</span> <span class="nc">Data</span><span class="p">():</span>
 	<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">	Parent class defining device and connectors.</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_file</span><span class="p">):</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Initialize the object</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			data_file (str): file name of excel database containing devices and cabling details.</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="bp">self</span><span class="o">.</span><span class="n">data_file</span> <span class="o">=</span> <span class="n">data_file</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_kwargs_attributes</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">data_file</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="Data.read"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.Data.read">[docs]</a>	<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.add_kwargs_attributes"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.Data.add_kwargs_attributes">[docs]</a>	<span class="k">def</span> <span class="nf">add_kwargs_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;adds all keyword arguments as object attributes</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_attribute</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Data.add_optional_columnnames_attributes"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.Data.add_optional_columnnames_attributes">[docs]</a>	<span class="k">def</span> <span class="nf">add_optional_columnnames_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;adds default optional columns as object attributes</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_attribute</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Data.add_attribute"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.Data.add_attribute">[docs]</a>	<span class="k">def</span> <span class="nf">add_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">,</span> <span class="n">attr_value</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;adds an attribute to object instance</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			attr_name (str): attribute name</span>
+<span class="sd">			attr_value (str): attribute value</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="k">if</span> <span class="n">attr_name</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">attr_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr_value</span></div>
+
+<div class="viewcode-block" id="Data.read"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.Data.read">[docs]</a>	<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;read data from given excel sheet and set dataframe for the object.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			sheet_name (str): Excel sheet name</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div></div>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Critical:</span><span class="se">\t</span><span class="s1">Mandatory sheet &quot;</span><span class="si">{</span><span class="n">sheet_name</span><span class="si">}</span><span class="s1">&quot; missing or invalid, Please check data&#39;</span><span class="p">)</span>
+			<span class="n">quit</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Data.verify_mandatory_declared_cols_availabilty"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.Data.verify_mandatory_declared_cols_availabilty">[docs]</a>	<span class="k">def</span> <span class="nf">verify_mandatory_declared_cols_availabilty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">declared</span><span class="o">=</span><span class="p">[]):</span>
+		<span class="sd">&quot;&quot;&quot;verifies if mandatory and declared columns (cols_to_merge) are available in provided database.</span>
+<span class="sd">		Raise error if unavailable any.</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			declared (list, optional): list of extra declared columns (if any). Defaults to [].</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="n">missing_cols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">cols_to_check</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">declared</span><span class="p">)</span>
+		<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols_to_check</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+				<span class="n">missing_cols</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">missing_cols</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Critical:</span><span class="se">\t</span><span class="s2">Mandatory and/or Declared column(s) </span><span class="si">{</span><span class="n">missing_cols</span><span class="si">}</span><span class="s2"> missing or invalid, Please check data&quot;</span><span class="p">)</span>
+			<span class="n">quit</span><span class="p">()</span></div></div>
 
 
 <span class="c1"># -----------------------------------------------------------------------------------</span>
 
 
-<div class="viewcode-block" id="DeviceData"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.DeviceData">[docs]</a><span class="k">class</span> <span class="nc">DeviceData</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<div class="viewcode-block" id="DeviceData"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.DeviceData">[docs]</a><span class="k">class</span> <span class="nc">DeviceData</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Devices Data Object Building</span>
 <span class="sd">	&quot;&quot;&quot;</span>		
+	<span class="n">format_columns</span> <span class="o">=</span> <span class="p">{</span>	<span class="s1">&#39;iconWidth&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> 
+						<span class="s1">&#39;iconHeight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+	<span class="p">}</span>
 
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-		<span class="n">data_file</span><span class="p">,</span> 
-		<span class="n">sheet_name</span><span class="p">,</span>
-		<span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
-		<span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
-		<span class="n">stencil_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="n">device_type_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="n">default_stencil</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="p">):</span>
-		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="n">stencil_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">dev_type</span> <span class="o">=</span> <span class="n">device_type_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">default_stencil</span> <span class="o">=</span> <span class="n">default_stencil</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+	<span class="n">optional_columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;stencil&#39;</span><span class="p">:</span> <span class="n">DEFAULT_STENCIL</span><span class="p">,</span>
+						<span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;x-axis&#39;</span>
+	<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;y-axis&#39;</span>
+	<span class="n">default_stencil</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;Devices&#39;</span>
 
-<div class="viewcode-block" id="DeviceData.read"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.DeviceData.read">[docs]</a>	<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">):</span>
-		<span class="sd">&quot;&quot;&quot;read data from given excel sheet containing device data and set dataframe for the object.</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_format_columnnames_attributes</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_optional_columnnames_attributes</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sheet_name</span><span class="p">)</span>		
+		<span class="bp">self</span><span class="o">.</span><span class="n">cols_to_check</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;hostname&#39;</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">verify_mandatory_declared_cols_availabilty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_declared_cols</span><span class="p">())</span>
 
-<span class="sd">		Args:</span>
-<span class="sd">			sheet_name (str): Excel sheet name</span>
+	<span class="k">def</span> <span class="nf">_declared_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;get a list of declared columns from input &#39;cols_to_merge&#39; if defined.</span>
+<span class="sd">		This is to check the existance of those columns in database further</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			list: list of declared columns (to be merged)</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">add_missing_cols</span><span class="p">()</span></div>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cols_to_merge&#39;</span><span class="p">):</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cols_to_merge&#39;</span><span class="p">]</span>
+		<span class="k">return</span> <span class="p">[]</span>
 
-<div class="viewcode-block" id="DeviceData.add_missing_cols"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.DeviceData.add_missing_cols">[docs]</a>	<span class="k">def</span> <span class="nf">add_missing_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="sd">&quot;&quot;&quot;add the additional blank columns to dataframe if missing.</span>
+<div class="viewcode-block" id="DeviceData.add_format_columnnames_attributes"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.DeviceData.add_format_columnnames_attributes">[docs]</a>	<span class="k">def</span> <span class="nf">add_format_columnnames_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;add default format columns {iconWidth, iconHeight} as object attributes</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stencil</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="s2">&quot;stencil&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">stencil</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev_type</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">dev_type</span> <span class="o">=</span> <span class="s2">&quot;dev_type&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_type</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">add_attribute</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DeviceData.add_description"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.DeviceData.add_description">[docs]</a>	<span class="k">def</span> <span class="nf">add_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns_to_merge</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DeviceData.add_description"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.DeviceData.add_description">[docs]</a>	<span class="k">def</span> <span class="nf">add_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns_to_merge</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;add a description column to dataframe, which will be output of merged data of provided columns</span>
 
 <span class="sd">		Args:</span>
@@ -169,20 +206,20 @@
 			<span class="k">try</span><span class="p">:</span>
 				<span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
 			<span class="k">except</span><span class="p">:</span>
-				<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;column `</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">` is missing in input file&quot;</span><span class="p">)</span>
+				<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning:</span><span class="se">\t\t</span><span class="s2">column `</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">` is missing in input file&quot;</span><span class="p">)</span>
 		<span class="k">try</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">hostname</span>
 		<span class="k">except</span><span class="p">:</span>
-			<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Missing mandatory column `hostname` &quot;</span><span class="p">)</span>
+			<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Critical:</span><span class="se">\t</span><span class="s2">Missing mandatory column `hostname` &quot;</span><span class="p">)</span>
 
 		<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
 			<span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>  <span class="k">continue</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">description</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span> <span class="n">col</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;invalid datatype&quot;</span><span class="p">)</span></div></div>
+			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">description</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span> <span class="n">col</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;invalid datatype&quot;</span><span class="p">)</span></div></div>
 
 
 <span class="c1"># -----------------------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="merged_df_on_hostname"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.merged_df_on_hostname">[docs]</a><span class="k">def</span> <span class="nf">merged_df_on_hostname</span><span class="p">(</span><span class="n">devices_df</span><span class="p">,</span> <span class="n">cablemtx_df</span><span class="p">,</span> <span class="n">hostname_col_hdr</span><span class="p">,</span> <span class="n">sortby</span><span class="p">):</span>
+<div class="viewcode-block" id="merged_df_on_hostname"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.merged_df_on_hostname">[docs]</a><span class="k">def</span> <span class="nf">merged_df_on_hostname</span><span class="p">(</span><span class="n">devices_df</span><span class="p">,</span> <span class="n">cablemtx_df</span><span class="p">,</span> <span class="n">hostname_col_hdr</span><span class="p">,</span> <span class="n">sortby</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;merge two dataframes by matching hostname column</span>
 
 <span class="sd">	Args:</span>
@@ -200,7 +237,7 @@
 	<span class="k">try</span><span class="p">:</span>
 		<span class="n">cablemtx_df</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cablemtx_df</span><span class="p">[</span><span class="n">hostname_col_hdr</span><span class="p">]</span>
 	<span class="k">except</span><span class="p">:</span>
-		<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing mandatory column `</span><span class="si">{</span><span class="n">hostname_col_hdr</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
+		<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Critical:</span><span class="se">\t</span><span class="s2">Missing mandatory column `</span><span class="si">{</span><span class="n">hostname_col_hdr</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
 	<span class="n">cablemtx_df</span> <span class="o">=</span> <span class="n">cablemtx_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 	<span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cablemtx_df</span><span class="p">,</span> <span class="n">devices_df</span><span class="p">,</span> 
 		<span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hostname&quot;</span><span class="p">,],</span> 
@@ -208,68 +245,38 @@
 		<span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">sortby</span><span class="p">)</span></div>
 
 <span class="c1"># -----------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="CableMatrixData"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.CableMatrixData">[docs]</a><span class="k">class</span> <span class="nc">CableMatrixData</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<div class="viewcode-block" id="CableMatrixData"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.CableMatrixData">[docs]</a><span class="k">class</span> <span class="nc">CableMatrixData</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Cabling Data Object Building</span>
 <span class="sd">	&quot;&quot;&quot;</span>		
 
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-		<span class="n">data_file</span><span class="p">,</span> 
-		<span class="n">sheet_name</span><span class="p">,</span>
-		<span class="n">a_device_colname</span><span class="p">,</span> 
-		<span class="n">b_device_colname</span><span class="p">,</span>
-		<span class="n">a_device_port_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="n">connector_type_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="n">cable_color_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="n">cable_weight_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="n">cable_line_pattern_colname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-		<span class="p">):</span>
-		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">dev_a</span> <span class="o">=</span> <span class="n">a_device_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">dev_b</span> <span class="o">=</span> <span class="n">b_device_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">dev_a_port</span> <span class="o">=</span> <span class="n">a_device_port_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">conn_type</span> <span class="o">=</span> <span class="n">connector_type_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">cable_color_colname</span>		
-		<span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">cable_weight_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">cable_line_pattern_colname</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+	<span class="n">optional_columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;connector_type&#39;</span><span class="p">:</span> <span class="n">DEFAULT_CONNECTOR_TYPE</span><span class="p">,</span>
+						<span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">DEFAULT_LINE_COLOR</span><span class="p">,</span>
+						<span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="n">DEFAULT_LINE_WT</span><span class="p">,</span>
+						<span class="s1">&#39;pattern&#39;</span><span class="p">:</span> <span class="n">DEFAULT_LINE_PATTERN</span><span class="p">,</span>
+						<span class="s1">&#39;aport&#39;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="n">sheet_name</span> <span class="o">=</span> <span class="s1">&#39;Cablings&#39;</span>
 
-<div class="viewcode-block" id="CableMatrixData.read"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.CableMatrixData.read">[docs]</a>	<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">):</span>
-		<span class="sd">&quot;&quot;&quot;read data from given excel sheet containing cabling data and set dataframe for the object.</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dev_a</span> <span class="o">=</span> <span class="s1">&#39;a_device&#39;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">dev_b</span> <span class="o">=</span> <span class="s1">&#39;b_device&#39;</span>
+		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">add_optional_columnnames_attributes</span><span class="p">()</span>
+		<span class="c1"># self.add_kwargs_attributes()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sheet_name</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">cols_to_check</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev_b</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">verify_mandatory_declared_cols_availabilty</span><span class="p">()</span>
 
-<span class="sd">		Args:</span>
-<span class="sd">			sheet_name (str): Excel sheet name</span>
-<span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">add_missing_cols</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="CableMatrixData.add_missing_cols"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.CableMatrixData.add_missing_cols">[docs]</a>	<span class="k">def</span> <span class="nf">add_missing_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="sd">&quot;&quot;&quot;add the additional blank columns to dataframe if missing.</span>
-<span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev_a_port</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">dev_a_port</span> <span class="o">=</span> <span class="s2">&quot;a_device_port&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_a_port</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn_type</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">conn_type</span> <span class="o">=</span> <span class="s2">&quot;conn_type&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">conn_type</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;color&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="s2">&quot;weight&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;pattern&quot;</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
 
 	<span class="c1"># optional</span>
-<div class="viewcode-block" id="CableMatrixData.filter_eligible_cables_only"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.CableMatrixData.filter_eligible_cables_only">[docs]</a>	<span class="k">def</span> <span class="nf">filter_eligible_cables_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CableMatrixData.filter_eligible_cables_only"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.CableMatrixData.filter_eligible_cables_only">[docs]</a>	<span class="k">def</span> <span class="nf">filter_eligible_cables_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;optional filter: filters DataFrame for the column `include` with values as `y`</span>
 <span class="sd">		&quot;&quot;&quot;</span>				
 		<span class="k">if</span> <span class="s2">&quot;include&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">include</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">]</span></div>
+			<span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">include</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span></div>
 
 	<span class="c1"># optional</span>
-<div class="viewcode-block" id="CableMatrixData.filter"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.CableMatrixData.filter">[docs]</a>	<span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CableMatrixData.filter"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.CableMatrixData.filter">[docs]</a>	<span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;filter the dataframe for given column:value</span>
 <span class="sd">		multiple kwargs act as &#39;and&#39; operation.</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
@@ -277,7 +284,7 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">v</span><span class="p">]</span></div>
 
 	<span class="c1"># mandatory</span>
-<div class="viewcode-block" id="CableMatrixData.calc_slop"><a class="viewcode-back" href="../../t_doc/database.html#pyVig.database.CableMatrixData.calc_slop">[docs]</a>	<span class="k">def</span> <span class="nf">calc_slop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DD</span><span class="p">):</span>
+<div class="viewcode-block" id="CableMatrixData.calc_slop"><a class="viewcode-back" href="../../pyVig.html#pyVig.database.CableMatrixData.calc_slop">[docs]</a>	<span class="k">def</span> <span class="nf">calc_slop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DD</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;calculate the slop and angle of the two end points and add it in respective column</span>
 <span class="sd">		in dataframe.</span>
 
@@ -307,7 +314,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ALIASGAR.</p>
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

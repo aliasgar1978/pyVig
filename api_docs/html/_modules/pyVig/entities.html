@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyVig.entities &mdash; pyVig 0.0.10 documentation</title>
+  <title>pyVig.entities &mdash; pyVig 0.0.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,19 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Documentation</a></li>
 </ul>
 
         </div>
@@ -92,7 +80,7 @@
 <span class="c1"># -----------------------------------------------------------------------------------</span>
 <span class="c1">#  Visio Objects / Items</span>
 <span class="c1"># -----------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="ItemObjects"><a class="viewcode-back" href="../../t_doc/entities.html#pyVig.entities.ItemObjects">[docs]</a><span class="k">class</span> <span class="nc">ItemObjects</span><span class="p">(</span><span class="n">Multi_Execution</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemObjects"><a class="viewcode-back" href="../../pyVig.html#pyVig.entities.ItemObjects">[docs]</a><span class="k">class</span> <span class="nc">ItemObjects</span><span class="p">(</span><span class="n">Multi_Execution</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Execution of Devices/Item objects on visio</span>
 <span class="sd">	&quot;&quot;&quot;</span>		
 
@@ -171,7 +159,7 @@
 		<span class="k">except</span><span class="p">:</span>
 			<span class="k">return</span> <span class="mi">8</span>
 	
-<div class="viewcode-block" id="ItemObjects.execute"><a class="viewcode-back" href="../../t_doc/entities.html#pyVig.entities.ItemObjects.execute">[docs]</a>	<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dev</span><span class="p">):</span>
+<div class="viewcode-block" id="ItemObjects.execute"><a class="viewcode-back" href="../../pyVig.html#pyVig.entities.ItemObjects.execute">[docs]</a>	<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dev</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Executor</span>
 <span class="sd">		Paralllel processing disabled currently due to visio not support</span>
 
@@ -181,34 +169,53 @@
 <span class="sd">		Returns:</span>
 <span class="sd">			None: None</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="c1">#</span>
 		<span class="c1"># filter to only drop connected devices.</span>
 		<span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filterOnCables</span> 
 			<span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span>
-				<span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_a</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> 
-				<span class="ow">or</span> <span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_b</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">())</span> <span class="p">)</span> <span class="p">):</span>
+					<span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_a</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> 
+				<span class="ow">or</span> 	<span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_b</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">())</span> 
+				<span class="p">)</span> 
+			<span class="p">):</span>
 			<span class="k">return</span> <span class="kc">None</span>
 
 		<span class="c1"># ---- get column values from row of a device info --- #</span>
 		<span class="n">x</span><span class="o">=</span><span class="n">get_col_value</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 		<span class="n">y</span><span class="o">=</span><span class="n">get_col_value</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-		<span class="n">item</span><span class="o">=</span><span class="n">get_col_value</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">dev_type</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-		<span class="n">stencil</span><span class="o">=</span><span class="n">get_col_value</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">stencil</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+		<span class="c1"># # ---------- ADD FORMATTING AND OPTIONALS ----------------------- #</span>
+		<span class="nb">format</span> <span class="o">=</span> <span class="p">{}</span>
+
+		<span class="c1"># OPTIONAL</span>
+		<span class="n">optional_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">optional_columns</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">optional_columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="n">_cc</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="nb">format</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">_cc</span> <span class="k">if</span> <span class="n">_cc</span> <span class="k">else</span> <span class="n">v</span>
+			<span class="k">continue</span>
+
+
+		<span class="c1"># FORMATTING</span>
+		<span class="n">format_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">format_columns</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">format_columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="n">_cc</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="nb">format</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">_cc</span> <span class="k">if</span> <span class="n">_cc</span> <span class="k">else</span> <span class="n">v</span>
+			<span class="k">continue</span>
+
 
 		<span class="c1"># // adhoc, add corordinates for future calculation purpose.</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">y_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-		<span class="k">if</span> <span class="ow">not</span> <span class="n">stencil</span><span class="p">:</span> <span class="n">stencil</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices_data</span><span class="o">.</span><span class="n">default_stencil</span>
-		<span class="k">if</span> <span class="ow">not</span> <span class="n">stencil</span><span class="p">:</span>
-			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;no stencil or no default-stencil found for </span><span class="si">{</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+		<span class="c1"># if not format[&#39;stencil&#39;]: stencil = self.devices_data.default_stencil</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">format</span><span class="p">[</span><span class="s1">&#39;stencil&#39;</span><span class="p">]:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning:</span><span class="se">\t\t</span><span class="s2">no stencil or no default-stencil found for </span><span class="si">{</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
 
 		<span class="c1"># -- start drops ---</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span><span class="p">]</span> <span class="o">=</span> <span class="n">device</span><span class="p">(</span>						<span class="c1"># drop device</span>
-			<span class="n">stencil</span><span class="o">=</span><span class="n">stencil</span><span class="p">,</span> 
 			<span class="n">visObj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">visObj</span><span class="p">,</span> 
-			<span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">,</span>
 			<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
 			<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+			<span class="o">**</span><span class="nb">format</span>
 			<span class="p">)</span>
 		<span class="c1"># -- add description ---</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="n">dev</span><span class="o">.</span><span class="n">hostname</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>	<span class="c1"># description of device</span></div></div>
@@ -217,9 +224,10 @@
 <span class="c1"># -----------------------------------------------------------------------------------</span>
 <span class="c1">#  Visio Connectors</span>
 <span class="c1"># -----------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="Connectors"><a class="viewcode-back" href="../../t_doc/entities.html#pyVig.entities.Connectors">[docs]</a><span class="k">class</span> <span class="nc">Connectors</span><span class="p">(</span><span class="n">Multi_Execution</span><span class="p">):</span>
+<div class="viewcode-block" id="Connectors"><a class="viewcode-back" href="../../pyVig.html#pyVig.entities.Connectors">[docs]</a><span class="k">class</span> <span class="nc">Connectors</span><span class="p">(</span><span class="n">Multi_Execution</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Execution of Cabling/Connector objects on visio</span>
 <span class="sd">	&quot;&quot;&quot;</span>		
+
 
 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cable_matrix_data</span><span class="p">,</span> <span class="n">devices</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">connectors</span> <span class="o">=</span> <span class="n">cable_matrix_data</span>
@@ -228,7 +236,7 @@
 		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors_list</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">multi_thread</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Connectors.execute"><a class="viewcode-back" href="../../t_doc/entities.html#pyVig.entities.Connectors.execute">[docs]</a>	<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">):</span>
+<div class="viewcode-block" id="Connectors.execute"><a class="viewcode-back" href="../../pyVig.html#pyVig.entities.Connectors.execute">[docs]</a>	<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Executor</span>
 <span class="sd">		Paralllel processing disabled currently due to visio not support</span>
 
@@ -239,25 +247,35 @@
 <span class="sd">			None: None</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="k">if</span> <span class="n">connector</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_a</span><span class="p">]</span> <span class="ow">and</span> <span class="n">connector</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_b</span><span class="p">]:</span>
-			<span class="n">aport_y</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_a_port</span> <span class="o">+</span> <span class="s2">&quot;_y&quot;</span><span class="p">)</span>
-			<span class="n">conn_type_x</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">conn_type</span> <span class="o">+</span> <span class="s2">&quot;_x&quot;</span><span class="p">)</span>
-			<span class="n">color_x</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">color</span> <span class="o">+</span> <span class="s2">&quot;_x&quot;</span><span class="p">)</span>
-			<span class="n">weight_x</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">weight</span> <span class="o">+</span> <span class="s2">&quot;_x&quot;</span><span class="p">)</span>
-			<span class="n">pattern_x</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">pattern</span> <span class="o">+</span> <span class="s2">&quot;_x&quot;</span><span class="p">)</span>
-			<span class="n">angle</span> <span class="o">=</span> <span class="n">connector</span><span class="o">.</span><span class="n">angle_straight_connector</span> <span class="k">if</span> <span class="n">conn_type_x</span> <span class="o">==</span> <span class="s2">&quot;straight&quot;</span> <span class="k">else</span> <span class="n">connector</span><span class="o">.</span><span class="n">angle_angled_connector</span>
+			<span class="c1"># angle = connector.angle_straight_connector if conn_type_x == &quot;straight&quot; else connector.angle_angled_connector</span>
+			<span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_optional_columns_value</span><span class="p">(</span><span class="n">connector</span><span class="p">)</span>
 
-			<span class="c1"># connect the two devices	</span>
+			<span class="c1"># # connect the two devices	</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="n">connector</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_a</span><span class="p">]]</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
 				<span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="n">connector</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">dev_b</span><span class="p">]],</span>
-					<span class="n">connector_type</span><span class="o">=</span><span class="n">conn_type_x</span><span class="p">,</span> 
-					<span class="n">angle</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span> 
-					<span class="n">aport</span><span class="o">=</span><span class="n">aport_y</span><span class="p">,</span>
-					<span class="n">color</span><span class="o">=</span><span class="n">color_x</span><span class="p">,</span>
-					<span class="n">weight</span><span class="o">=</span><span class="n">weight_x</span><span class="p">,</span>
-					<span class="n">pattern</span><span class="o">=</span><span class="n">pattern_x</span><span class="p">,</span>
-			<span class="p">)</span></div></div>
+					<span class="c1"># connector_type=conn_type_x, </span>
+					<span class="o">**</span><span class="n">kwargs</span>
+			<span class="p">)</span></div>
 
-<div class="viewcode-block" id="get_col_value"><a class="viewcode-back" href="../../t_doc/entities.html#pyVig.entities.get_col_value">[docs]</a><span class="k">def</span> <span class="nf">get_col_value</span><span class="p">(</span><span class="n">row_info</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Connectors.get_optional_columns_value"><a class="viewcode-back" href="../../pyVig.html#pyVig.entities.Connectors.get_optional_columns_value">[docs]</a>	<span class="k">def</span> <span class="nf">get_optional_columns_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;get the value of all optional columns for given row</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			connector (dict): a single row information from a DataFrame</span>
+
+<span class="sd">		Returns:</span>
+<span class="sd">			dict: dictionary with found values else default</span>
+<span class="sd">		&quot;&quot;&quot;</span>		
+		<span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">optional_columns</span><span class="p">:</span>
+				<span class="n">uv</span> <span class="o">=</span> <span class="n">get_col_value</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="s2">&quot;_x&quot;</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+				<span class="n">dic</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">uv</span> <span class="k">if</span> <span class="n">uv</span> <span class="k">else</span> <span class="n">v</span>
+		<span class="k">return</span> <span class="n">dic</span></div></div>
+				
+
+
+<div class="viewcode-block" id="get_col_value"><a class="viewcode-back" href="../../pyVig.html#pyVig.entities.get_col_value">[docs]</a><span class="k">def</span> <span class="nf">get_col_value</span><span class="p">(</span><span class="n">row_info</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">isMerged</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;get the value of provided column from given row details</span>
 
 <span class="sd">	Args:</span>
@@ -271,10 +289,10 @@
 	<span class="k">try</span><span class="p">:</span>
 		<span class="k">return</span> <span class="n">row_info</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
 	<span class="k">except</span><span class="p">:</span>
-		<span class="k">if</span> <span class="n">isMerged</span><span class="p">:</span>
-			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;column information incorrect, check column existance `</span><span class="si">{</span><span class="n">column</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
-		<span class="k">else</span><span class="p">:</span>
-			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;column information incorrect, check column existance `</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
+		<span class="c1"># if isMerged:</span>
+		<span class="c1"># 	print(f&quot;column information incorrect, check column existance `{column[:-2]}`&quot;)</span>
+		<span class="c1"># else:</span>
+		<span class="c1"># 	print(f&quot;column information incorrect, check column existance `{column}`&quot;)</span>
 		<span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
 
 
@@ -288,7 +306,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ALIASGAR.</p>
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

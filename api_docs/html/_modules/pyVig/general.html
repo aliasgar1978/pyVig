@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyVig.general &mdash; pyVig 0.0.10 documentation</title>
+  <title>pyVig.general &mdash; pyVig 0.0.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,19 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Documentation</a></li>
 </ul>
 
         </div>
@@ -87,10 +75,22 @@
 
 <span class="kn">import</span> <span class="nn">nettoolkit</span> <span class="k">as</span> <span class="nn">nt</span>
 
-<span class="c1"># --------------------------------------------- </span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------</span>
+<span class="c1"># Some of static fixed / default values</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------</span>
+<span class="n">DEFAULT_CONNECTOR_TYPE</span> <span class="o">=</span> <span class="s1">&#39;straight&#39;</span>  <span class="c1">## other options = &#39;curved&#39;, &#39;angled&#39;</span>
+<span class="n">DEFAULT_LINE_COLOR</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+<span class="n">DEFAULT_LINE_WT</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">DEFAULT_LINE_PATTERN</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">DEFAULT_STENCIL</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">DEFAULT_X_COLUMN</span> <span class="o">=</span> <span class="s1">&#39;x-axis&#39;</span>
+<span class="n">DEFAULT_Y_COLUMN</span> <span class="o">=</span> <span class="s1">&#39;y-axis&#39;</span>
+<span class="n">DEFAULT_DEVICES_TAB</span> <span class="o">=</span> <span class="s1">&#39;Devices&#39;</span>
+<span class="n">DEFAULT_CABLINGS_TAB</span> <span class="o">=</span> <span class="s1">&#39;Cablings&#39;</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------</span>
 
 
-<div class="viewcode-block" id="get_physical_if_up"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.get_physical_if_up">[docs]</a><span class="k">def</span> <span class="nf">get_physical_if_up</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="viewcode-block" id="get_physical_if_up"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.get_physical_if_up">[docs]</a><span class="k">def</span> <span class="nf">get_physical_if_up</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;filter the DataFrame rows for active/enabled physical interfaces </span>
 
 <span class="sd">	Args:</span>
@@ -104,7 +104,7 @@
 	<span class="k">except</span><span class="p">:</span>
 		<span class="k">return</span> <span class="n">df</span></div>
 
-<div class="viewcode-block" id="get_physical_if_relevants"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.get_physical_if_relevants">[docs]</a><span class="k">def</span> <span class="nf">get_physical_if_relevants</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">relevant_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">,</span> <span class="s1">&#39;nbr_dev_type&#39;</span><span class="p">,</span> <span class="s1">&#39;int_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;nbr_hostname&#39;</span><span class="p">,</span>   <span class="s1">&#39;nbr_interface&#39;</span><span class="p">,</span> <span class="s1">&#39;vlan_members&#39;</span><span class="p">,]):</span>
+<div class="viewcode-block" id="get_physical_if_relevants"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.get_physical_if_relevants">[docs]</a><span class="k">def</span> <span class="nf">get_physical_if_relevants</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">relevant_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">,</span> <span class="s1">&#39;nbr_dev_type&#39;</span><span class="p">,</span> <span class="s1">&#39;int_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;nbr_hostname&#39;</span><span class="p">,</span>   <span class="s1">&#39;nbr_interface&#39;</span><span class="p">,</span> <span class="s1">&#39;vlan_members&#39;</span><span class="p">,]):</span>
 	<span class="sd">&quot;&quot;&quot;filters the DataFrame columns for relevant columns</span>
 
 <span class="sd">	Args:</span>
@@ -121,7 +121,7 @@
 
 <span class="c1"># --------------------------------------------- </span>
 
-<div class="viewcode-block" id="get_vlan_if_up"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.get_vlan_if_up">[docs]</a><span class="k">def</span> <span class="nf">get_vlan_if_up</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="viewcode-block" id="get_vlan_if_up"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.get_vlan_if_up">[docs]</a><span class="k">def</span> <span class="nf">get_vlan_if_up</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;filter the DataFrame rows for active/enabled vlan/irb interfaces </span>
 
 <span class="sd">	Args:</span>
@@ -135,7 +135,7 @@
 	<span class="k">except</span><span class="p">:</span>
 		<span class="k">return</span> <span class="n">df</span></div>
 
-<div class="viewcode-block" id="get_vlan_if_relevants"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.get_vlan_if_relevants">[docs]</a><span class="k">def</span> <span class="nf">get_vlan_if_relevants</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">relevant_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;int_number&#39;</span><span class="p">,</span> <span class="s1">&#39;interface&#39;</span><span class="p">,</span> <span class="s1">&#39;intvrf&#39;</span><span class="p">,</span> <span class="s1">&#39;subnet&#39;</span> <span class="p">]):</span>
+<div class="viewcode-block" id="get_vlan_if_relevants"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.get_vlan_if_relevants">[docs]</a><span class="k">def</span> <span class="nf">get_vlan_if_relevants</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">relevant_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;int_number&#39;</span><span class="p">,</span> <span class="s1">&#39;interface&#39;</span><span class="p">,</span> <span class="s1">&#39;intvrf&#39;</span><span class="p">,</span> <span class="s1">&#39;subnet&#39;</span> <span class="p">]):</span>
 	<span class="sd">&quot;&quot;&quot;filters the DataFrame columns for relevant columns</span>
 
 <span class="sd">	Args:</span>
@@ -153,7 +153,7 @@
 <span class="c1"># --------------------------------------------- </span>
 
 
-<div class="viewcode-block" id="get_patterns"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.get_patterns">[docs]</a><span class="k">def</span> <span class="nf">get_patterns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">line_pattern_style_separation_on</span><span class="p">,</span> <span class="n">line_pattern_style_shift_no</span><span class="p">):</span>
+<div class="viewcode-block" id="get_patterns"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.get_patterns">[docs]</a><span class="k">def</span> <span class="nf">get_patterns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">line_pattern_style_separation_on</span><span class="p">,</span> <span class="n">line_pattern_style_shift_no</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;get the line pattern numbers for the unique line styles require based on `line_pattern_style_separation_on`</span>
 
 <span class="sd">	Args:</span>
@@ -174,7 +174,7 @@
 			<span class="k">break</span>
 	<span class="k">return</span> <span class="n">media_pattern</span></div>
 
-<div class="viewcode-block" id="update_pattern"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.update_pattern">[docs]</a><span class="k">def</span> <span class="nf">update_pattern</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">line_pattern_style_separation_on</span><span class="p">):</span>
+<div class="viewcode-block" id="update_pattern"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.update_pattern">[docs]</a><span class="k">def</span> <span class="nf">update_pattern</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">line_pattern_style_separation_on</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;update the line pattern column for the unique line styles require based on column `line_pattern_style_separation_on`</span>
 
 <span class="sd">	Args:</span>
@@ -191,7 +191,7 @@
 
 <span class="c1"># --------------------------------------------- </span>
 
-<div class="viewcode-block" id="series_item_0_value"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.series_item_0_value">[docs]</a><span class="k">def</span> <span class="nf">series_item_0_value</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="viewcode-block" id="series_item_0_value"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.series_item_0_value">[docs]</a><span class="k">def</span> <span class="nf">series_item_0_value</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;returns the first item value of a series</span>
 
 <span class="sd">	Args:</span>
@@ -203,7 +203,7 @@
 	<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
 		<span class="k">return</span> <span class="n">x</span></div>
 
-<div class="viewcode-block" id="get_vlans_info"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.get_vlans_info">[docs]</a><span class="k">def</span> <span class="nf">get_vlans_info</span><span class="p">(</span><span class="n">vlan_members</span><span class="p">,</span> <span class="n">vlan_df</span><span class="p">):</span>
+<div class="viewcode-block" id="get_vlans_info"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.get_vlans_info">[docs]</a><span class="k">def</span> <span class="nf">get_vlans_info</span><span class="p">(</span><span class="n">vlan_members</span><span class="p">,</span> <span class="n">vlan_df</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;get the vlan-vrf-subnet information string for provided vlan number(s) from vlan DataFrame</span>
 
 <span class="sd">	Args:</span>
@@ -227,7 +227,7 @@
 		<span class="n">s</span> <span class="o">+=</span> <span class="n">series_item_0_value</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;subnet&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 	<span class="k">return</span> <span class="n">s</span></div>
 
-<div class="viewcode-block" id="update_vlans_info"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.update_vlans_info">[docs]</a><span class="k">def</span> <span class="nf">update_vlans_info</span><span class="p">(</span><span class="n">int_df</span><span class="p">,</span> <span class="n">vlan_df</span><span class="p">):</span>
+<div class="viewcode-block" id="update_vlans_info"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.update_vlans_info">[docs]</a><span class="k">def</span> <span class="nf">update_vlans_info</span><span class="p">(</span><span class="n">int_df</span><span class="p">,</span> <span class="n">vlan_df</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;add `vlan_info` [column] to interface DataFrame using help of vlan DataFrame</span>
 
 <span class="sd">	Args:</span>
@@ -243,7 +243,7 @@
 
 <span class="c1"># --------------------------------------------- </span>
 
-<div class="viewcode-block" id="drop_empty"><a class="viewcode-back" href="../../t_doc/general.html#pyVig.general.drop_empty">[docs]</a><span class="k">def</span> <span class="nf">drop_empty</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+<div class="viewcode-block" id="drop_empty"><a class="viewcode-back" href="../../pyVig.html#pyVig.general.drop_empty">[docs]</a><span class="k">def</span> <span class="nf">drop_empty</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;remove emptry rows found for given column</span>
 
 <span class="sd">	Args:</span>
@@ -263,7 +263,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ALIASGAR.</p>
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyVig.visio &mdash; pyVig 0.0.10 documentation</title>
+  <title>pyVig.visio &mdash; pyVig 0.0.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,19 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Documentation</a></li>
 </ul>
 
         </div>
@@ -97,7 +85,7 @@
 <span class="c1"># ------------------------------------------------------------------------------</span>
 <span class="c1">#  VisioObject class</span>
 <span class="c1"># ------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="VisioObject"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject">[docs]</a><span class="k">class</span> <span class="nc">VisioObject</span><span class="p">():</span>
+<div class="viewcode-block" id="VisioObject"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject">[docs]</a><span class="k">class</span> <span class="nc">VisioObject</span><span class="p">():</span>
 	<span class="sd">&quot;&quot;&quot;Creates a Visio Object. </span>
 
 <span class="sd">	Returns:</span>
@@ -142,8 +130,12 @@
 
 	<span class="c1"># context end</span>
 	<span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">_saveVisio</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputFile</span><span class="p">)</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">_closeVisio</span><span class="p">()</span>
+		<span class="n">save_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saveVisio</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputFile</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">save_success</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_closeVisio</span><span class="p">()</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">Visio file save did not happen, please save and close visio manually&quot;</span><span class="p">)</span>
+		<span class="c1">#</span>
 		<span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 			<span class="n">traceback</span><span class="o">.</span><span class="n">print_exception</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span>
 
@@ -157,47 +149,76 @@
 
 	<span class="c1"># save visio output file</span>
 	<span class="k">def</span> <span class="nf">_saveVisio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
-		<span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">SaveAs</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-		<span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+		<span class="k">try</span><span class="p">:</span> 
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">attempting to save file as </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">..&quot;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">SaveAs</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">True</span>
+		<span class="k">except</span><span class="p">:</span> 
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning:</span><span class="se">\t\t</span><span class="s2">Files auto save as </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> not working, please save file manually&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="kc">False</span>
 
 	<span class="c1"># close visio application</span>
 	<span class="k">def</span> <span class="nf">_closeVisio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="k">try</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">attempting to close/quite visio &quot;</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">visio</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>
 		<span class="k">except</span><span class="p">:</span>
-			<span class="k">pass</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning:</span><span class="se">\t\t</span><span class="s2">Visio application failed, please close manually&quot;</span><span class="p">)</span>
 
 	<span class="c1"># Internal use only: starts a new Visio Application</span>
 	<span class="nd">@property</span>
 	<span class="k">def</span> <span class="nf">_startVisio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="k">try</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">starting visio application..&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">visio</span> <span class="o">=</span> <span class="n">win32com</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">Dispatch</span><span class="p">(</span><span class="s2">&quot;Visio.Application&quot;</span><span class="p">)</span>
-		<span class="k">except</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;success..&quot;</span><span class="p">,)</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;fail..&quot;</span><span class="p">,)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Critical:</span><span class="se">\t</span><span class="s2">Visio application load failed, retry after clearing temp, verify macros all allowed with vBA access, verify visio application installation..&quot;</span><span class="p">,)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Debug:</span><span class="se">\t\t</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">visio</span> <span class="o">=</span> <span class="kc">None</span>
 
 	<span class="c1"># Internal use only: Open a blank visio page inside opened Visio Application</span>
 	<span class="nd">@property</span>
 	<span class="k">def</span> <span class="nf">_openBlankVisioDoc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visio</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">adding a new blank page on visio application..&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visio</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;success..&quot;</span><span class="p">,)</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;fail..&quot;</span><span class="p">,)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Critical:</span><span class="se">\t</span><span class="s2">adding a new blank page on visio application failed..&quot;</span><span class="p">,)</span>
 
-<div class="viewcode-block" id="VisioObject.insert_new_page"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject.insert_new_page">[docs]</a>	<span class="k">def</span> <span class="nf">insert_new_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="VisioObject.insert_new_page"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject.insert_new_page">[docs]</a>	<span class="k">def</span> <span class="nf">insert_new_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">page_number</span> <span class="o">+=</span> <span class="mi">1</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">Pages</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">Pages</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">page_number</span><span class="p">)</span>
-		<span class="k">if</span> <span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">name</span></div>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">appending a new page on visio application..&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">Pages</span><span class="o">.</span><span class="n">Add</span><span class="p">()</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">Pages</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">page_number</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">name</span><span class="p">:</span> 
+				<span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">name</span>
+				<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;renamed to </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">..&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;success..&quot;</span><span class="p">,)</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;fail..&quot;</span><span class="p">,)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Critical:</span><span class="se">\t</span><span class="s2">appending a new page on visio application failed..&quot;</span><span class="p">,)</span></div>
 
 	<span class="c1"># Return item from Stencil</span>
 	<span class="k">def</span> <span class="nf">_selectItemfromStencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">stencil</span><span class="p">):</span>
-		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stn</span><span class="p">[</span><span class="n">stencil</span><span class="p">]</span><span class="o">.</span><span class="n">Masters</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stn</span><span class="p">[</span><span class="n">stencil</span><span class="p">]</span><span class="o">.</span><span class="n">Masters</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error:</span><span class="se">\t\t</span><span class="s2">item `</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">` not found in stencil `</span><span class="si">{</span><span class="n">stencil</span><span class="si">}</span><span class="s2">`.., You may see a text box instead&quot;</span><span class="p">)</span>
 
 	<span class="c1"># Drops &#39;item&#39; on visio page at given position index ( posX and posY )</span>
 	<span class="k">def</span> <span class="nf">_dropItemtoPage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">posX</span><span class="p">,</span> <span class="n">posY</span><span class="p">):</span>
 		<span class="k">try</span><span class="p">:</span> 
 			<span class="n">itemProp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">Drop</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">posY</span><span class="p">,</span> <span class="n">posX</span><span class="p">)</span>
 			<span class="k">return</span> <span class="n">itemProp</span>
-		<span class="k">except</span><span class="p">:</span> 
-			<span class="k">pass</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error:</span><span class="se">\t\t</span><span class="s2">Item Drop failed for </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">, verify stencil, item icon available in stencil&quot;</span><span class="p">,)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Debug:</span><span class="se">\t\t</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,)</span>
 
 	<span class="nd">@staticmethod</span>
 	<span class="k">def</span> <span class="nf">_border</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">borderLineColor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">borderLinePattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -255,17 +276,20 @@
 
 	<span class="nd">@staticmethod</span>
 	<span class="k">def</span> <span class="nf">_resize</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-		<span class="k">if</span> <span class="n">width</span><span class="p">:</span>
-			<span class="n">item</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowXFormOut</span><span class="p">,</span> <span class="n">visXFormWidth</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2"> in&quot;</span>
-		<span class="k">if</span> <span class="n">height</span><span class="p">:</span>
-			<span class="n">item</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowXFormOut</span><span class="p">,</span> <span class="n">visXFormHeight</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2"> in&quot;</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">width</span><span class="p">:</span>
+				<span class="n">item</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowXFormOut</span><span class="p">,</span> <span class="n">visXFormWidth</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2"> in&quot;</span>
+			<span class="k">if</span> <span class="n">height</span><span class="p">:</span>
+				<span class="n">item</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowXFormOut</span><span class="p">,</span> <span class="n">visXFormHeight</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2"> in&quot;</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error:</span><span class="se">\t\t</span><span class="s2">Resizing of item </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2"> not allowed for gaurded stencil items. Match text box size manually&quot;</span><span class="p">)</span>
 
 	<span class="c1"># --------------------------------------------------------------------------</span>
 	<span class="c1">#  External</span>
 	<span class="c1"># --------------------------------------------------------------------------</span>
 
 	<span class="c1"># Internal + External : Open mentioned stencil in opened visio application. </span>
-<div class="viewcode-block" id="VisioObject.openStencil"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject.openStencil">[docs]</a>	<span class="k">def</span> <span class="nf">openStencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">):</span>
+<div class="viewcode-block" id="VisioObject.openStencil"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject.openStencil">[docs]</a>	<span class="k">def</span> <span class="nf">openStencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;open a stencil in visio document</span>
 
 <span class="sd">		Args:</span>
@@ -276,11 +300,16 @@
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="n">stencil</span> <span class="o">=</span> <span class="n">stencil</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
 		<span class="k">try</span><span class="p">:</span>
-			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">visio</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">stencil</span><span class="p">)</span>
-		<span class="k">except</span><span class="p">:</span>
-			<span class="k">pass</span></div>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information:</span><span class="se">\t</span><span class="s2">attempting to open visio stencil </span><span class="si">{</span><span class="n">stencil</span><span class="si">}</span><span class="s2">..&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visio</span><span class="o">.</span><span class="n">Documents</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">stencil</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;success..&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">s</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fail..&quot;</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error:</span><span class="se">\t\t</span><span class="s2">Unable to open visio stencil </span><span class="si">{</span><span class="n">stencil</span><span class="si">}</span><span class="s2">, verify stencil existance&quot;</span><span class="p">,)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Debug:</span><span class="se">\t\t</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,)</span></div>
 
-<div class="viewcode-block" id="VisioObject.selectNdrop"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject.selectNdrop">[docs]</a>	<span class="k">def</span> <span class="nf">selectNdrop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">posX</span><span class="p">,</span> <span class="n">posY</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">):</span>
+<div class="viewcode-block" id="VisioObject.selectNdrop"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject.selectNdrop">[docs]</a>	<span class="k">def</span> <span class="nf">selectNdrop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">posX</span><span class="p">,</span> <span class="n">posY</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Selects item `item` from provided stencil `stencil` for selected visio object.</span>
 <span class="sd">		And drops that item on visio Object at given position index ( posX and posY )</span>
 <span class="sd">		usage: icon = visObj.selectNdrop(stencil,item,posX,posY)</span>
@@ -295,15 +324,24 @@
 <span class="sd">		Returns:</span>
 <span class="sd">			iconObject: dropped icon object</span>
 <span class="sd">		&quot;&quot;&quot;</span>
-		<span class="n">ICON_HEIGHT</span> <span class="o">=</span> <span class="mi">1</span>
-		<span class="n">ICON_WEIGHT</span> <span class="o">=</span> <span class="mf">2.5</span>
+		<span class="c1">#</span>
+		<span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="s1">&#39;iconWidth&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+			<span class="s1">&#39;iconHeight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+			<span class="c1"># add more as and when need.</span>
+		<span class="p">}</span>
+		<span class="c1">#</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">format</span> <span class="p">:</span>
+				<span class="nb">format</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+		<span class="c1">#</span>
 		<span class="n">itm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectItemfromStencil</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">stencil</span><span class="p">)</span>
 		<span class="k">if</span> <span class="n">itm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 			<span class="n">icon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dropItemtoPage</span><span class="p">(</span><span class="n">itm</span><span class="p">,</span> <span class="n">posX</span><span class="p">,</span> <span class="n">posY</span><span class="p">)</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">icon</span><span class="o">=</span><span class="n">icon</span><span class="p">,</span> <span class="n">iconHeight</span><span class="o">=</span><span class="n">ICON_HEIGHT</span><span class="p">,</span> <span class="n">iconWidth</span><span class="o">=</span><span class="n">ICON_WEIGHT</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">icon</span><span class="o">=</span><span class="n">icon</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">)</span>
 			<span class="k">return</span> <span class="n">icon</span></div>
 
-<div class="viewcode-block" id="VisioObject.shapeDrow"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject.shapeDrow">[docs]</a>	<span class="k">def</span> <span class="nf">shapeDrow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">rx</span><span class="p">,</span> <span class="n">rr</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">):</span>
+<div class="viewcode-block" id="VisioObject.shapeDrow"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject.shapeDrow">[docs]</a>	<span class="k">def</span> <span class="nf">shapeDrow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">rx</span><span class="p">,</span> <span class="n">rr</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Drops provided shape to visio page.</span>
 <span class="sd">		Usage: shape = visObj.shapeDrow(shape, lx, lr, rx, rr, format)</span>
 <span class="sd">		format = shape formatting (see _format() for type of formats available)</span>
@@ -334,7 +372,7 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">icon</span><span class="o">=</span><span class="n">rect</span><span class="p">,</span> <span class="o">**</span><span class="nb">format</span><span class="p">)</span>
 			<span class="k">return</span> <span class="n">rect</span></div>
 
-<div class="viewcode-block" id="VisioObject.join"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject.join">[docs]</a>	<span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">,</span> <span class="n">shpObj1</span><span class="p">,</span> <span class="n">shpObj2</span><span class="p">):</span>
+<div class="viewcode-block" id="VisioObject.join"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject.join">[docs]</a>	<span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">,</span> <span class="n">shpObj1</span><span class="p">,</span> <span class="n">shpObj2</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;use Connector object to join two shapes (Device objects)</span>
 
 <span class="sd">		Args:</span>
@@ -356,7 +394,7 @@
 			<span class="n">connector</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowXForm1D</span><span class="p">,</span> <span class="n">vis1DEndY</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> in&quot;</span></div>
 
 
-<div class="viewcode-block" id="VisioObject.fit_to_draw"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.VisioObject.fit_to_draw">[docs]</a>	<span class="k">def</span> <span class="nf">fit_to_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+<div class="viewcode-block" id="VisioObject.fit_to_draw"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.VisioObject.fit_to_draw">[docs]</a>	<span class="k">def</span> <span class="nf">fit_to_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;resize visio page to fit the page to drawing.</span>
 
 <span class="sd">		Args:</span>
@@ -372,7 +410,7 @@
 <span class="c1"># ------------------------------------------------------------------------------</span>
 <span class="c1"># A Single Connector Class defining connector properties and methods.</span>
 <span class="c1"># ------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="Connector"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector">[docs]</a><span class="k">class</span> <span class="nc">Connector</span><span class="p">():</span>
+<div class="viewcode-block" id="Connector"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector">[docs]</a><span class="k">class</span> <span class="nc">Connector</span><span class="p">():</span>
 	<span class="sd">&#39;&#39;&#39;s1_s2_Connector = self.connector()</span>
 <span class="sd">	Drops a connector to visio page.</span>
 <span class="sd">	&#39;&#39;&#39;</span>
@@ -381,7 +419,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">visObj</span> <span class="o">=</span> <span class="n">visObj</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">connector_type</span> <span class="o">=</span> <span class="n">connector_type</span>
 
-<div class="viewcode-block" id="Connector.drop"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.drop">[docs]</a>	<span class="k">def</span> <span class="nf">drop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.drop"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.drop">[docs]</a>	<span class="k">def</span> <span class="nf">drop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;drops a connector to visio page.</span>
 
 <span class="sd">		Args:</span>
@@ -404,7 +442,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">item</span>
 		<span class="k">return</span> <span class="n">item</span></div>
 
-<div class="viewcode-block" id="Connector.add_a_port_info"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.add_a_port_info">[docs]</a>	<span class="k">def</span> <span class="nf">add_a_port_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aport_info</span><span class="p">,</span> <span class="n">at_angle</span><span class="p">,</span> <span class="n">connector_type</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.add_a_port_info"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.add_a_port_info">[docs]</a>	<span class="k">def</span> <span class="nf">add_a_port_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aport_info</span><span class="p">,</span> <span class="n">at_angle</span><span class="p">,</span> <span class="n">connector_type</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;add port information for (a-side interface) on connector</span>
 
 <span class="sd">		Args:</span>
@@ -418,7 +456,7 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">text_rotate</span><span class="p">(</span><span class="n">at_angle</span><span class="p">)</span>
 		<span class="k">if</span> <span class="n">indent</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_indent</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Connector.format_line"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.format_line">[docs]</a>	<span class="k">def</span> <span class="nf">format_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.format_line"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.format_line">[docs]</a>	<span class="k">def</span> <span class="nf">format_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;formatting of line</span>
 
 <span class="sd">		Args:</span>
@@ -440,7 +478,7 @@
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span>
 
-<div class="viewcode-block" id="Connector.text_rotate"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.text_rotate">[docs]</a>	<span class="k">def</span> <span class="nf">text_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.text_rotate"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.text_rotate">[docs]</a>	<span class="k">def</span> <span class="nf">text_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Rotation of text at given angle</span>
 
 <span class="sd">		Args:</span>
@@ -448,13 +486,13 @@
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowTextXForm</span><span class="p">,</span> <span class="n">visXFormAngle</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2"> deg&quot;</span></div>
 
-<div class="viewcode-block" id="Connector.text_indent"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.text_indent">[docs]</a>	<span class="k">def</span> <span class="nf">text_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.text_indent"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.text_indent">[docs]</a>	<span class="k">def</span> <span class="nf">text_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Indention to be done on oject</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="n">inch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">LengthIU</span> <span class="o">/</span> <span class="mi">2</span> 
 		<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionParagraph</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">visIndentLeft</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">inch</span><span class="si">}</span><span class="s2"> in&quot;</span></div>
 
-<div class="viewcode-block" id="Connector.description"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.description">[docs]</a>	<span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remarks</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.description"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.description">[docs]</a>	<span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remarks</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;description to be add to object.</span>
 
 <span class="sd">		Args:</span>
@@ -463,9 +501,9 @@
 		<span class="k">try</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">Characters</span><span class="o">.</span><span class="n">Text</span> <span class="o">=</span> <span class="n">remarks</span>
 		<span class="k">except</span><span class="p">:</span>
-			<span class="k">pass</span></div>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error:</span><span class="se">\t\t</span><span class="s2">Description set for object failed `</span><span class="si">{</span><span class="n">remarks</span><span class="si">}</span><span class="s2">` &quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Connector.line_color"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.line_color">[docs]</a>	<span class="k">def</span> <span class="nf">line_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.line_color"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.line_color">[docs]</a>	<span class="k">def</span> <span class="nf">line_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;color of a line object</span>
 
 <span class="sd">		Args:</span>
@@ -475,7 +513,8 @@
 
 <span class="sd">		Returns:</span>
 <span class="sd">			None: None</span>
-<span class="sd">		&quot;&quot;&quot;</span>		
+<span class="sd">		&quot;&quot;&quot;</span>	
+		<span class="n">clr</span> <span class="o">=</span> <span class="s2">&quot;THEMEGUARD(RGB(255,255,255))&quot;</span>
 		<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 			<span class="k">if</span> <span class="n">color</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;red&quot;</span><span class="p">:</span> <span class="n">clr</span> <span class="o">=</span> <span class="s2">&quot;THEMEGUARD(RGB(255,0,0))&quot;</span>
 			<span class="k">if</span> <span class="n">color</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;green&quot;</span><span class="p">:</span> <span class="n">clr</span> <span class="o">=</span> <span class="s2">&quot;THEMEGUARD(RGB(0,255,0))&quot;</span>
@@ -489,55 +528,64 @@
 			<span class="k">return</span> <span class="kc">None</span>
 		<span class="k">try</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowLine</span><span class="p">,</span> <span class="n">visLineColor</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="n">clr</span>
-		<span class="k">except</span><span class="p">:</span> <span class="k">pass</span></div>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="k">pass</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error:</span><span class="se">\t\t</span><span class="s2">Line color formatting failed, `</span><span class="si">{</span><span class="n">visRowLine</span><span class="si">}</span><span class="s2">`, for color `</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Connector.line_weight"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.line_weight">[docs]</a>	<span class="k">def</span> <span class="nf">line_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.line_weight"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.line_weight">[docs]</a>	<span class="k">def</span> <span class="nf">line_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;set weight/thickness of a line</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			weight (int, optional): thickness of line. Defaults to None=1.</span>
-<span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowLine</span><span class="p">,</span> <span class="n">visLineWeight</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> pt&quot;</span></div>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowLine</span><span class="p">,</span> <span class="n">visLineWeight</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> pt&quot;</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="k">pass</span></div>
 
-<div class="viewcode-block" id="Connector.line_pattern"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Connector.line_pattern">[docs]</a>	<span class="k">def</span> <span class="nf">line_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Connector.line_pattern"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Connector.line_pattern">[docs]</a>	<span class="k">def</span> <span class="nf">line_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;set line pattern</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			pattern (int, optional): pattern number. Defaults to solid line.</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowLine</span><span class="p">,</span> <span class="n">visLinePattern</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="n">pattern</span></div></div>
-
+		<span class="k">try</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">CellsSRC</span><span class="p">(</span><span class="n">visSectionObject</span><span class="p">,</span> <span class="n">visRowLine</span><span class="p">,</span> <span class="n">visLinePattern</span><span class="p">)</span><span class="o">.</span><span class="n">FormulaU</span> <span class="o">=</span> <span class="n">pattern</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="k">pass</span></div></div>
 
 <span class="c1"># ------------------------------------------------------------------------------</span>
 <span class="c1"># A Single Visio Item Class defining its properties and methods.</span>
 <span class="c1"># ------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="Device"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Device">[docs]</a><span class="k">class</span> <span class="nc">Device</span><span class="p">():</span>
+<div class="viewcode-block" id="Device"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Device">[docs]</a><span class="k">class</span> <span class="nc">Device</span><span class="p">():</span>
 	<span class="sd">&quot;&quot;&quot;A Device Object</span>
 <span class="sd">	&quot;&quot;&quot;</span>		
 
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visObj</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visObj</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Initialize Device Object</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			visObj (Visio): visio object</span>
-<span class="sd">			item (str): Device/Item name</span>
 <span class="sd">			x (int): x-coordinate</span>
 <span class="sd">			y (int): y-coordinate</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="bp">self</span><span class="o">.</span><span class="n">visObj</span> <span class="o">=</span> <span class="n">visObj</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="n">item</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
 
-<div class="viewcode-block" id="Device.drop_from"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Device.drop_from">[docs]</a>	<span class="k">def</span> <span class="nf">drop_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">):</span>
+<div class="viewcode-block" id="Device.drop_from"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Device.drop_from">[docs]</a>	<span class="k">def</span> <span class="nf">drop_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stencil</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;drop an item from stencil, if item not found in stencil then it will drop a rectangle.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			stencil (str): stencil name</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
-		<span class="k">if</span> <span class="n">stencil</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visObj</span><span class="o">.</span><span class="n">selectNdrop</span><span class="p">(</span><span class="n">stencil</span><span class="o">=</span><span class="n">stencil</span><span class="p">,</span> 
-				<span class="n">item</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="p">,</span> <span class="n">posX</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">posY</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">textSize</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">stencil</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;item&#39;</span><span class="p">]:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visObj</span><span class="o">.</span><span class="n">selectNdrop</span><span class="p">(</span>
+				<span class="n">posX</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">posY</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> 
+				<span class="n">textSize</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> 
+				<span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
+			<span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">is_rectangle</span> <span class="o">=</span> <span class="kc">False</span>
 		<span class="k">else</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visObj</span><span class="o">.</span><span class="n">shapeDrow</span><span class="p">(</span><span class="s1">&#39;rectangle&#39;</span><span class="p">,</span> 
@@ -554,7 +602,7 @@
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span>
 
-<div class="viewcode-block" id="Device.connect"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Device.connect">[docs]</a>	<span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<div class="viewcode-block" id="Device.connect"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Device.connect">[docs]</a>	<span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
 		<span class="n">remote</span><span class="p">,</span> 
 		<span class="n">connector_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
 		<span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
@@ -580,7 +628,7 @@
 		<span class="n">connector</span><span class="o">.</span><span class="n">add_a_port_info</span><span class="p">(</span><span class="n">aport</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">connector_type</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 		<span class="n">connector</span><span class="o">.</span><span class="n">format_line</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Device.description"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.Device.description">[docs]</a>	<span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remarks</span><span class="p">):</span>
+<div class="viewcode-block" id="Device.description"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.Device.description">[docs]</a>	<span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remarks</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;set description/remark of current object.</span>
 
 <span class="sd">		Args:</span>
@@ -603,21 +651,20 @@
 <span class="c1"># ------------------------------------------------------------------------------</span>
 <span class="c1"># Device class object return by dropping it to given position</span>
 <span class="c1"># ------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="device"><a class="viewcode-back" href="../../t_doc/visio.html#pyVig.visio.device">[docs]</a><span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="n">stencil</span><span class="p">,</span> <span class="n">visObj</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="viewcode-block" id="device"><a class="viewcode-back" href="../../pyVig.html#pyVig.visio.device">[docs]</a><span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="n">visObj</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Drop an item from stencil given to visio object at given x,y co-ordinates.</span>
 
 <span class="sd">	Args:</span>
-<span class="sd">		stencil (str): stencil name</span>
 <span class="sd">		visObj (Visio): Visio Object</span>
-<span class="sd">		item (str): name or number of device/item from stencil</span>
 <span class="sd">		x (int): x coordinate</span>
 <span class="sd">		y (int): y coordinate</span>
+<span class="sd">		**kwargs (kwargs): keyword arguments</span>
 
 <span class="sd">	Returns:</span>
 <span class="sd">		Device: Device Object</span>
 <span class="sd">	&quot;&quot;&quot;</span>	
-	<span class="n">D</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">visObj</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-	<span class="n">D</span><span class="o">.</span><span class="n">drop_from</span><span class="p">(</span><span class="n">stencil</span><span class="p">)</span>
+	<span class="n">D</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">visObj</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+	<span class="n">D</span><span class="o">.</span><span class="n">drop_from</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;stencil&#39;</span><span class="p">])</span>
 	<span class="k">return</span> <span class="n">D</span></div>
 
 
@@ -631,7 +678,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ALIASGAR.</p>
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

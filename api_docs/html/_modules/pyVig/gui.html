@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyVig.gui &mdash; pyVig 0.0.10 documentation</title>
+  <title>pyVig.gui &mdash; pyVig 0.0.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,19 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/cablings.html">1. cablings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/common.html">2. common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/database.html">3. database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/devices.html">4. devices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/entities.html">5. entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/general.html">6. general</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/gui.html">7. gui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/maths.html">8. maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/oper.html">9. oper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/pyvig.html">10. pyVig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/static.html">11. static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/stencils.html">12. stencils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../t_doc/visio.html">13. visio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API Documentation</a></li>
 </ul>
 
         </div>
@@ -81,7 +69,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pyVig.gui</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;pyVig Form Production</span>
+<span></span><span class="sd">&quot;&quot;&quot;pyVig GUI Form Production</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
@@ -92,58 +80,51 @@
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="n">declaration</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2"> ~~~~ IMPORTANT INFORMATION ~~~~</span>
-<span class="s2"> This program was tested with MS-Visio Professional 2013.</span>
-<span class="s2"> It may or may not work depending on your visio version.</span>
-<span class="s2"> File save feature is not working in this visio version.</span>
-<span class="s2"> hence it is disabled. Save the file manually.</span>
+<span class="s2"> This program was tested with MS-Visio Professional 2013, 2016.</span>
+<span class="s2"> It may or may not work depending on other older visio version.</span>
+<span class="s2"> File save feature is not working in visio version.</span>
+<span class="s2"> Remember to save the file manually.</span>
 
 <span class="s2"> Macros and vBA scripting requires to be enabled in visio</span>
 <span class="s2"> in order to access the visio components.</span>
 <span class="s2"> select &#39;Enable all macros&#39; and, check &#39;Trust access to vBA&#39;</span>
 <span class="s2"> from trust center setting of MS-visio.</span>
 
-
 <span class="s2"> Please reachout to me, @ aholo2000@gmail.com for any Qs.</span>
-<span class="s2"> Owner of code: [Aliasgar Lokhandwala]</span>
+<span class="s2"> Owned and mainained by: [Aliasgar Lokhandwala]</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1"># Class to initiate UserForm</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="UserForm"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm">[docs]</a><span class="k">class</span> <span class="nc">UserForm</span><span class="p">():</span>
+<div class="viewcode-block" id="UserForm"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm">[docs]</a><span class="k">class</span> <span class="nc">UserForm</span><span class="p">():</span>
 	<span class="sd">&#39;&#39;&#39;Inititates a UserForm asking user inputs.	&#39;&#39;&#39;</span>
-	<span class="n">version</span>  <span class="o">=</span> <span class="s1">&#39;Visio Generator : gui ver: 0.0.8&#39;</span>
+	<span class="n">version</span>  <span class="o">=</span> <span class="s1">&#39;Visio Generator : gui ver: 0.0.11&#39;</span>
 	<span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;Visio Generator&#39;</span>
 
 	<span class="c1"># Object Initializer</span>
 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">boot</span> <span class="o">=</span> <span class="kc">False</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">dic</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="c1"># mandatories</span>
 			<span class="s1">&#39;stencil_folder&#39;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-			<span class="c1"># -- database variables --</span>
 			<span class="s1">&#39;data_file&#39;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-			<span class="s1">&#39;devices_sheet_name&#39;</span><span class="p">:</span><span class="s1">&#39;Devices&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;x-coordinates_col&#39;</span><span class="p">:</span> <span class="s1">&#39;x-axis&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;y-coordinates_col&#39;</span><span class="p">:</span> <span class="s1">&#39;y-axis&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;stencils_col&#39;</span><span class="p">:</span> <span class="s1">&#39;stencils&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;device_type_col&#39;</span><span class="p">:</span> <span class="s1">&#39;device_type&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;default_stencil&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>	<span class="c1"># Default STencil</span>
-			<span class="s1">&#39;cabling_sheet_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Cablings&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;a_device_col&#39;</span><span class="p">:</span> <span class="s1">&#39;a_device&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;b_device_col&#39;</span><span class="p">:</span> <span class="s1">&#39;b_device&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;a_device_port_col&#39;</span><span class="p">:</span> <span class="s1">&#39;a_device_port&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;connector_type_col&#39;</span><span class="p">:</span> <span class="s1">&#39;connector_type&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;color_col&#39;</span><span class="p">:</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;weight_col&#39;</span><span class="p">:</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span>
-			<span class="s1">&#39;pattern_col&#39;</span><span class="p">:</span> <span class="s1">&#39;pattern&#39;</span><span class="p">,</span>
+
+			<span class="c1"># optionals</span>
+			<span class="s1">&#39;default_stencil&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;op_file&#39;</span><span class="p">:</span> <span class="s1">&#39;output.vsdx&#39;</span><span class="p">,</span>
+
+			<span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;x-axis&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;y-axis&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;dev_a&#39;</span><span class="p">:</span> <span class="s1">&#39;a_device&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;dev_b&#39;</span><span class="p">:</span> <span class="s1">&#39;b_device&#39;</span><span class="p">,</span>
 			<span class="c1">#</span>
-			<span class="s1">&#39;op_file&#39;</span><span class="p">:</span> <span class="s1">&#39;abcd.vsdx&#39;</span><span class="p">,</span>				<span class="c1"># optional</span>
-			<span class="s1">&#39;cols_to_merge&#39;</span><span class="p">:</span> <span class="p">[],</span>			<span class="c1"># optional</span>
-			<span class="s1">&#39;is_sheet_filter&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-			<span class="s1">&#39;sheet_filters&#39;</span><span class="p">:{},</span>				<span class="c1"># optional</span>
-			<span class="s1">&#39;filter_on_include_col&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>	<span class="c1"># optional</span>
-			<span class="s1">&#39;filter_on_cable&#39;</span><span class="p">:</span> <span class="kc">True</span>			<span class="c1"># optional</span>
+			<span class="s1">&#39;cols_to_merge&#39;</span><span class="p">:</span> <span class="p">[],</span>
+			<span class="s1">&#39;is_sheet_filter&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+			<span class="s1">&#39;sheet_filters&#39;</span><span class="p">:{},</span>	
+			<span class="s1">&#39;filter_on_include_col&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+			<span class="s1">&#39;filter_on_cable&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
 			<span class="p">}</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">create_form</span><span class="p">()</span>
 
@@ -156,7 +137,7 @@
 			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 		<span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="UserForm.enable_boot"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.enable_boot">[docs]</a>	<span class="k">def</span> <span class="nf">enable_boot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.enable_boot"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.enable_boot">[docs]</a>	<span class="k">def</span> <span class="nf">enable_boot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;defines whether it is good to go ahead or not&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">boot</span> <span class="o">=</span> <span class="kc">False</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;Go&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
@@ -169,7 +150,7 @@
 <span class="sd">			list: blank row</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="k">return</span> <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),]</span>
-<div class="viewcode-block" id="UserForm.item_line"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.item_line">[docs]</a>	<span class="k">def</span> <span class="nf">item_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.item_line"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.item_line">[docs]</a>	<span class="k">def</span> <span class="nf">item_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;to draw a line with provided character or repeat a character for n-number of time</span>
 
 <span class="sd">		Args:</span>
@@ -180,7 +161,7 @@
 <span class="sd">			list: list with repeated item Text</span>
 <span class="sd">		&quot;&quot;&quot;</span>    	
 		<span class="k">return</span> <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">item</span><span class="o">*</span><span class="n">length</span><span class="p">)]</span></div>
-<div class="viewcode-block" id="UserForm.under_line"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.under_line">[docs]</a>	<span class="k">def</span> <span class="nf">under_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span> 
+<div class="viewcode-block" id="UserForm.under_line"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.under_line">[docs]</a>	<span class="k">def</span> <span class="nf">under_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span> 
 		<span class="sd">&quot;&quot;&quot;To draw a line</span>
 
 <span class="sd">		Args:</span>
@@ -190,7 +171,7 @@
 <span class="sd">			list: underline row</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="k">return</span> <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="n">length</span><span class="p">)]</span></div>
-<div class="viewcode-block" id="UserForm.button_ok"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.button_ok">[docs]</a>	<span class="k">def</span> <span class="nf">button_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  
+<div class="viewcode-block" id="UserForm.button_ok"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.button_ok">[docs]</a>	<span class="k">def</span> <span class="nf">button_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  
 		<span class="sd">&quot;&quot;&quot;Insert an OK button of regular size. provide additional formating as kwargs.</span>
 
 <span class="sd">		Args:</span>
@@ -200,7 +181,7 @@
 <span class="sd">			sg.OK: OK button</span>
 <span class="sd">		&quot;&quot;&quot;</span>		
 		<span class="k">return</span> <span class="n">sg</span><span class="o">.</span><span class="n">OK</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>	</div>
-<div class="viewcode-block" id="UserForm.button_cancel"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.button_cancel">[docs]</a>	<span class="k">def</span> <span class="nf">button_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.button_cancel"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.button_cancel">[docs]</a>	<span class="k">def</span> <span class="nf">button_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Insert a Cancel button of regular size. provide additional formating as kwargs.</span>
 
 <span class="sd">		Args:</span>
@@ -210,7 +191,7 @@
 <span class="sd">			sg.Cancel: Cancel button</span>
 <span class="sd">		&quot;&quot;&quot;</span>    	  
 		<span class="k">return</span> <span class="n">sg</span><span class="o">.</span><span class="n">Cancel</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-<div class="viewcode-block" id="UserForm.banner"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.banner">[docs]</a>	<span class="k">def</span> <span class="nf">banner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.banner"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.banner">[docs]</a>	<span class="k">def</span> <span class="nf">banner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Banner / Texts with bold center aligned fonts</span>
 
 <span class="sd">		Returns:</span>
@@ -218,7 +199,7 @@
 <span class="sd">		&quot;&quot;&quot;</span>    		
 		<span class="k">return</span> <span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;arialBold&#39;</span><span class="p">,</span> <span class="n">justification</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">768</span><span class="p">,</span><span class="mi">1</span><span class="p">))]</span> </div>
 
-<div class="viewcode-block" id="UserForm.button_pallete"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.button_pallete">[docs]</a>	<span class="k">def</span> <span class="nf">button_pallete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.button_pallete"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.button_pallete">[docs]</a>	<span class="k">def</span> <span class="nf">button_pallete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;button pallete containing standard OK  and Cancel buttons </span>
 
 <span class="sd">		Returns:</span>
@@ -231,7 +212,7 @@
 			<span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">button_ok</span><span class="p">(</span><span class="s2">&quot;Go&quot;</span><span class="p">,</span> <span class="n">bind_return_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">button_cancel</span><span class="p">(</span><span class="s2">&quot;Cancel&quot;</span><span class="p">),],</span>
 		<span class="p">]</span> <span class="p">),</span> <span class="p">]</span></div>
 
-<div class="viewcode-block" id="UserForm.create_form"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.create_form">[docs]</a>	<span class="k">def</span> <span class="nf">create_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.create_form"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.create_form">[docs]</a>	<span class="k">def</span> <span class="nf">create_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;initialize the form, and keep it open until some event happens.</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
 		<span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="p">()</span>
@@ -248,20 +229,16 @@
 				<span class="k">del</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">)</span>
 				<span class="k">break</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;Go&#39;</span><span class="p">:</span> 
-				<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_basics</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_update_Go</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+				<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_basics</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> 
+					<span class="bp">self</span><span class="o">.</span><span class="n">event_update_Go</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;is_sheet_filter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_update_filter</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;filt_col_add&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sheet_filter_add_col_value</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;def_stn&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_default_stencil</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;enable_description_merge&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_description_col_dropbox</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;desc_col_add&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">append_description_column</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;data_file&#39;</span><span class="p">:</span> 
-				<span class="n">num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_excel_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-				<span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-					<span class="bp">self</span><span class="o">.</span><span class="n">update_cabling_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-				<span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-					<span class="bp">self</span><span class="o">.</span><span class="n">update_devices_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;devices_sheet_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_devices_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-			<span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;cabling_sheet_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_cabling_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">update_cabling_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">update_devices_sheet_columns</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
 
 			<span class="c1"># - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
@@ -270,7 +247,7 @@
 				<span class="k">break</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="UserForm.tabs"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.tabs">[docs]</a>	<span class="k">def</span> <span class="nf">tabs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.tabs"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.tabs">[docs]</a>	<span class="k">def</span> <span class="nf">tabs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;create tab groups for provided kwargs</span>
 
 <span class="sd">		Returns:</span>
@@ -281,7 +258,7 @@
 			<span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sg</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">[[</span><span class="n">v</span><span class="p">]])</span> <span class="p">)</span>
 		<span class="k">return</span> <span class="n">sg</span><span class="o">.</span><span class="n">TabGroup</span><span class="p">(</span> <span class="p">[</span><span class="n">tabs</span><span class="p">]</span> <span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.tabs_display"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.tabs_display">[docs]</a>	<span class="k">def</span> <span class="nf">tabs_display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.tabs_display"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.tabs_display">[docs]</a>	<span class="k">def</span> <span class="nf">tabs_display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;define tabs display</span>
 
 <span class="sd">		Returns:</span>
@@ -296,7 +273,7 @@
 		<span class="p">}</span>
 		<span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="p">(</span><span class="o">**</span><span class="n">tabs_dic</span><span class="p">),]</span></div>
 
-<div class="viewcode-block" id="UserForm.event_update_Go"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.event_update_Go">[docs]</a>	<span class="k">def</span> <span class="nf">event_update_Go</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.event_update_Go"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.event_update_Go">[docs]</a>	<span class="k">def</span> <span class="nf">event_update_Go</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;execute when Go button pressed</span>
 
 <span class="sd">		Args:</span>
@@ -311,7 +288,7 @@
 			<span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">exception_key_list</span><span class="p">:</span> <span class="k">continue</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="UserForm.input_data"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.input_data">[docs]</a>	<span class="k">def</span> <span class="nf">input_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.input_data"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.input_data">[docs]</a>	<span class="k">def</span> <span class="nf">input_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;input data tab details display</span>
 
 <span class="sd">		Returns:</span>
@@ -333,26 +310,17 @@
 				<span class="n">sg</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;def_stn&#39;</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
 				<span class="n">sg</span><span class="o">.</span><span class="n">FileBrowse</span><span class="p">()],</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">under_line</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span>
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;devices sheet name&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;TimesBold&#39;</span><span class="p">),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;devices_sheet_name&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span>
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;x-coordinates col&#39;</span> <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;x-coordinates_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;y-coordinates col&#39;</span> <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;y-coordinates_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;stencils col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;stencils_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;device-type col&#39;</span>   <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;device_type_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
+			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;x-coordinates col&#39;</span> <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
+			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;y-coordinates col&#39;</span> <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
 
 			<span class="bp">self</span><span class="o">.</span><span class="n">under_line</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span>
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;cabling sheet name&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;TimesBold&#39;</span><span class="p">),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;cabling_sheet_name&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span>
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;a-device col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;a_device_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;b-device col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;b_device_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;a-device port col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;a_device_port_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;connector-type col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;connector_type_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;color col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;color_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;weight col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;weight_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
-			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;pattern col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;pattern_col&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
+			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;a-device col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;dev_a&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
+			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;b-device col&#39;</span>      <span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;dev_b&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>  
 
 			<span class="bp">self</span><span class="o">.</span><span class="n">under_line</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span>
 			<span class="p">])</span></div>
 
-<div class="viewcode-block" id="UserForm.select_filters"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.select_filters">[docs]</a>	<span class="k">def</span> <span class="nf">select_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.select_filters"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.select_filters">[docs]</a>	<span class="k">def</span> <span class="nf">select_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;selection of filters tab display</span>
 
 <span class="sd">		Returns:</span>
@@ -374,7 +342,6 @@
 			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;  **sheet name will be column name mentioned below, </span><span class="se">\n</span><span class="s2"> and sheet-data will be choosen based on matching values given in that particular column&quot;</span><span class="p">)],</span>
 			<span class="p">[</span><span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Column Name&quot;</span><span class="p">),</span> 
 			<span class="n">sg</span><span class="o">.</span><span class="n">InputCombo</span><span class="p">([],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;filt_col_key&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>  
-			<span class="c1"># sg.InputText(&quot;&quot;, key=&#39;filt_col_key&#39;, size=(12, 1), disabled=True), </span>
 			<span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot; == &quot;</span><span class="p">),</span> <span class="n">sg</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;filt_col_value&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">sg</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot; Column Value &quot;</span><span class="p">),</span>
 			<span class="n">sg</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;ADD&quot;</span><span class="p">,</span> <span class="n">change_submits</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;filt_col_add&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 			<span class="p">],</span>
@@ -383,7 +350,7 @@
 
 			<span class="p">])</span></div>
 
-<div class="viewcode-block" id="UserForm.other_options"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.other_options">[docs]</a>	<span class="k">def</span> <span class="nf">other_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.other_options"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.other_options">[docs]</a>	<span class="k">def</span> <span class="nf">other_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;other options tab details display</span>
 
 <span class="sd">		Returns:</span>
@@ -408,7 +375,7 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">under_line</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span>
 			<span class="p">])</span></div>
 
-<div class="viewcode-block" id="UserForm.show_declaration"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.show_declaration">[docs]</a>	<span class="k">def</span> <span class="nf">show_declaration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.show_declaration"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.show_declaration">[docs]</a>	<span class="k">def</span> <span class="nf">show_declaration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;declaration tab details display</span>
 
 <span class="sd">		Returns:</span>
@@ -425,13 +392,13 @@
 
 			<span class="p">])</span></div>
 
-<div class="viewcode-block" id="UserForm.event_update_element"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.event_update_element">[docs]</a>	<span class="k">def</span> <span class="nf">event_update_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.event_update_element"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.event_update_element">[docs]</a>	<span class="k">def</span> <span class="nf">event_update_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;update an element based on provided kwargs</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
 		<span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">update_values</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="o">**</span><span class="n">update_values</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.event_update_filter"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.event_update_filter">[docs]</a>	<span class="k">def</span> <span class="nf">event_update_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.event_update_filter"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.event_update_filter">[docs]</a>	<span class="k">def</span> <span class="nf">event_update_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;event update when a selection of sheet filter is changed.</span>
 
 <span class="sd">		Args:</span>
@@ -455,10 +422,9 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="n">is_sheet_filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
 			<span class="k">return</span> <span class="kc">None</span>
 		<span class="k">try</span><span class="p">:</span>
-			<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;cabling_sheet_name&#39;</span><span class="p">])</span>
+			<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Cablings&#39;</span><span class="p">)</span>
 			<span class="n">cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-			<span class="n">excludes</span> <span class="o">=</span> <span class="p">(</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;a_device_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;b_device_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;a_device_port_col&#39;</span><span class="p">],</span>
-				<span class="n">i</span><span class="p">[</span><span class="s1">&#39;connector_type_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;color_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;weight_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;pattern_col&#39;</span><span class="p">])</span>
+			<span class="n">excludes</span> <span class="o">=</span> <span class="p">(</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;dev_a&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;dev_b&#39;</span><span class="p">],</span> <span class="p">)</span>
 		<span class="k">except</span><span class="p">:</span>
 			<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Provide correct column name for</span><span class="se">\n</span><span class="s2">`Cabling sheet name`</span><span class="se">\n</span><span class="s2">from `DataFile`&quot;</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="n">is_sheet_filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
@@ -469,7 +435,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="o">**</span><span class="n">updates</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="UserForm.sheet_filter_add_col_value"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.sheet_filter_add_col_value">[docs]</a>	<span class="k">def</span> <span class="nf">sheet_filter_add_col_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.sheet_filter_add_col_value"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.sheet_filter_add_col_value">[docs]</a>	<span class="k">def</span> <span class="nf">sheet_filter_add_col_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;add filter column names to drop boxes when sheet filter is enabled</span>
 
 <span class="sd">		Args:</span>
@@ -480,7 +446,7 @@
 		<span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="s1">&#39;sheet_filters&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;filt_col_key&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;filt_col_value&#39;</span><span class="p">])</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">reset_sheet_filter_boxes</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="UserForm.reset_sheet_filter_boxes"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.reset_sheet_filter_boxes">[docs]</a>	<span class="k">def</span> <span class="nf">reset_sheet_filter_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.reset_sheet_filter_boxes"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.reset_sheet_filter_boxes">[docs]</a>	<span class="k">def</span> <span class="nf">reset_sheet_filter_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;reset the necessary subordinate fieds when sheet filter is disabled.</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
 		<span class="n">mfc</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">k</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">_</span> <span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="o">+</span> <span class="n">_</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="s1">&#39;sheet_filters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">v</span> <span class="p">])</span>
@@ -491,7 +457,7 @@
 		<span class="p">}</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="o">**</span><span class="n">updates</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.update_default_stencil"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_default_stencil">[docs]</a>	<span class="k">def</span> <span class="nf">update_default_stencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_default_stencil"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_default_stencil">[docs]</a>	<span class="k">def</span> <span class="nf">update_default_stencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;update default stencil parameter when stencil file is selected.</span>
 
 <span class="sd">		Args:</span>
@@ -499,7 +465,7 @@
 <span class="sd">		&quot;&quot;&quot;</span>    		
 		<span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="s1">&#39;default_stencil&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;def_stn&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="UserForm.append_description_column"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.append_description_column">[docs]</a>	<span class="k">def</span> <span class="nf">append_description_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.append_description_column"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.append_description_column">[docs]</a>	<span class="k">def</span> <span class="nf">append_description_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;add the additional columns for description</span>
 
 <span class="sd">		Args:</span>
@@ -511,7 +477,7 @@
 			<span class="n">updates</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;appened_cols&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">mdesc</span> <span class="p">}}</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="o">**</span><span class="n">updates</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.update_description_col_dropbox"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_description_col_dropbox">[docs]</a>	<span class="k">def</span> <span class="nf">update_description_col_dropbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_description_col_dropbox"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_description_col_dropbox">[docs]</a>	<span class="k">def</span> <span class="nf">update_description_col_dropbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;dynamic method to different columns dropbox update</span>
 
 <span class="sd">		Args:</span>
@@ -526,10 +492,9 @@
 			<span class="k">return</span> <span class="kc">None</span>
 		<span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;enable_description_merge&#39;</span><span class="p">]:</span>
 			<span class="k">try</span><span class="p">:</span>
-				<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;devices_sheet_name&#39;</span><span class="p">])</span>
+				<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Devices&#39;</span><span class="p">)</span>
 				<span class="n">cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-				<span class="n">excludes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;hostname&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;x-coordinates_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;y-coordinates_col&#39;</span><span class="p">],</span>
-					<span class="n">i</span><span class="p">[</span><span class="s1">&#39;stencils_col&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;device_type_col&#39;</span><span class="p">])</span>
+				<span class="n">excludes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;hostname&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">)</span>
 			<span class="k">except</span><span class="p">:</span>
 				<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Provide correct column name for</span><span class="se">\n</span><span class="s2">`Device sheet name`</span><span class="se">\n</span><span class="s2">from `DataFile`&quot;</span><span class="p">)</span>
 				<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="n">enable_description_merge</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
@@ -550,7 +515,7 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="o">**</span><span class="n">updates</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="UserForm.update_col_name"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_col_name">[docs]</a>	<span class="k">def</span> <span class="nf">update_col_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_col_name"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_col_name">[docs]</a>	<span class="k">def</span> <span class="nf">update_col_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;update an element/field with provided list[cols] and select value</span>
 
 <span class="sd">		Args:</span>
@@ -561,7 +526,7 @@
 		<span class="n">updates</span> <span class="o">=</span><span class="p">{</span> <span class="n">field</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span> <span class="s1">&#39;disabled&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span> <span class="p">}</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="o">**</span><span class="n">updates</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.get_value"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.get_value">[docs]</a>	<span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.get_value"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.get_value">[docs]</a>	<span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;dynamically detect value for the field/element</span>
 
 <span class="sd">		Args:</span>
@@ -580,87 +545,56 @@
 					<span class="k">break</span>
 		<span class="k">return</span> <span class="n">value</span></div>
 
-<div class="viewcode-block" id="UserForm.update_devices_cols_combo"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_devices_cols_combo">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_cols_combo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_devices_cols_combo"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_devices_cols_combo">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_cols_combo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;update fields/elements for devices tab</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			cols (list): list of items</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
-		<span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;x-coordinates_col&#39;</span><span class="p">,</span> <span class="s1">&#39;y-coordinates_col&#39;</span><span class="p">,</span> <span class="s1">&#39;stencils_col&#39;</span><span class="p">,</span> <span class="s1">&#39;device_type_col&#39;</span><span class="p">)</span>
+		<span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="p">)</span>
 		<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
 			<span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">update_col_name</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.update_cabling_cols_combo"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_cabling_cols_combo">[docs]</a>	<span class="k">def</span> <span class="nf">update_cabling_cols_combo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_cabling_cols_combo"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_cabling_cols_combo">[docs]</a>	<span class="k">def</span> <span class="nf">update_cabling_cols_combo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;update fields/elements for cablings tab</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			cols (list): list of items</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
-		<span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a_device_col&#39;</span><span class="p">,</span> <span class="s1">&#39;b_device_col&#39;</span><span class="p">,</span> <span class="s1">&#39;a_device_port_col&#39;</span><span class="p">,</span> <span class="s1">&#39;connector_type_col&#39;</span><span class="p">,</span> 
-			<span class="s1">&#39;color_col&#39;</span><span class="p">,</span> <span class="s1">&#39;weight_col&#39;</span><span class="p">,</span> <span class="s1">&#39;pattern_col&#39;</span><span class="p">)</span>
+		<span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;dev_a&#39;</span><span class="p">,</span> <span class="s1">&#39;dev_b&#39;</span><span class="p">,</span> <span class="p">)</span>
 		<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
 			<span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">update_col_name</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.update_excel_sheet_columns"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_excel_sheet_columns">[docs]</a>	<span class="k">def</span> <span class="nf">update_excel_sheet_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
-		<span class="sd">&quot;&quot;&quot;update necessary elements after selection of a datafile</span>
-
-<span class="sd">		Args:</span>
-<span class="sd">			i (form_inputs): form elements</span>
-
-<span class="sd">		Returns:</span>
-<span class="sd">			int: count to detect matching</span>
-<span class="sd">		&quot;&quot;&quot;</span>    		
-		<span class="c1"># update devicesheetname and cablingsheetname</span>
-		<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
-		<span class="n">updates</span> <span class="o">=</span> <span class="p">{}</span>
-		<span class="k">try</span><span class="p">:</span>
-			<span class="n">ef</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">data_sheet_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ef</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_sheet_names</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-				<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Data file contains less informations&quot;</span><span class="p">)</span>
-			<span class="k">if</span> <span class="s2">&quot;Devices&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_sheet_names</span><span class="p">:</span>
-				<span class="n">updates</span><span class="p">[</span><span class="s1">&#39;devices_sheet_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s2">&quot;Devices&quot;</span> <span class="p">}</span>
-				<span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
-			<span class="k">if</span> <span class="s2">&quot;Cablings&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_sheet_names</span><span class="p">:</span>
-				<span class="n">updates</span><span class="p">[</span><span class="s1">&#39;cabling_sheet_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s2">&quot;Cablings&quot;</span> <span class="p">}</span>
-				<span class="n">num</span> <span class="o">+=</span> <span class="mi">2</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">event_update_element</span><span class="p">(</span><span class="o">**</span><span class="n">updates</span><span class="p">)</span>
-		<span class="k">except</span><span class="p">:</span>
-			<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Please provide correct Excel data file&quot;</span><span class="p">)</span>
-		<span class="k">return</span> <span class="n">num</span></div>
-
-<div class="viewcode-block" id="UserForm.update_devices_sheet_columns"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_devices_sheet_columns">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_sheet_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_devices_sheet_columns"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_devices_sheet_columns">[docs]</a>	<span class="k">def</span> <span class="nf">update_devices_sheet_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;try updating devices tab related fields</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			i (form_inputs): form elements</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
-		<span class="n">devices_sheet_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="s1">&#39;devices_sheet_name&#39;</span><span class="p">]</span>
 		<span class="k">try</span><span class="p">:</span>
-			<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">devices_sheet_name</span><span class="p">)</span>
+			<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Devices&#39;</span><span class="p">)</span>
 			<span class="n">data_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 			<span class="n">data_cols</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;hostname&#39;</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">update_devices_cols_combo</span><span class="p">(</span><span class="n">data_cols</span><span class="p">)</span>
 		<span class="k">except</span><span class="p">:</span>
 			<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Provide correct `correct device sheet name` and/or `DataFile`&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.update_cabling_sheet_columns"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.update_cabling_sheet_columns">[docs]</a>	<span class="k">def</span> <span class="nf">update_cabling_sheet_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.update_cabling_sheet_columns"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.update_cabling_sheet_columns">[docs]</a>	<span class="k">def</span> <span class="nf">update_cabling_sheet_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;try updating cablings tab related columns</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			i (form_inputs): form elements</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
-		<span class="n">cabling_sheet_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dic</span><span class="p">[</span><span class="s1">&#39;cabling_sheet_name&#39;</span><span class="p">]</span>
 		<span class="k">try</span><span class="p">:</span>
-			<span class="n">cable_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">cabling_sheet_name</span><span class="p">)</span>
+			<span class="n">cable_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">],</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Cablings&#39;</span><span class="p">)</span>
 			<span class="n">cable_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cable_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">update_cabling_cols_combo</span><span class="p">(</span><span class="n">cable_cols</span><span class="p">)</span>
 		<span class="k">except</span><span class="p">:</span>
 			<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Provide correct `correct cabling sheet name` and/or `DataFile`&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UserForm.check_basics"><a class="viewcode-back" href="../../t_doc/gui.html#pyVig.gui.UserForm.check_basics">[docs]</a>	<span class="k">def</span> <span class="nf">check_basics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UserForm.check_basics"><a class="viewcode-back" href="../../pyVig.html#pyVig.gui.UserForm.check_basics">[docs]</a>	<span class="k">def</span> <span class="nf">check_basics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;pre check after selecting the data file.</span>
 
 <span class="sd">		Args:</span>
@@ -669,7 +603,6 @@
 <span class="sd">		Returns:</span>
 <span class="sd">			bool: to detect validity of datafile</span>
 <span class="sd">		&quot;&quot;&quot;</span>    		
-		<span class="c1"># if (not i[&#39;data_file&#39;] or not i[&#39;stencil_folder&#39;] ):</span>
 		<span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;data_file&#39;</span><span class="p">]</span> <span class="p">:</span>
 			<span class="n">sg</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="s2">&quot;Provide mandatory fields `datafile`, `stencil folder`&quot;</span><span class="p">)</span>
 			<span class="k">return</span> <span class="kc">False</span>
@@ -683,9 +616,9 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 	<span class="k">pass</span>
 	<span class="c1"># Test UI #</span>
-	<span class="c1"># u = UserForm()</span>
-	<span class="c1"># pprint(u.dic)</span>
-	<span class="c1"># del(u)</span>
+	<span class="n">u</span> <span class="o">=</span> <span class="n">UserForm</span><span class="p">()</span>
+	<span class="n">pprint</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">dic</span><span class="p">)</span>
+	<span class="k">del</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 <span class="c1"># ------------------------------------------------------------------------------</span>
 </pre></div>
 
@@ -696,7 +629,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ALIASGAR.</p>
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

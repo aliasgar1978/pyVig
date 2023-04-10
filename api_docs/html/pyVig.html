@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyVig package &mdash; pyVig 0.0.11 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pyVig" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyVig
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pyVig package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.cablings">pyVig.cablings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.common">pyVig.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.database">pyVig.database module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.devices">pyVig.devices module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.entities">pyVig.entities module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.general">pyVig.general module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.gui">pyVig.gui module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.maths">pyVig.maths module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.oper">pyVig.oper module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.pyVig">pyVig.pyVig module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.static">pyVig.static module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.stencils">pyVig.stencils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig.visio">pyVig.visio module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyVig">Module contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyVig</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pyVig</a></li>
+      <li class="breadcrumb-item active">pyVig package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyVig.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyvig-package">
+<h1>pyVig package<a class="headerlink" href="#pyvig-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-pyVig.cablings">
+<span id="pyvig-cablings-module"></span><h2>pyVig.cablings module<a class="headerlink" href="#module-pyVig.cablings" title="Permalink to this heading"></a></h2>
+<p>pyVig Excel Preparation -  A Single Device Cabling Details.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.cablings.ADevCablings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.cablings.</span></span><span class="sig-name descname"><span class="pre">ADevCablings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/cablings.html#ADevCablings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.cablings.ADevCablings" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A single Device Cabling details</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.cablings.ADevCablings.add_to_cablings">
+<span class="sig-name descname"><span class="pre">add_to_cablings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/cablings.html#ADevCablings.add_to_cablings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.cablings.ADevCablings.add_to_cablings" title="Permalink to this definition"></a></dt>
+<dd><p>add provided keyword arguments to cablings (dictionary)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.cablings.ADevCablings.cabling_dataframe">
+<span class="sig-name descname"><span class="pre">cabling_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/cablings.html#ADevCablings.cabling_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.cablings.ADevCablings.cabling_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>generate the dataframe for the cablings details captured in cablings dictionary of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pandas DataFrame object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.cablings.ADevCablings.update_attrib">
+<span class="sig-name descname"><span class="pre">update_attrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/cablings.html#ADevCablings.update_attrib"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.cablings.ADevCablings.update_attrib" title="Permalink to this definition"></a></dt>
+<dd><p>update object attributes</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyVig.common">
+<span id="pyvig-common-module"></span><h2>pyVig.common module<a class="headerlink" href="#module-pyVig.common" title="Permalink to this heading"></a></h2>
+<p>Common Functions</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.common.get_filename">
+<span class="sig-prename descclassname"><span class="pre">pyVig.common.</span></span><span class="sig-name descname"><span class="pre">get_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">absolute_pathfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/common.html#get_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.common.get_filename" title="Permalink to this definition"></a></dt>
+<dd><p>This function takes in the absolute path of a file and returns the filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>absolute_pathfile</strong> (<em>str</em>) – The absolute path of the file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>filename</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.database">
+<span id="pyvig-database-module"></span><h2>pyVig.database module<a class="headerlink" href="#module-pyVig.database" title="Permalink to this heading"></a></h2>
+<p>database activities</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.database.CableMatrixData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.database.</span></span><span class="sig-name descname"><span class="pre">CableMatrixData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#CableMatrixData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.CableMatrixData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyVig.database.Data" title="pyVig.database.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>Cabling Data Object Building</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.CableMatrixData.calc_slop">
+<span class="sig-name descname"><span class="pre">calc_slop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DD</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#CableMatrixData.calc_slop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.CableMatrixData.calc_slop" title="Permalink to this definition"></a></dt>
+<dd><p>calculate the slop and angle of the two end points and add it in respective column
+in dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>DD</strong> (<a class="reference internal" href="#pyVig.database.DeviceData" title="pyVig.database.DeviceData"><em>DeviceData</em></a>) – DeviceData object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.CableMatrixData.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#CableMatrixData.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.CableMatrixData.filter" title="Permalink to this definition"></a></dt>
+<dd><p>filter the dataframe for given column:value
+multiple kwargs act as ‘and’ operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.CableMatrixData.filter_eligible_cables_only">
+<span class="sig-name descname"><span class="pre">filter_eligible_cables_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#CableMatrixData.filter_eligible_cables_only"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.CableMatrixData.filter_eligible_cables_only" title="Permalink to this definition"></a></dt>
+<dd><p>optional filter: filters DataFrame for the column <cite>include</cite> with values as <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.CableMatrixData.optional_columns">
+<span class="sig-name descname"><span class="pre">optional_columns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'aport':</span> <span class="pre">'',</span> <span class="pre">'color':</span> <span class="pre">'blue',</span> <span class="pre">'connector_type':</span> <span class="pre">'straight',</span> <span class="pre">'pattern':</span> <span class="pre">1,</span> <span class="pre">'weight':</span> <span class="pre">3}</span></em><a class="headerlink" href="#pyVig.database.CableMatrixData.optional_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.CableMatrixData.sheet_name">
+<span class="sig-name descname"><span class="pre">sheet_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Cablings'</span></em><a class="headerlink" href="#pyVig.database.CableMatrixData.sheet_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.database.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.database.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.Data" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Parent class defining device and connectors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.Data.add_attribute">
+<span class="sig-name descname"><span class="pre">add_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#Data.add_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.Data.add_attribute" title="Permalink to this definition"></a></dt>
+<dd><p>adds an attribute to object instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr_name</strong> (<em>str</em>) – attribute name</p></li>
+<li><p><strong>attr_value</strong> (<em>str</em>) – attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.Data.add_kwargs_attributes">
+<span class="sig-name descname"><span class="pre">add_kwargs_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#Data.add_kwargs_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.Data.add_kwargs_attributes" title="Permalink to this definition"></a></dt>
+<dd><p>adds all keyword arguments as object attributes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.Data.add_optional_columnnames_attributes">
+<span class="sig-name descname"><span class="pre">add_optional_columnnames_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#Data.add_optional_columnnames_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.Data.add_optional_columnnames_attributes" title="Permalink to this definition"></a></dt>
+<dd><p>adds default optional columns as object attributes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.Data.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#Data.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.Data.read" title="Permalink to this definition"></a></dt>
+<dd><p>read data from given excel sheet and set dataframe for the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sheet_name</strong> (<em>str</em>) – Excel sheet name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.Data.verify_mandatory_declared_cols_availabilty">
+<span class="sig-name descname"><span class="pre">verify_mandatory_declared_cols_availabilty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">declared</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#Data.verify_mandatory_declared_cols_availabilty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.Data.verify_mandatory_declared_cols_availabilty" title="Permalink to this definition"></a></dt>
+<dd><p>verifies if mandatory and declared columns (cols_to_merge) are available in provided database.
+Raise error if unavailable any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>declared</strong> (<em>list</em><em>, </em><em>optional</em>) – list of extra declared columns (if any). Defaults to [].</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.database.</span></span><span class="sig-name descname"><span class="pre">DeviceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#DeviceData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.DeviceData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyVig.database.Data" title="pyVig.database.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>Devices Data Object Building</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.add_description">
+<span class="sig-name descname"><span class="pre">add_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_to_merge</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#DeviceData.add_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.DeviceData.add_description" title="Permalink to this definition"></a></dt>
+<dd><p>add a description column to dataframe, which will be output of merged data of provided columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns_to_merge</strong> (<em>iterable</em>) – provide list/set/tuple of column names to be merged in a single</p></li>
+<li><p><strong>column.</strong> (<em>description</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Raises error if Mandtory hostname column is missing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.add_format_columnnames_attributes">
+<span class="sig-name descname"><span class="pre">add_format_columnnames_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#DeviceData.add_format_columnnames_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.DeviceData.add_format_columnnames_attributes" title="Permalink to this definition"></a></dt>
+<dd><p>add default format columns {iconWidth, iconHeight} as object attributes</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.default_stencil">
+<span class="sig-name descname"><span class="pre">default_stencil</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyVig.database.DeviceData.default_stencil" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.format_columns">
+<span class="sig-name descname"><span class="pre">format_columns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'iconHeight':</span> <span class="pre">1,</span> <span class="pre">'iconWidth':</span> <span class="pre">2.5}</span></em><a class="headerlink" href="#pyVig.database.DeviceData.format_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.optional_columns">
+<span class="sig-name descname"><span class="pre">optional_columns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'item':</span> <span class="pre">None,</span> <span class="pre">'stencil':</span> <span class="pre">None}</span></em><a class="headerlink" href="#pyVig.database.DeviceData.optional_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.sheet_name">
+<span class="sig-name descname"><span class="pre">sheet_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Devices'</span></em><a class="headerlink" href="#pyVig.database.DeviceData.sheet_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'x-axis'</span></em><a class="headerlink" href="#pyVig.database.DeviceData.x" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.database.DeviceData.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'y-axis'</span></em><a class="headerlink" href="#pyVig.database.DeviceData.y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.database.merged_df_on_hostname">
+<span class="sig-prename descclassname"><span class="pre">pyVig.database.</span></span><span class="sig-name descname"><span class="pre">merged_df_on_hostname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devices_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cablemtx_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostname_col_hdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortby</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/database.html#merged_df_on_hostname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.database.merged_df_on_hostname" title="Permalink to this definition"></a></dt>
+<dd><p>merge two dataframes by matching hostname column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>devices_df</strong> (<em>DataFrame</em>) – Devices details dataframe</p></li>
+<li><p><strong>cablemtx_df</strong> (<em>DataFrame</em>) – Cabling details dataframe</p></li>
+<li><p><strong>hostname_col_hdr</strong> (<em>str</em>) – column name of hostname from cabling dataframe to be merge with</p></li>
+<li><p><strong>sortby</strong> (<em>str</em>) – adhoc column name on which data to be sorted</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Raise Exception if hostname column missing.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>merged DataFrame</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.devices">
+<span id="pyvig-devices-module"></span><h2>pyVig.devices module<a class="headerlink" href="#module-pyVig.devices" title="Permalink to this heading"></a></h2>
+<p>activities on devices tab on databse</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.devices.AdevDevices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.devices.</span></span><span class="sig-name descname"><span class="pre">AdevDevices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_func_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/devices.html#AdevDevices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.devices.AdevDevices" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A single Device details</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.devices.AdevDevices.add_to_devices">
+<span class="sig-name descname"><span class="pre">add_to_devices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">what</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/devices.html#AdevDevices.add_to_devices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.devices.AdevDevices.add_to_devices" title="Permalink to this definition"></a></dt>
+<dd><p>add the key word arguments to dictionary refered by <cite>what</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>what</strong> (<em>dict</em>) – device(s) dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.devices.AdevDevices.add_vlan_info">
+<span class="sig-name descname"><span class="pre">add_vlan_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vlan_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/devices.html#AdevDevices.add_vlan_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.devices.AdevDevices.add_vlan_info" title="Permalink to this definition"></a></dt>
+<dd><p>add identified vlan-vrf-subnet information for the devices using vlan DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vlan_df</strong> (<em>DataFrame</em>) – pandas DataFrame object of <cite>vlan</cite> tab from -clean excel file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated pandas DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.devices.AdevDevices.get_self_device_df">
+<span class="sig-name descname"><span class="pre">get_self_device_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/devices.html#AdevDevices.get_self_device_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.devices.AdevDevices.get_self_device_df" title="Permalink to this definition"></a></dt>
+<dd><p>generate the pandas DataFrame object with single row detail for the self device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas DataFrame with single row detail of the self device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.devices.device_df_drop_empty_duplicates">
+<span class="sig-prename descclassname"><span class="pre">pyVig.devices.</span></span><span class="sig-name descname"><span class="pre">device_df_drop_empty_duplicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/devices.html#device_df_drop_empty_duplicates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.devices.device_df_drop_empty_duplicates" title="Permalink to this definition"></a></dt>
+<dd><p>generate pandas DataFrame from provides <cite>devices</cite> dictionary of lists.
+Removes empty entries from hostname column,
+Convert case to lowercases,
+Removes duplicate entries (if any)
+Returns generated DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>devices</strong> (<em>dict</em>) – dictionary of list (compatible to convert to DataFrame)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.devices.update_var_df_details_to_table_df">
+<span class="sig-prename descclassname"><span class="pre">pyVig.devices.</span></span><span class="sig-name descname"><span class="pre">update_var_df_details_to_table_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merged_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DCT_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_func_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/devices.html#update_var_df_details_to_table_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.devices.update_var_df_details_to_table_df" title="Permalink to this definition"></a></dt>
+<dd><p>updates custom details from <cite>var</cite> tab to <cite>devices</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>merged_df</strong> (<em>DataFrame</em>) – pandas DataFrame</p></li>
+<li><p><strong>DCT_dict</strong> (<em>dict</em>) – dictionary of <cite>DF_ConverT</cite> objects</p></li>
+<li><p><strong>var_func_dict</strong> (<em>dict</em>) – dictionary of custom var functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.entities">
+<span id="pyvig-entities-module"></span><h2>pyVig.entities module<a class="headerlink" href="#module-pyVig.entities" title="Permalink to this heading"></a></h2>
+<p>Visio Entities item objects, connector objects etc.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.entities.Connectors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.entities.</span></span><span class="sig-name descname"><span class="pre">Connectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cable_matrix_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/entities.html#Connectors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.entities.Connectors" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Multi_Execution</span></code></p>
+<p>Execution of Cabling/Connector objects on visio</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.entities.Connectors.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/entities.html#Connectors.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.entities.Connectors.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Executor
+Paralllel processing disabled currently due to visio not support</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>connector</strong> (<em>dict</em>) – a single row details of cabling data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.entities.Connectors.get_optional_columns_value">
+<span class="sig-name descname"><span class="pre">get_optional_columns_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/entities.html#Connectors.get_optional_columns_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.entities.Connectors.get_optional_columns_value" title="Permalink to this definition"></a></dt>
+<dd><p>get the value of all optional columns for given row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>connector</strong> (<em>dict</em>) – a single row information from a DataFrame</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary with found values else default</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.entities.</span></span><span class="sig-name descname"><span class="pre">ItemObjects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filterOnCables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/entities.html#ItemObjects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.entities.ItemObjects" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Multi_Execution</span></code></p>
+<p>Execution of Devices/Item objects on visio</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.bottom_most">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bottom_most</span></span><a class="headerlink" href="#pyVig.entities.ItemObjects.bottom_most" title="Permalink to this definition"></a></dt>
+<dd><p>bottom most used co-ordinate on visio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>minimum of used y-axis</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dev</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/entities.html#ItemObjects.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.entities.ItemObjects.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Executor
+Paralllel processing disabled currently due to visio not support</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dev</strong> (<em>dict</em>) – a single row details of device data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.left_most">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left_most</span></span><a class="headerlink" href="#pyVig.entities.ItemObjects.left_most" title="Permalink to this definition"></a></dt>
+<dd><p>left most used co-ordinate on visio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>minimum of used x-axis</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.page_height">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">page_height</span></span><a class="headerlink" href="#pyVig.entities.ItemObjects.page_height" title="Permalink to this definition"></a></dt>
+<dd><p>total height occupied by drawing  on visio page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>page height</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.page_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">page_width</span></span><a class="headerlink" href="#pyVig.entities.ItemObjects.page_width" title="Permalink to this definition"></a></dt>
+<dd><p>total width occupied by drawing  on visio page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>page width</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.right_most">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right_most</span></span><a class="headerlink" href="#pyVig.entities.ItemObjects.right_most" title="Permalink to this definition"></a></dt>
+<dd><p>right most used co-ordinate on visio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maximum of used x-axis</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.entities.ItemObjects.top_most">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">top_most</span></span><a class="headerlink" href="#pyVig.entities.ItemObjects.top_most" title="Permalink to this definition"></a></dt>
+<dd><p>top most used co-ordinate on visio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maximum of used y-axis</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.entities.get_col_value">
+<span class="sig-prename descclassname"><span class="pre">pyVig.entities.</span></span><span class="sig-name descname"><span class="pre">get_col_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isMerged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/entities.html#get_col_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.entities.get_col_value" title="Permalink to this definition"></a></dt>
+<dd><p>get the value of provided column from given row details</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row_info</strong> (<em>dict</em>) – a single row information from a DataFrame</p></li>
+<li><p><strong>column</strong> (<em>str</em>) – column name</p></li>
+<li><p><strong>isMerged</strong> (<em>bool</em><em>, </em><em>optional</em>) – is it a merged column or native. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cell information from row</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.general">
+<span id="pyvig-general-module"></span><h2>pyVig.general module<a class="headerlink" href="#module-pyVig.general" title="Permalink to this heading"></a></h2>
+<p>general functions</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.drop_empty">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">drop_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#drop_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.drop_empty" title="Permalink to this definition"></a></dt>
+<dd><p>remove emptry rows found for given column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p></li>
+<li><p><strong>column</strong> (<em>str</em>) – column name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>data filtered DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.get_patterns">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">get_patterns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_pattern_style_separation_on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_pattern_style_shift_no</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#get_patterns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.get_patterns" title="Permalink to this definition"></a></dt>
+<dd><p>get the line pattern numbers for the unique line styles require based on <cite>line_pattern_style_separation_on</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p></li>
+<li><p><strong>line_pattern_style_separation_on</strong> (<em>str</em>) – DataFrame Column name on which line patters to be separated</p></li>
+<li><p><strong>line_pattern_style_shift_no</strong> (<em>int</em>) – line pattern skip step number.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary of unique line pattern identifies with its shift number.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.get_physical_if_relevants">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">get_physical_if_relevants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relevant_cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['interface',</span> <span class="pre">'nbr_dev_type',</span> <span class="pre">'int_filter',</span> <span class="pre">'nbr_hostname',</span> <span class="pre">'nbr_interface',</span> <span class="pre">'vlan_members']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#get_physical_if_relevants"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.get_physical_if_relevants" title="Permalink to this definition"></a></dt>
+<dd><p>filters the DataFrame columns for relevant columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p></li>
+<li><p><strong>relevant_cols</strong> (<em>list</em><em>, </em><em>optional</em>) – list of relevant columns. Defaults to [‘interface’, ‘nbr_dev_type’, ‘int_filter’, ‘nbr_hostname’,   ‘nbr_interface’, ‘vlan_members’,].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>udpated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.get_physical_if_up">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">get_physical_if_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#get_physical_if_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.get_physical_if_up" title="Permalink to this definition"></a></dt>
+<dd><p>filter the DataFrame rows for active/enabled physical interfaces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>udpated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.get_vlan_if_relevants">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">get_vlan_if_relevants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relevant_cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['int_number',</span> <span class="pre">'interface',</span> <span class="pre">'intvrf',</span> <span class="pre">'subnet']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#get_vlan_if_relevants"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.get_vlan_if_relevants" title="Permalink to this definition"></a></dt>
+<dd><p>filters the DataFrame columns for relevant columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p></li>
+<li><p><strong>relevant_cols</strong> (<em>list</em><em>, </em><em>optional</em>) – list of relevant columns. Defaults to [‘int_number’, ‘interface’, ‘intvrf’, ‘subnet’ ].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>udpated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.get_vlan_if_up">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">get_vlan_if_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#get_vlan_if_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.get_vlan_if_up" title="Permalink to this definition"></a></dt>
+<dd><p>filter the DataFrame rows for active/enabled vlan/irb interfaces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>udpated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.get_vlans_info">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">get_vlans_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vlan_members</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#get_vlans_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.get_vlans_info" title="Permalink to this definition"></a></dt>
+<dd><p>get the vlan-vrf-subnet information string for provided vlan number(s) from vlan DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vlan_members</strong> (<em>str</em><em>, </em><em>int</em>) – a single vlan number or vlan numbers separated by comma</p></li>
+<li><p><strong>vlan_df</strong> (<em>DataFrame</em>) – DataFrame from <cite>vlan</cite> tab of -clean excel file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>concatenated string of vlan-vrf-subnet information.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.series_item_0_value">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">series_item_0_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#series_item_0_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.series_item_0_value" title="Permalink to this definition"></a></dt>
+<dd><p>returns the first item value of a series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>series</em>) – pandas series object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>value from series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.update_pattern">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">update_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_pattern_style_separation_on</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#update_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.update_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>update the line pattern column for the unique line styles require based on column <cite>line_pattern_style_separation_on</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame</p></li>
+<li><p><strong>patterns</strong> (<em>dict</em>) – dictionary of unique line pattern identifies with its shift number</p></li>
+<li><p><strong>line_pattern_style_separation_on</strong> (<em>str</em>) – DataFrame Column name on which line patters to be separated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.general.update_vlans_info">
+<span class="sig-prename descclassname"><span class="pre">pyVig.general.</span></span><span class="sig-name descname"><span class="pre">update_vlans_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/general.html#update_vlans_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.general.update_vlans_info" title="Permalink to this definition"></a></dt>
+<dd><p>add <cite>vlan_info</cite> [column] to interface DataFrame using help of vlan DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>int_df</strong> (<em>DataFrame</em>) – interface DataFrame</p></li>
+<li><p><strong>vlan_df</strong> (<em>DataFrame</em>) – DataFrame from <cite>vlan</cite> tab of -clean excel file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated interface DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.gui">
+<span id="pyvig-gui-module"></span><h2>pyVig.gui module<a class="headerlink" href="#module-pyVig.gui" title="Permalink to this heading"></a></h2>
+<p>pyVig GUI Form Production</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.gui.</span></span><span class="sig-name descname"><span class="pre">UserForm</span></span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Inititates a UserForm asking user inputs.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.append_description_column">
+<span class="sig-name descname"><span class="pre">append_description_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.append_description_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.append_description_column" title="Permalink to this definition"></a></dt>
+<dd><p>add the additional columns for description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.banner">
+<span class="sig-name descname"><span class="pre">banner</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.banner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.banner" title="Permalink to this definition"></a></dt>
+<dd><p>Banner / Texts with bold center aligned fonts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list with banner text</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.blank_line">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">blank_line</span></span><a class="headerlink" href="#pyVig.gui.UserForm.blank_line" title="Permalink to this definition"></a></dt>
+<dd><p>to insert a blank row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>blank row</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.button_cancel">
+<span class="sig-name descname"><span class="pre">button_cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.button_cancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.button_cancel" title="Permalink to this definition"></a></dt>
+<dd><p>Insert a Cancel button of regular size. provide additional formating as kwargs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text instead of Cancel to display (if need)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cancel button</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sg.Cancel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.button_ok">
+<span class="sig-name descname"><span class="pre">button_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.button_ok"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.button_ok" title="Permalink to this definition"></a></dt>
+<dd><p>Insert an OK button of regular size. provide additional formating as kwargs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text instead of OK to display (if need)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>OK button</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sg.OK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.button_pallete">
+<span class="sig-name descname"><span class="pre">button_pallete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.button_pallete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.button_pallete" title="Permalink to this definition"></a></dt>
+<dd><p>button pallete containing standard OK  and Cancel buttons</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list with sg.Frame containing buttons</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.check_basics">
+<span class="sig-name descname"><span class="pre">check_basics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.check_basics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.check_basics" title="Permalink to this definition"></a></dt>
+<dd><p>pre check after selecting the data file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>to detect validity of datafile</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.create_form">
+<span class="sig-name descname"><span class="pre">create_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.create_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.create_form" title="Permalink to this definition"></a></dt>
+<dd><p>initialize the form, and keep it open until some event happens.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.enable_boot">
+<span class="sig-name descname"><span class="pre">enable_boot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.enable_boot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.enable_boot" title="Permalink to this definition"></a></dt>
+<dd><p>defines whether it is good to go ahead or not</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.event_update_Go">
+<span class="sig-name descname"><span class="pre">event_update_Go</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.event_update_Go"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.event_update_Go" title="Permalink to this definition"></a></dt>
+<dd><p>execute when Go button pressed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form inputs reader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.event_update_element">
+<span class="sig-name descname"><span class="pre">event_update_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.event_update_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.event_update_element" title="Permalink to this definition"></a></dt>
+<dd><p>update an element based on provided kwargs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.event_update_filter">
+<span class="sig-name descname"><span class="pre">event_update_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.event_update_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.event_update_filter" title="Permalink to this definition"></a></dt>
+<dd><p>event update when a selection of sheet filter is changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.get_value" title="Permalink to this definition"></a></dt>
+<dd><p>dynamically detect value for the field/element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> (<em>str</em>) – element</p></li>
+<li><p><strong>cols</strong> (<em>list</em>) – list of items</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>detected column name</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.header">
+<span class="sig-name descname"><span class="pre">header</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Visio</span> <span class="pre">Generator'</span></em><a class="headerlink" href="#pyVig.gui.UserForm.header" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.input_data">
+<span class="sig-name descname"><span class="pre">input_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.input_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.input_data" title="Permalink to this definition"></a></dt>
+<dd><p>input data tab details display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Frame with input data components</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>sg.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.item_line">
+<span class="sig-name descname"><span class="pre">item_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.item_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.item_line" title="Permalink to this definition"></a></dt>
+<dd><p>to draw a line with provided character or repeat a character for n-number of time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>str</em>) – character</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – to repeat the character</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list with repeated item Text</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.other_options">
+<span class="sig-name descname"><span class="pre">other_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.other_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.other_options" title="Permalink to this definition"></a></dt>
+<dd><p>other options tab details display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Frame with other option components</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>sg.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.reset_sheet_filter_boxes">
+<span class="sig-name descname"><span class="pre">reset_sheet_filter_boxes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.reset_sheet_filter_boxes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.reset_sheet_filter_boxes" title="Permalink to this definition"></a></dt>
+<dd><p>reset the necessary subordinate fieds when sheet filter is disabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.select_filters">
+<span class="sig-name descname"><span class="pre">select_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.select_filters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.select_filters" title="Permalink to this definition"></a></dt>
+<dd><p>selection of filters tab display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Frame with filter selection components</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>sg.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.sheet_filter_add_col_value">
+<span class="sig-name descname"><span class="pre">sheet_filter_add_col_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.sheet_filter_add_col_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.sheet_filter_add_col_value" title="Permalink to this definition"></a></dt>
+<dd><p>add filter column names to drop boxes when sheet filter is enabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.show_declaration">
+<span class="sig-name descname"><span class="pre">show_declaration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.show_declaration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.show_declaration" title="Permalink to this definition"></a></dt>
+<dd><p>declaration tab details display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Frame with declaration page</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>sg.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.tabs">
+<span class="sig-name descname"><span class="pre">tabs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.tabs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.tabs" title="Permalink to this definition"></a></dt>
+<dd><p>create tab groups for provided kwargs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tab groups</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>sg.TabGroup</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.tabs_display">
+<span class="sig-name descname"><span class="pre">tabs_display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.tabs_display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.tabs_display" title="Permalink to this definition"></a></dt>
+<dd><p>define tabs display</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of tabs</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.under_line">
+<span class="sig-name descname"><span class="pre">under_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.under_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.under_line" title="Permalink to this definition"></a></dt>
+<dd><p>To draw a line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>length</strong> (<em>int</em>) – character length of line</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>underline row</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_cabling_cols_combo">
+<span class="sig-name descname"><span class="pre">update_cabling_cols_combo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_cabling_cols_combo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_cabling_cols_combo" title="Permalink to this definition"></a></dt>
+<dd><p>update fields/elements for cablings tab</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cols</strong> (<em>list</em>) – list of items</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_cabling_sheet_columns">
+<span class="sig-name descname"><span class="pre">update_cabling_sheet_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_cabling_sheet_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_cabling_sheet_columns" title="Permalink to this definition"></a></dt>
+<dd><p>try updating cablings tab related columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_col_name">
+<span class="sig-name descname"><span class="pre">update_col_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_col_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_col_name" title="Permalink to this definition"></a></dt>
+<dd><p>update an element/field with provided list[cols] and select value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> (<em>str</em>) – element</p></li>
+<li><p><strong>cols</strong> (<em>list</em>) – list of items</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – selected item</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_default_stencil">
+<span class="sig-name descname"><span class="pre">update_default_stencil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_default_stencil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_default_stencil" title="Permalink to this definition"></a></dt>
+<dd><p>update default stencil parameter when stencil file is selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_description_col_dropbox">
+<span class="sig-name descname"><span class="pre">update_description_col_dropbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_description_col_dropbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_description_col_dropbox" title="Permalink to this definition"></a></dt>
+<dd><p>dynamic method to different columns dropbox update</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_devices_cols_combo">
+<span class="sig-name descname"><span class="pre">update_devices_cols_combo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_devices_cols_combo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_devices_cols_combo" title="Permalink to this definition"></a></dt>
+<dd><p>update fields/elements for devices tab</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cols</strong> (<em>list</em>) – list of items</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.update_devices_sheet_columns">
+<span class="sig-name descname"><span class="pre">update_devices_sheet_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/gui.html#UserForm.update_devices_sheet_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.gui.UserForm.update_devices_sheet_columns" title="Permalink to this definition"></a></dt>
+<dd><p>try updating devices tab related fields</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>form_inputs</em>) – form elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.gui.UserForm.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Visio</span> <span class="pre">Generator</span> <span class="pre">:</span> <span class="pre">gui</span> <span class="pre">ver:</span> <span class="pre">0.0.11'</span></em><a class="headerlink" href="#pyVig.gui.UserForm.version" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyVig.maths">
+<span id="pyvig-maths-module"></span><h2>pyVig.maths module<a class="headerlink" href="#module-pyVig.maths" title="Permalink to this heading"></a></h2>
+<p>Some Maths</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">CalculateXY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dev_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_x_spacing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_y_spacing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Co-ordinate calculator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.calc">
+<span class="sig-name descname"><span class="pre">calc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.calc" title="Permalink to this definition"></a></dt>
+<dd><p>calculation sequences</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.calc_xs">
+<span class="sig-name descname"><span class="pre">calc_xs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.calc_xs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.calc_xs" title="Permalink to this definition"></a></dt>
+<dd><p>calculates x axis placement for each devices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nested dictionary with x axis placement values based on hierarchical_order and its index</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.calc_ys">
+<span class="sig-name descname"><span class="pre">calc_ys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.calc_ys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.calc_ys" title="Permalink to this definition"></a></dt>
+<dd><p>calculates y axis placement for each hierarchical order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dictionary with y axis placement values for hierarchical_order</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.count_of_ho">
+<span class="sig-name descname"><span class="pre">count_of_ho</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.count_of_ho"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.count_of_ho" title="Permalink to this definition"></a></dt>
+<dd><p>counts hierarchical_order items and stores it in local dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.get_x">
+<span class="sig-name descname"><span class="pre">get_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ho</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.get_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.get_x" title="Permalink to this definition"></a></dt>
+<dd><p>get the x axis value for a device from given hierarchical order number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ho</strong> (<em>int</em>) – hierarchical order number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>x axis value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.get_y">
+<span class="sig-name descname"><span class="pre">get_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ho</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.get_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.get_y" title="Permalink to this definition"></a></dt>
+<dd><p>get the y axis value for the given hierarchical_order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ho</strong> (<em>int</em>) – hierarchical order number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>y axis value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.inverse_y">
+<span class="sig-name descname"><span class="pre">inverse_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.inverse_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.inverse_y" title="Permalink to this definition"></a></dt>
+<dd><p>inverses the y axis values (turn upside down)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>dict</em>) – dictionary with y axis placement values based on hierarchical_order</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>inversed dictionary with y axis placement values based on reversed hierarchical_order</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.sort" title="Permalink to this definition"></a></dt>
+<dd><p>sort the Device DataFrame based on [‘hierarchical_order’, ‘hostname’]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.update_xs">
+<span class="sig-name descname"><span class="pre">update_xs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.update_xs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.update_xs" title="Permalink to this definition"></a></dt>
+<dd><p>add <cite>x-axis</cite> column to Device DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated Device DataFrame</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.maths.CalculateXY.update_ys">
+<span class="sig-name descname"><span class="pre">update_ys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#CalculateXY.update_ys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.CalculateXY.update_ys" title="Permalink to this definition"></a></dt>
+<dd><p>add <cite>y-axis</cite> column to Device DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated Device DataFrame</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.maths.df_with_slops_and_angles">
+<span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">df_with_slops_and_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#df_with_slops_and_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.df_with_slops_and_angles" title="Permalink to this definition"></a></dt>
+<dd><p>add the dataframe with slop and angle for the given co-ordinates on plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – Input DataFrame</p></li>
+<li><p><strong>x1_col</strong> (<em>str</em>) – column name for point 1 - x axis</p></li>
+<li><p><strong>x2_col</strong> (<em>str</em>) – column name for point 2 - x axis</p></li>
+<li><p><strong>y1_col</strong> (<em>str</em>) – column name for point 1 - y axis</p></li>
+<li><p><strong>y2_col</strong> (<em>str</em>) – column name for point 2 - y axis</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated Output DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.maths.slop_to_angled_connector">
+<span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">slop_to_angled_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#slop_to_angled_connector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.slop_to_angled_connector" title="Permalink to this definition"></a></dt>
+<dd><p>calculate angle from given slop(m) of an angled line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>float</em>) – slop of an angled line</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>degree/slop of line</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.maths.slop_to_straight_connector">
+<span class="sig-prename descclassname"><span class="pre">pyVig.maths.</span></span><span class="sig-name descname"><span class="pre">slop_to_straight_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/maths.html#slop_to_straight_connector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.maths.slop_to_straight_connector" title="Permalink to this definition"></a></dt>
+<dd><p>calculate angle from given slop(m) of a straight line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>float</em>) – slop of a straight line</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>degree/slop of line</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.oper">
+<span id="pyvig-oper-module"></span><h2>pyVig.oper module<a class="headerlink" href="#module-pyVig.oper" title="Permalink to this heading"></a></h2>
+<p>Operations</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.oper.</span></span><span class="sig-name descname"><span class="pre">DFGen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DataFrame generator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.blank_dfs">
+<span class="sig-name descname"><span class="pre">blank_dfs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.blank_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.blank_dfs" title="Permalink to this definition"></a></dt>
+<dd><p>creates devices/cabling blank DataFrames</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.calculate_cordinates">
+<span class="sig-name descname"><span class="pre">calculate_cordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.calculate_cordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.calculate_cordinates" title="Permalink to this definition"></a></dt>
+<dd><p>calculate the x,y coordinate values for each devices and keep Devices, Cablings DataFrame Dictionary ready.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.custom_attributes">
+<span class="sig-name descname"><span class="pre">custom_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.custom_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.custom_attributes" title="Permalink to this definition"></a></dt>
+<dd><p>add/update custom attributes for object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.custom_functions">
+<span class="sig-name descname"><span class="pre">custom_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.custom_functions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.custom_functions" title="Permalink to this definition"></a></dt>
+<dd><p>add/update custom functions for object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.custom_var_functions">
+<span class="sig-name descname"><span class="pre">custom_var_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.custom_var_functions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.custom_var_functions" title="Permalink to this definition"></a></dt>
+<dd><p>add/update custom <cite>var</cite> tab functions for object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.run" title="Permalink to this definition"></a></dt>
+<dd><p>iterate over all files for generating devices/cabling DataFrame details.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.update_cabling_df">
+<span class="sig-name descname"><span class="pre">update_cabling_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DCT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.update_cabling_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.update_cabling_df" title="Permalink to this definition"></a></dt>
+<dd><p>update Cabling DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DCT</strong> (<a class="reference internal" href="#pyVig.oper.DF_ConverT" title="pyVig.oper.DF_ConverT"><em>DF_ConverT</em></a>) – DataFrame Convertor object</p></li>
+<li><p><strong>file</strong> (<em>str</em>) – a single database. -clean excel file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DFGen.update_devices_df">
+<span class="sig-name descname"><span class="pre">update_devices_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DCT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DFGen.update_devices_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DFGen.update_devices_df" title="Permalink to this definition"></a></dt>
+<dd><p>update Devices DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DCT</strong> (<a class="reference internal" href="#pyVig.oper.DF_ConverT" title="pyVig.oper.DF_ConverT"><em>DF_ConverT</em></a>) – DataFrame Convertor object</p></li>
+<li><p><strong>file</strong> (<em>str</em>) – a single database. -clean excel file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.oper.</span></span><span class="sig-name descname"><span class="pre">DF_ConverT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_stencil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_pattern_style_separation_on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_pattern_style_shift_no</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data Frame Converter</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.convert" title="Permalink to this definition"></a></dt>
+<dd><p>create physical DataFrame, update with patterns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>func_dict</strong> (<em>dict</em>) – custom functions dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.get_self_details">
+<span class="sig-name descname"><span class="pre">get_self_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_func_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.get_self_details"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.get_self_details" title="Permalink to this definition"></a></dt>
+<dd><p>update the value from var tab of var function dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>var_func_dict</strong> (<em>dict</em>) – custom var functions dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.update_cablings">
+<span class="sig-name descname"><span class="pre">update_cablings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">default_dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.update_cablings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.update_cablings" title="Permalink to this definition"></a></dt>
+<dd><p>creates Cabling object and its DataFrame, adds cabling details</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas DataFrame</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.update_device_self_detils">
+<span class="sig-name descname"><span class="pre">update_device_self_detils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.update_device_self_detils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.update_device_self_detils" title="Permalink to this definition"></a></dt>
+<dd><p>create a pandas DataFrame object for the self object using <cite>var</cite> tab and custom functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>func_dict</strong> (<em>dict</em>) – custom var functions</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas DataFrame for self device</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.update_devices">
+<span class="sig-name descname"><span class="pre">update_devices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.update_devices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.update_devices" title="Permalink to this definition"></a></dt>
+<dd><p>creates Devices object, and its DataFrame, adds vlan informations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated pandas DataFrame for interface connected devices</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.update_devices_df_pattern_n_custom_func">
+<span class="sig-name descname"><span class="pre">update_devices_df_pattern_n_custom_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.update_devices_df_pattern_n_custom_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.update_devices_df_pattern_n_custom_func" title="Permalink to this definition"></a></dt>
+<dd><p>updates Devices DataFrame patterns as per custom functions provided in func_dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – pandas DataFrame for devices</p></li>
+<li><p><strong>func_dict</strong> (<em>dict</em>) – custom functions dictionary</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.oper.DF_ConverT.update_devices_for">
+<span class="sig-name descname"><span class="pre">update_devices_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/oper.html#DF_ConverT.update_devices_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.oper.DF_ConverT.update_devices_for" title="Permalink to this definition"></a></dt>
+<dd><p>update DataFrame for the provided dictionary (dic) objects, and removes empty and duplicate hostname value rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – variable DataFrame</p></li>
+<li><p><strong>dic</strong> (<em>dict</em>) – variable dictionary</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>updated DataFrame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyVig.pyVig">
+<span id="pyvig-pyvig-module"></span><h2>pyVig.pyVig module<a class="headerlink" href="#module-pyVig.pyVig" title="Permalink to this heading"></a></h2>
+<p>python visio genrator boiler plate code</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.cabling_data_operations">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">cabling_data_operations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#cabling_data_operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.cabling_data_operations" title="Permalink to this definition"></a></dt>
+<dd><p>create and return cabling data object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dic</strong> (<em>dic</em>) – keyword arguments</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cablings data object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyVig.database.CableMatrixData" title="pyVig.database.CableMatrixData">CableMatrixData</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.device_data_operations">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">device_data_operations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#device_data_operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.device_data_operations" title="Permalink to this definition"></a></dt>
+<dd><p>creates and returns devices data object after merging columns of the list provided for <cite>cols_to_merge</cite> key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dic</strong> (<em>kwarg</em>) – keyword arguments.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Devices data object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyVig.database.DeviceData" title="pyVig.database.DeviceData">DeviceData</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.pyVig">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">pyVig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#pyVig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.pyVig" title="Permalink to this definition"></a></dt>
+<dd><p>main function starting the python based cli - visio generation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dic</strong> (<em>dict</em>) – inputs dictionary ( valid and mandatory keys = stencil_folder, data_file ) (valid but optional keys = default_stencil, cols_to_merge, is_sheet_filter, sheet_filters … and many more from DEFAULT_DIC )</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.pyVig_gui">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">pyVig_gui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#pyVig_gui"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.pyVig_gui" title="Permalink to this definition"></a></dt>
+<dd><p>main function starting the gui input - visio generation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.repeat_for_filter">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">repeat_for_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cable_matrix_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filt_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filt_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#repeat_for_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.repeat_for_filter" title="Permalink to this definition"></a></dt>
+<dd><p>starts visio page operation for the given filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> (<a class="reference internal" href="#pyVig.visio.VisioObject" title="pyVig.visio.VisioObject"><em>VisioObject</em></a>) – Visio Object</p></li>
+<li><p><strong>devices_data</strong> (<a class="reference internal" href="#pyVig.database.DeviceData" title="pyVig.database.DeviceData"><em>DeviceData</em></a>) – Devices data object</p></li>
+<li><p><strong>cable_matrix_data</strong> (<a class="reference internal" href="#pyVig.database.CableMatrixData" title="pyVig.database.CableMatrixData"><em>CableMatrixData</em></a>) – Cablings data object</p></li>
+<li><p><strong>filt_key</strong> (<em>str</em>) – filter key</p></li>
+<li><p><strong>filt_value</strong> (<em>str</em><em>, </em><em>tuple</em><em>, </em><em>list</em><em>, </em><em>set</em>) – filter value(s)</p></li>
+<li><p><strong>page_key</strong> (<em>str</em>) – page key (suffix for filter values in case if multiple filt_values)</p></li>
+<li><p><strong>dic</strong> (<em>dic</em>) – keyword arguments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.visio_operations">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">visio_operations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devices_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cable_matrix_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stencils</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#visio_operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.visio_operations" title="Permalink to this definition"></a></dt>
+<dd><p>create a VisioObject</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>devices_data</strong> (<a class="reference internal" href="#pyVig.database.DeviceData" title="pyVig.database.DeviceData"><em>DeviceData</em></a>) – Devices data object</p></li>
+<li><p><strong>cable_matrix_data</strong> (<a class="reference internal" href="#pyVig.database.CableMatrixData" title="pyVig.database.CableMatrixData"><em>CableMatrixData</em></a>) – Cablings data object</p></li>
+<li><p><strong>stencils</strong> (<em>list</em>) – list of visio stencils</p></li>
+<li><p><strong>dic</strong> (<em>dic</em>) – keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.pyVig.visio_page_operation">
+<span class="sig-prename descclassname"><span class="pre">pyVig.pyVig.</span></span><span class="sig-name descname"><span class="pre">visio_page_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cable_matrix_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/pyVig.html#visio_page_operation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.pyVig.visio_page_operation" title="Permalink to this definition"></a></dt>
+<dd><p>operate on visio page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> (<a class="reference internal" href="#pyVig.visio.VisioObject" title="pyVig.visio.VisioObject"><em>VisioObject</em></a>) – Visio Object</p></li>
+<li><p><strong>devices_data</strong> (<a class="reference internal" href="#pyVig.database.DeviceData" title="pyVig.database.DeviceData"><em>DeviceData</em></a>) – Devices data object</p></li>
+<li><p><strong>cable_matrix_data</strong> (<a class="reference internal" href="#pyVig.database.CableMatrixData" title="pyVig.database.CableMatrixData"><em>CableMatrixData</em></a>) – Cablings data object</p></li>
+<li><p><strong>flt</strong> (<em>dict</em>) – filters {key: value} pairs</p></li>
+<li><p><strong>page_key</strong> (<em>str</em><em>, </em><em>optional</em>) – page key (suffix for filter values in case if multiple filt_values). Defaults to None.</p></li>
+<li><p><strong>dic</strong> (<em>dic</em>) – keyword arguments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.static">
+<span id="pyvig-static-module"></span><h2>pyVig.static module<a class="headerlink" href="#module-pyVig.static" title="Permalink to this heading"></a></h2>
+<p>Defined static global variables here.</p>
+</section>
+<section id="module-pyVig.stencils">
+<span id="pyvig-stencils-module"></span><h2>pyVig.stencils module<a class="headerlink" href="#module-pyVig.stencils" title="Permalink to this heading"></a></h2>
+<p>visio stencils related</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.stencils.get_list_of_stencils">
+<span class="sig-prename descclassname"><span class="pre">pyVig.stencils.</span></span><span class="sig-name descname"><span class="pre">get_list_of_stencils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/stencils.html#get_list_of_stencils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.stencils.get_list_of_stencils" title="Permalink to this definition"></a></dt>
+<dd><p>finds the required stencil files in given folder and return those filenames in a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – path of folder where stencils stored</p></li>
+<li><p><strong>devices_data</strong> (<a class="reference internal" href="#pyVig.database.DeviceData" title="pyVig.database.DeviceData"><em>DeviceData</em></a>) – Device Data object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Raise Exception if any stencil is missing</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of file names</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig.visio">
+<span id="pyvig-visio-module"></span><h2>pyVig.visio module<a class="headerlink" href="#module-pyVig.visio" title="Permalink to this heading"></a></h2>
+<p>Module to interact with MS-Visio</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.visio.Connector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">Connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyVig.visio.Connector.object" title="pyVig.visio.Connector.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>s1_s2_Connector = self.connector()
+Drops a connector to visio page.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.add_a_port_info">
+<span class="sig-name descname"><span class="pre">add_a_port_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aport_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">at_angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.add_a_port_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.add_a_port_info" title="Permalink to this definition"></a></dt>
+<dd><p>add port information for (a-side interface) on connector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aport_info</strong> (<em>str</em>) – port information</p></li>
+<li><p><strong>at_angle</strong> (<em>int</em>) – rotate information at angle</p></li>
+<li><p><strong>connector_type</strong> (<em>str</em>) – connector type ( angled, straight, curved )</p></li>
+<li><p><strong>indent</strong> (<em>bool</em><em>, </em><em>optional</em>) – indent text or not. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remarks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.description" title="Permalink to this definition"></a></dt>
+<dd><p>description to be add to object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>remarks</strong> (<em>str</em><em>, </em><em>memo</em>) – description</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.drop" title="Permalink to this definition"></a></dt>
+<dd><p>drops a connector to visio page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>connector_type</strong> (<em>str</em><em>, </em><em>optional</em>) – connector tpe (valid options are:
+angled, straight, curved). Defaults to None=angled.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Connector Object from visio</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>connectorObj</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.format_line">
+<span class="sig-name descname"><span class="pre">format_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.format_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.format_line" title="Permalink to this definition"></a></dt>
+<dd><p>formatting of line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) – set color of line (blue, red, gray etc.). Defaults to None=black.
+see line_color for all available options.</p></li>
+<li><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – thickness of line. Defaults to None=1.</p></li>
+<li><p><strong>pattern</strong> (<em>int</em><em>, </em><em>optional</em>) – line patterns. Defaults to solid line.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.line_color">
+<span class="sig-name descname"><span class="pre">line_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.line_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.line_color" title="Permalink to this definition"></a></dt>
+<dd><p>color of a line object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>str tuple</em><em>, </em><em>optional</em>) – color of line. Defaults to black.
+valid string options are (red, green, blue, gray, lightgray, darkgray )
+Other option is to provide RGB color in tuple ex: (10, 10, 10)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.line_pattern">
+<span class="sig-name descname"><span class="pre">line_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.line_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.line_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>set line pattern</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>int</em><em>, </em><em>optional</em>) – pattern number. Defaults to solid line.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.line_weight">
+<span class="sig-name descname"><span class="pre">line_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.line_weight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.line_weight" title="Permalink to this definition"></a></dt>
+<dd><p>set weight/thickness of a line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – thickness of line. Defaults to None=1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.object">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#pyVig.visio.Connector.object" title="Permalink to this definition"></a></dt>
+<dd><p>visio object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>visio object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>visioObject</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.text_indent">
+<span class="sig-name descname"><span class="pre">text_indent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.text_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.text_indent" title="Permalink to this definition"></a></dt>
+<dd><p>Indention to be done on oject</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Connector.text_rotate">
+<span class="sig-name descname"><span class="pre">text_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Connector.text_rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Connector.text_rotate" title="Permalink to this definition"></a></dt>
+<dd><p>Rotation of text at given angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>degree</strong> (<em>int</em><em>, </em><em>optional</em>) – angle to be rotate to. Defaults to 90.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.visio.Device">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Device" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyVig.visio.Device.object" title="pyVig.visio.Device.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A Device Object</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Device.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aport</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Device.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Device.connect" title="Permalink to this definition"></a></dt>
+<dd><p>connects self object with remote object using connector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>remote</strong> (<a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device"><em>Device</em></a>) – remote Device object</p></li>
+<li><p><strong>connector_type</strong> (<em>str</em><em>, </em><em>optional</em>) – connector type. Defaults to None=’angled’.</p></li>
+<li><p><strong>angle</strong> (<em>int</em><em>, </em><em>optional</em>) – a-port info rotate at. Defaults to 0.</p></li>
+<li><p><strong>aport</strong> (<em>str</em><em>, </em><em>optional</em>) – line a-port info. Defaults to “”.</p></li>
+<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) – line color. Defaults to None.</p></li>
+<li><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – line weight. Defaults to None.</p></li>
+<li><p><strong>pattern</strong> (<em>int</em><em>, </em><em>optional</em>) – line pattern. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Device.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remarks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Device.description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Device.description" title="Permalink to this definition"></a></dt>
+<dd><p>set description/remark of current object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>remarks</strong> (<em>str</em><em>, </em><em>memo</em>) – remark for the object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.Device.drop_from">
+<span class="sig-name descname"><span class="pre">drop_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#Device.drop_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.Device.drop_from" title="Permalink to this definition"></a></dt>
+<dd><p>drop an item from stencil, if item not found in stencil then it will drop a rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stencil</strong> (<em>str</em>) – stencil name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyVig.visio.Device.object">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#pyVig.visio.Device.object" title="Permalink to this definition"></a></dt>
+<dd><p>self object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>self object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>self.obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">VisioObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencils</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Creates a Visio Object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_description_</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>_type_</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.fit_to_draw">
+<span class="sig-name descname"><span class="pre">fit_to_draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject.fit_to_draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject.fit_to_draw" title="Permalink to this definition"></a></dt>
+<dd><p>resize visio page to fit the page to drawing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<em>int</em><em>)</em>) – page height to be resized (inch)</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – page width to be resized (inch)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.insert_new_page">
+<span class="sig-name descname"><span class="pre">insert_new_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject.insert_new_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject.insert_new_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shpObj1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shpObj2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject.join"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject.join" title="Permalink to this definition"></a></dt>
+<dd><p>use Connector object to join two shapes (Device objects)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connector</strong> (<a class="reference internal" href="#pyVig.visio.Connector" title="pyVig.visio.Connector"><em>Connector</em></a>) – Connector object</p></li>
+<li><p><strong>shpObj1</strong> (<a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device"><em>Device</em></a>) – Device Object 1</p></li>
+<li><p><strong>shpObj2</strong> (<a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device"><em>Device</em></a>) – Device Object 2</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.openStencil">
+<span class="sig-name descname"><span class="pre">openStencil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject.openStencil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject.openStencil" title="Permalink to this definition"></a></dt>
+<dd><p>open a stencil in visio document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stencil</strong> (<em>str</em>) – stencil file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>visio stencil object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>visioStencil</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.selectNdrop">
+<span class="sig-name descname"><span class="pre">selectNdrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stencil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posY</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject.selectNdrop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject.selectNdrop" title="Permalink to this definition"></a></dt>
+<dd><p>Selects item <cite>item</cite> from provided stencil <cite>stencil</cite> for selected visio object.
+And drops that item on visio Object at given position index ( posX and posY )
+usage: icon = visObj.selectNdrop(stencil,item,posX,posY)
+format = shape formatting (see _format() for type of formats available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stencil</strong> (<em>str</em>) – name of stencil</p></li>
+<li><p><strong>item</strong> (<em>str</em><em>, </em><em>int</em>) – icon name or number from stencil</p></li>
+<li><p><strong>posX</strong> (<em>int</em>) – plane x-coordinate</p></li>
+<li><p><strong>posY</strong> (<em>int</em>) – plane y-coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dropped icon object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>iconObject</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.shapeDrow">
+<span class="sig-name descname"><span class="pre">shapeDrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#VisioObject.shapeDrow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.VisioObject.shapeDrow" title="Permalink to this definition"></a></dt>
+<dd><p>Drops provided shape to visio page.
+Usage: shape = visObj.shapeDrow(shape, lx, lr, rx, rr, format)
+format = shape formatting (see _format() for type of formats available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>str</em>) – [description]</p></li>
+<li><p><strong>lx</strong> (<em>int</em>) – x1 - coordinate</p></li>
+<li><p><strong>lr</strong> (<em>int</em>) – y1 - coordinate</p></li>
+<li><p><strong>rx</strong> (<em>int</em>) – x2 - coordinate</p></li>
+<li><p><strong>rr</strong> (<em>int</em>) – y2 - coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>shape object from visio</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>shapeObject</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyVig.visio.VisioObject.stn">
+<span class="sig-name descname"><span class="pre">stn</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pyVig.visio.VisioObject.stn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVig.visio.device">
+<span class="sig-prename descclassname"><span class="pre">pyVig.visio.</span></span><span class="sig-name descname"><span class="pre">device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visObj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyVig/visio.html#device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyVig.visio.device" title="Permalink to this definition"></a></dt>
+<dd><p>Drop an item from stencil given to visio object at given x,y co-ordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>visObj</strong> (<em>Visio</em>) – Visio Object</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – y coordinate</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Device Object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyVig.visio.Device" title="pyVig.visio.Device">Device</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyVig">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyVig" title="Permalink to this heading"></a></h2>
+<p>This python based project help generating visio drawing from the excel database.
+Tested on MS-Visio Professional 2013. other version support is not tested. it may or may not work as described.</p>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h3>
+<p>Database: update your data in Excel.   Two tabs are necessary, one with devices details, another with connectivity details.</p>
+<p>MS-Visio: to generate the drawing.</p>
+<p>Stencils: [optional] folder from where project can find visio stencils.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="pyVig" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Aliasgar [ALI].</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
