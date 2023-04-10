@@ -9,8 +9,8 @@ User documentation!
    :caption: Contents:
 
 
-   Option 1: CLI Execution - Manual XL <u_doc/cli_general>
-   Option 2: GUI Execution - Manual XL <u_doc/gui_general>
+   Option 1: CLI Execution <u_doc/cli_general>
+   Option 2: GUI Execution <u_doc/gui_general>
    Excel Preparation - Manual <u_doc/excel_making>
    Excel Preparation - using facts-finder <u_doc/cli_facts>
 
