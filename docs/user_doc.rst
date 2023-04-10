@@ -9,10 +9,10 @@ User documentation!
    :caption: Contents:
 
 
-   Step1: Excel Preparation <u_doc/excel_making>
-   Way1: CLI with Manual XL <u_doc/cli_general>
-   Way2: GUI with Manual XL <u_doc/gui_general>
-   Way3: CLI with auto XL <u_doc/cli_facts>
+   Step 1: Excel Preparation <u_doc/excel_making>
+   Option 1: CLI Execution - Manual XL <u_doc/cli_general>
+   Option 2: GUI Execution - Manual XL <u_doc/gui_general>
+   Excel Preparation using facts-finder <u_doc/cli_facts>
    Database Sample <u_doc/sample>
 
 

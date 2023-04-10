@@ -1,9 +1,8 @@
-Way1: CLI Execution with manual Excel Database preparation
+Option 1: CLI Execution - Manual XL
 ==========================================================
 
 
 Follow below steps for Command Line Execution steps
-Copy python commands to a .py file for repeatative use.
 
 
 ----------------------------
@@ -11,56 +10,53 @@ Copy python commands to a .py file for repeatative use.
 Prepare Excel
 ----------------------
 
-   #. Excel Database should contain two tabs **Devices**, **Cablings**.
-   #. Refer to ``Databse Sample`` section for more details on Excel database requirements.
+   #. Prepare Excel as per guidelines given in previous **Excel database Preparation Guidelines page**.
    #. :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
 
 
-Prepare your code
+-----
+
+
+Prepare python code
 ------------------------------
 
 	.. code-block:: python
 	
 		# --------------------------------------------------------------------------------------
 		# 1. Import package
-		# 2. Call pyVig with necessary inputs ( you can remove optional, undesired inputs )
+		# 2. Call pyVig with necessary inputs ( remove undesired optional input arguments )
 		# --------------------------------------------------------------------------------------
 		from pyVig import pyVig
 		pyVig(
-			# Mandatory
+			# ------------- Two Mandatory arguments -------------
 			stencil_folder = '/fullpath_stencil_folder',
 			data_file = '/fullpath/data_file',
 
-			# Optional - inputs
+			# ------------- Optional arguments / inputs Follows -------------
 			default_stencil = 'Network and Peripherals',    #(default: None)
-			op_file = 'filename.vsdx',    # (default: None)
+			op_file = 'output_filename.vsdx',    # (default: None)
 
-			devices_sheet_name = 'Devices',    # (default: 'Deviecs')
-			x-coordinates_col = 'x-axis',    # (default: 'x-axis')
-			y-coordinates_col = 'y-axis',    # (default: 'y-axis')
-			stencils_col = 'stencil',    # (default: 'stencil')
-			device_type_col = 'item',    # (default: 'item')
+			x = 'x',    # (default: 'x-axis', Devices Tab)
+			y = 'y',    # (default: 'y-axis', Devices Tab)
 
-			cabling_sheet_name = 'Cablings',    #(default: 'Cablings')
-			a_device_col = 'a_device',    # (default: 'a_device')
-			b_device_col = 'b_device',    # (default: 'b_device')
+			dev_a = 'a',    # (default: 'a_device', Cablings Tab)
+			dev_b = 'b',    # (default: 'b_device', Cablings Tab)
 
-			# Optional - Devices tab columns to be merged to form device description 
-			cols_to_merge = ['COLUMNS_TO_BE_MERGED_WITH_HOSTNAME', 'IP', 'SERIAL', ... ],
+			# Additional information from various columns to be merged in device description 
+			cols_to_merge = ['device_model', 'serial_number', 'ip_address', .. ],	# (default: [], , Devices Tab)
 
-			# Optional - Device icon formatting 
-			device_format_columns = {
+			# Device icon formatting 
+			format_columns = {
 				'iconHeight': 1,    # sets default iconHeight (default: 1)
 				'iconWidth': 2.5,    # sets default iconWidth (default: 2.5) 
 			},
 
-			# Optional - Filter options
-			filter_on_cable = True,    # (default: True)
-			filter_on_include_col = False,    # (default: False, will look for column name 'include' to select cablings)
-			is_sheet_filter = True,    # (Default: True, enables filtering on 'sheet_filters' input)
+			# Different Filter options
+			filter_on_cable = False,    # (filter to drop connected devices only, default: True)
+			filter_on_include_col = True,    # (looks for non-empty rows for column 'include' to select cablings; default: False)
+			is_sheet_filter = False,    # (Default: True, enables filtering on 'sheet_filters' input,  overrides 'filter_on_include_col')
 			sheet_filters = {
-				'draw_type': ('core', 'dist', 'building-a',),		## Here column name = 'draw_type' , matching and filtering rows value as per given in tuple. 
-				'dist': 'x',										## Here column name = 'dist',  matching and filtering an 'x' marked rows.
+				'draw_type': ('core', 'access', ),   ## Here column name = 'draw_type' , matching and filtering rows value as per given in tuple. 
 				# Add more filters as required.... 
 			},
 
@@ -69,16 +65,12 @@ Prepare your code
 		# --------------------------------------------------------------------------------------
 
 
+-----
+
 
 	.. tip::
 		
-		Do not interrupt the visio application while visio generation is inprogress. 
-
-		Once Finished save the file as required.
-
-		Verify drawing,  Modify Excel Database if need adjustments, re-run pyVig() to regenerate drawing.
-
-
-
-
+		* Do not interrupt the visio application while visio generation is inprogress.
+		* Once Finished save the file as required.
+		* Verify drawing,  Modify Excel Database if need adjustments, re-run pyVig() to regenerate drawing.
 

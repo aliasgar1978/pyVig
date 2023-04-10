@@ -24,7 +24,7 @@ class AdevDevices():
 		self.var_df = var_df
 		self.self_device = {}
 		self.devices={}
-		self.mandatory_columns = {'hostname', 'stencils', 'device_type'}
+		self.mandatory_columns = {'hostname', 'stencil', 'item'}
 		self.optional_columns = {'ip_address', 'device_model', 'serial_number', 'hierarchical_order', 'vlan_members',}
 
 	def add_to_devices(self,  what, **kwargs):
@@ -49,7 +49,7 @@ class AdevDevices():
 				if not what.get(k):
 					what[k] = []
 				try:
-					if k == 'stencils':
+					if k == 'stencil':
 						what[k].append(self.stencil)
 					else:
 						what[k].append(kwargs[x])

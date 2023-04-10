@@ -1,6 +1,0 @@
-﻿column,description
-aport,a-end device of cable
-connector_type,"type of line connector to use ( straight, angled, curved ) (default: straight )"
-color,color of line connector (default: blue )
-weight,weight of line connector (default: 3 )
-pattern,pattern of line connector (default: 1)

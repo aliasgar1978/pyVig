@@ -182,7 +182,6 @@ class CableMatrixData(Data):
 						'color': DEFAULT_LINE_COLOR,
 						'weight': DEFAULT_LINE_WT,
 						'pattern': DEFAULT_LINE_PATTERN,
-						# 'angle': "straight",
 						'aport': "",
 	}
 	sheet_name = 'Cablings'

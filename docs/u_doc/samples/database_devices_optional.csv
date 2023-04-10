@@ -1,7 +1,0 @@
-column,input dictionary key,description,default
-stencil,-,name of stencil from where the icon to placed for given device.,default stencil if not defined
-item,-,name or number of item to drop from stencil,text box if not found
-iconHeight,-,relative vertical stretching of icon,1
-iconWidth,-,relative horizontal stretching of icon,2.5
-.. Any other,cols_to_merge  (type: list),"selective columns can be merged together to form a device description details using a list; on given input dictionary key
-Examples: ip address, serial number, model, serial number etc..",-

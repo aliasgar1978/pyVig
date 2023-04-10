@@ -35,26 +35,26 @@ class DFGen():
 		self.devices_merged_df = pd.DataFrame({'hostname':[]})
 		self.cabling_merged_df = pd.DataFrame({'a_device':[]})
 
-	def update_attributes(self, **kwargs):
+	def custom_attributes(self, **kwargs):
 		"""add/update custom attributes for object
 		"""		
 		for k, v in kwargs.items():
 			if v:
 				self.__dict__[k] = v
 
-	def update_functions(self, **kwargs):
+	def custom_functions(self, **kwargs):
 		"""add/update custom functions for object
 		"""		
 		for k, v in kwargs.items():
 			self.func_dict[k] = v
 
-	def update_var_functions(self, **kwargs):
+	def custom_var_functions(self, **kwargs):
 		"""add/update custom `var` tab functions for object
 		"""		
 		for k, v in kwargs.items():
 			self.var_func_dict[k] = v
 
-	def iterate_over_files(self):
+	def run(self):
 		"""iterate over all files for generating devices/cabling DataFrame details.
 		"""		
 		self.DCT = {}

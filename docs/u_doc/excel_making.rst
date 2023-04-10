@@ -3,11 +3,16 @@ Excel database Preparation Guidelines
 =====================================
 
 
-* There is a requirement of having a database in Excel format, which will be used to generate the visio drawing.
-* For network drawings, we require two tabs in Excel file. Tab names are to be match exactly as given below.
+* There is a requirement of having a Excel database in appropriate format to generate visio drawing.
+* Two tabs in Excel file are mandatory. Tab names are to be match exactly as given below.
 
   #. ``Devices`` This tab defines all images/icons to be placed on the visio page.
   #. ``Cablings`` This tab defines all cabling/connectivity related stuff to be done on placed icons.
+
+
+There is a Sample Excel given at end of this page. Download and modify it as your requirement.
+
+Read Below to understand it.
 
 -----
 

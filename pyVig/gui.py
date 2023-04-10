@@ -1,4 +1,4 @@
-"""pyVig Form Production
+"""pyVig GUI Form Production
 """
 
 # -----------------------------------------------------------------------------
@@ -9,19 +9,18 @@ from pprint import pprint
 # -----------------------------------------------------------------------------
 declaration = """
  ~~~~ IMPORTANT INFORMATION ~~~~
- This program was tested with MS-Visio Professional 2013.
- It may or may not work depending on your visio version.
- File save feature is not working in this visio version.
- hence it is disabled. Save the file manually.
+ This program was tested with MS-Visio Professional 2013, 2016.
+ It may or may not work depending on other older visio version.
+ File save feature is not working in visio version.
+ Remember to save the file manually.
 
  Macros and vBA scripting requires to be enabled in visio
  in order to access the visio components.
  select 'Enable all macros' and, check 'Trust access to vBA'
  from trust center setting of MS-visio.
 
-
  Please reachout to me, @ aholo2000@gmail.com for any Qs.
- Owner of code: [Aliasgar Lokhandwala]
+ Owned and mainained by: [Aliasgar Lokhandwala]
 """
 
 # -----------------------------------------------------------------------------
@@ -30,37 +29,31 @@ declaration = """
 
 class UserForm():
 	'''Inititates a UserForm asking user inputs.	'''
-	version  = 'Visio Generator : gui ver: 0.0.8'
+	version  = 'Visio Generator : gui ver: 0.0.11'
 	header = 'Visio Generator'
 
 	# Object Initializer
 	def __init__(self):
 		self.boot = False
 		self.dic = {
+			# mandatories
 			'stencil_folder':"",
-			# -- database variables --
 			'data_file' : "",
-			'devices_sheet_name':'Devices',
-			'x-coordinates_col': 'x-axis',
-			'y-coordinates_col': 'y-axis',
-			'stencils_col': 'stencils',
-			'device_type_col': 'device_type',
-			'default_stencil': '',	# Default STencil
-			'cabling_sheet_name': 'Cablings',
-			'a_device_col': 'a_device',
-			'b_device_col': 'b_device',
-			'a_device_port_col': 'a_device_port',
-			'connector_type_col': 'connector_type',
-			'color_col': 'color',
-			'weight_col': 'weight',
-			'pattern_col': 'pattern',
+
+			# optionals
+			'default_stencil': '',
+			'op_file': 'output.vsdx',
+
+			'x': 'x-axis',
+			'y': 'y-axis',
+			'dev_a': 'a_device',
+			'dev_b': 'b_device',
 			#
-			'op_file': 'abcd.vsdx',				# optional
-			'cols_to_merge': [],			# optional
-			'is_sheet_filter': False,
-			'sheet_filters':{},				# optional
-			'filter_on_include_col': False,	# optional
-			'filter_on_cable': True			# optional
+			'cols_to_merge': [],
+			'is_sheet_filter': True,
+			'sheet_filters':{},	
+			'filter_on_include_col': False,
+			'filter_on_cable': True,
 			}
 		self.create_form()
 
@@ -165,20 +158,16 @@ class UserForm():
 				del(self.dic)
 				break
 			if event == 'Go': 
-				if self.check_basics(i): self.event_update_Go(i)
+				if self.check_basics(i): 
+					self.event_update_Go(i)
 			if event == 'is_sheet_filter': self.event_update_filter(i)
 			if event == 'filt_col_add': self.sheet_filter_add_col_value(i)
 			if event == 'def_stn': self.update_default_stencil(i)
 			if event == 'enable_description_merge': self.update_description_col_dropbox(i)
 			if event == 'desc_col_add': self.append_description_column(i)
 			if event == 'data_file': 
-				num = self.update_excel_sheet_columns(i)
-				if num > 1:
-					self.update_cabling_sheet_columns(i)
-				if num >= 1 and num != 2:
-					self.update_devices_sheet_columns(i)
-			if event == 'devices_sheet_name': self.update_devices_sheet_columns(i)
-			if event == 'cabling_sheet_name': self.update_cabling_sheet_columns(i)
+				self.update_cabling_sheet_columns(i)
+				self.update_devices_sheet_columns(i)
 
 
 			# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -250,21 +239,12 @@ class UserForm():
 				sg.InputText("", key='def_stn', change_submits=True),
 				sg.FileBrowse()],
 			self.under_line(80),
-			[sg.Text('devices sheet name', size=(20, 1), font='TimesBold'), sg.InputText("", key='devices_sheet_name', size=(20, 1), change_submits=True)],
-			[sg.Text('x-coordinates col' , size=(20, 1)), sg.InputCombo([], key='x-coordinates_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('y-coordinates col' , size=(20, 1)), sg.InputCombo([], key='y-coordinates_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('stencils col'      , size=(20, 1)), sg.InputCombo([], key='stencils_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('device-type col'   , size=(20, 1)), sg.InputCombo([], key='device_type_col', size=(20,1), disabled=True, change_submits=False)],  
+			[sg.Text('x-coordinates col' , size=(20, 1)), sg.InputCombo([], key='x', size=(20,1), disabled=True, change_submits=False)],  
+			[sg.Text('y-coordinates col' , size=(20, 1)), sg.InputCombo([], key='y', size=(20,1), disabled=True, change_submits=False)],  
 
 			self.under_line(80),
-			[sg.Text('cabling sheet name', size=(20, 1), font='TimesBold'), sg.InputText("", key='cabling_sheet_name', size=(20, 1), change_submits=True)],
-			[sg.Text('a-device col'      , size=(20, 1)), sg.InputCombo([], key='a_device_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('b-device col'      , size=(20, 1)), sg.InputCombo([], key='b_device_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('a-device port col'      , size=(20, 1)), sg.InputCombo([], key='a_device_port_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('connector-type col'      , size=(20, 1)), sg.InputCombo([], key='connector_type_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('color col'      , size=(20, 1)), sg.InputCombo([], key='color_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('weight col'      , size=(20, 1)), sg.InputCombo([], key='weight_col', size=(20,1), disabled=True, change_submits=False)],  
-			[sg.Text('pattern col'      , size=(20, 1)), sg.InputCombo([], key='pattern_col', size=(20,1), disabled=True, change_submits=False)],  
+			[sg.Text('a-device col'      , size=(20, 1)), sg.InputCombo([], key='dev_a', size=(20,1), disabled=True, change_submits=False)],  
+			[sg.Text('b-device col'      , size=(20, 1)), sg.InputCombo([], key='dev_b', size=(20,1), disabled=True, change_submits=False)],  
 
 			self.under_line(80),
 			])
@@ -291,7 +271,6 @@ class UserForm():
 			[sg.Text("  **sheet name will be column name mentioned below, \n and sheet-data will be choosen based on matching values given in that particular column")],
 			[sg.Text("Column Name"), 
 			sg.InputCombo([], key='filt_col_key', size=(20,1), disabled=True, change_submits=False),  
-			# sg.InputText("", key='filt_col_key', size=(12, 1), disabled=True), 
 			sg.Text(" == "), sg.InputText("", key='filt_col_value', size=(12, 1), disabled=True), sg.Text(" Column Value "),
 			sg.Button("ADD", change_submits=False, key='filt_col_add', disabled=True)
 			],
@@ -372,10 +351,9 @@ class UserForm():
 			self.event_update_element(is_sheet_filter={'value': False})
 			return None
 		try:
-			df = pd.read_excel(i['data_file'], sheet_name=i['cabling_sheet_name'])
+			df = pd.read_excel(i['data_file'], sheet_name='Cablings')
 			cols = list(df.columns)
-			excludes = ( i['a_device_col'], i['b_device_col'], i['a_device_port_col'],
-				i['connector_type_col'], i['color_col'], i['weight_col'], i['pattern_col'])
+			excludes = ( i['dev_a'], i['dev_b'], )
 		except:
 			sg.Popup("Provide correct column name for\n`Cabling sheet name`\nfrom `DataFile`")
 			self.event_update_element(is_sheet_filter={'value': False})
@@ -443,10 +421,9 @@ class UserForm():
 			return None
 		if i['enable_description_merge']:
 			try:
-				df = pd.read_excel(i['data_file'], sheet_name=i['devices_sheet_name'])
+				df = pd.read_excel(i['data_file'], sheet_name='Devices')
 				cols = list(df.columns)
-				excludes = ('hostname', i['x-coordinates_col'], i['y-coordinates_col'],
-					i['stencils_col'], i['device_type_col'])
+				excludes = ('hostname', i['x'], i['y'], )
 			except:
 				sg.Popup("Provide correct column name for\n`Device sheet name`\nfrom `DataFile`")
 				self.event_update_element(enable_description_merge={'value': False})
@@ -503,7 +480,7 @@ class UserForm():
 		Args:
 			cols (list): list of items
 		"""    		
-		fields = ('x-coordinates_col', 'y-coordinates_col', 'stencils_col', 'device_type_col')
+		fields = ('x', 'y', )
 		for field in fields:
 			value = self.get_value(field, cols)
 			self.update_col_name(field, cols, value)
@@ -514,39 +491,10 @@ class UserForm():
 		Args:
 			cols (list): list of items
 		"""    		
-		fields = ('a_device_col', 'b_device_col', 'a_device_port_col', 'connector_type_col', 
-			'color_col', 'weight_col', 'pattern_col')
+		fields = ('dev_a', 'dev_b', )
 		for field in fields:
 			value = self.get_value(field, cols)
 			self.update_col_name(field, cols, value)
-
-	def update_excel_sheet_columns(self, i):
-		"""update necessary elements after selection of a datafile
-
-		Args:
-			i (form_inputs): form elements
-
-		Returns:
-			int: count to detect matching
-		"""    		
-		# update devicesheetname and cablingsheetname
-		num = 0
-		updates = {}
-		try:
-			ef = pd.read_excel(i['data_file'], None)
-			self.data_sheet_names = list(ef.keys())
-			if len(self.data_sheet_names) < 2:
-				sg.Popup("Data file contains less informations")
-			if "Devices" in self.data_sheet_names:
-				updates['devices_sheet_name'] = {'value': "Devices" }
-				num += 1
-			if "Cablings" in self.data_sheet_names:
-				updates['cabling_sheet_name'] = {'value': "Cablings" }
-				num += 2
-			self.event_update_element(**updates)
-		except:
-			sg.Popup("Please provide correct Excel data file")
-		return num
 
 	def update_devices_sheet_columns(self, i):
 		"""try updating devices tab related fields
@@ -554,9 +502,8 @@ class UserForm():
 		Args:
 			i (form_inputs): form elements
 		"""    		
-		devices_sheet_name = self.dic['devices_sheet_name']
 		try:
-			data_df = pd.read_excel(i['data_file'], sheet_name=devices_sheet_name)
+			data_df = pd.read_excel(i['data_file'], sheet_name='Devices')
 			data_cols = list(data_df.columns)
 			data_cols.remove('hostname')
 			self.update_devices_cols_combo(data_cols)
@@ -569,9 +516,8 @@ class UserForm():
 		Args:
 			i (form_inputs): form elements
 		"""    		
-		cabling_sheet_name = self.dic['cabling_sheet_name']
 		try:
-			cable_df = pd.read_excel(i['data_file'], sheet_name=cabling_sheet_name)
+			cable_df = pd.read_excel(i['data_file'], sheet_name='Cablings')
 			cable_cols = list(cable_df.columns)
 			self.update_cabling_cols_combo(cable_cols)
 		except:
@@ -586,7 +532,6 @@ class UserForm():
 		Returns:
 			bool: to detect validity of datafile
 		"""    		
-		# if (not i['data_file'] or not i['stencil_folder'] ):
 		if not i['data_file'] :
 			sg.Popup("Provide mandatory fields `datafile`, `stencil folder`")
 			return False
