@@ -13,7 +13,5 @@ User documentation!
    Option 1: CLI Execution - Manual XL <u_doc/cli_general>
    Option 2: GUI Execution - Manual XL <u_doc/gui_general>
    Excel Preparation - using facts-finder <u_doc/cli_facts>
-   Samples <u_doc/sample>
-   Version Control <u_doc/version_control>
 
 
