@@ -15,25 +15,7 @@ A Sample Stencil : Network and Peripherals
 :download:`Stencil <samples/Network and Peripherals.vssx>`. Sample stencil used in above database example.
 
 
-Devices Table Sample
----------------------------------
-
-.. csv-table:: Devices
-   :file: samples/devices.csv
-   :header-rows: 1   
-
-
-
-
-Cablings Table Sample
----------------------------------
-
-.. csv-table:: Cablings
-   :file: samples/cablings.csv
-   :header-rows: 1
-
-
-Output: when no sheet_filters provided
+Sample Output: without filters
 --------------------------------------
 
 Here is a sample output with given database when no filters selected in input.
@@ -42,8 +24,8 @@ Here is a sample output with given database when no filters selected in input.
   :width: 400
   :alt: all.png
 
-Output2: Tab1 when sheet_filters applied
-----------------------------------------
+Sample Output: with filters multi tab (tab1)
+---------------------------------------------
 
 Here is a sample output of `core` tab when **sheet_filters** is enabled in input.
 
@@ -51,8 +33,8 @@ Here is a sample output of `core` tab when **sheet_filters** is enabled in input
   :width: 400
   :alt: core.png
 
-Output3: Tab2 when sheet_filters applied
-----------------------------------------
+Sample Output: with filters multi tab (tab2)
+---------------------------------------------
 
 Here is a sample output of `access` tab when **sheet_filters** is enabled in input.
 
