@@ -10,7 +10,7 @@ Follow below steps for GUI based Execution
 Prepare Excel
 ----------------------
 
-   #. Prepare Excel as per guidelines given in previous **Excel database Preparation Guidelines page**.
+   #. Prepare Excel as per guidelines given in previous **Excel database Preparation page**.
    #. :download:`Sample <samples/Excel-pyvig-sample.xlsx>`. pyVig readable Sample Excel file with Devices and Cablings Tab.
 
 

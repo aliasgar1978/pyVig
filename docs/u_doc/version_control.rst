@@ -41,10 +41,14 @@ Version Control
      - Untracked
    * - 0.0.10
      - April 6, 2023
-     - docStrings update, API Documentations published. Depricated Version Use old documentation to refer usage of this version.  https://pyvig.readthedocs.io/en/ver-0.0.10/
+     -  * docStrings update
+        * API Documentations published.
+        * Version Depricated from next release
+        * Use documentation to use of these.  https://pyvig.readthedocs.io/en/ver-0.0.10/
    * - 0.0.11
      - April 10, 2023
-     - Major Changes, Code Rewamp, input features changed, not backward compatible. Use latest documentation (0.0.11) for this version 
+     -  * Major Changes, Code Rewamp, input features changed.
+        * Not backward compatible. Use latest documentation (>=0.0.11) for this version usage. 
 
 
 -----
