@@ -2,7 +2,11 @@
 """
 # -----------------------------------------------------------------------------------
 
-from nettoolkit_common import Multi_Execution
+try:
+	from nettoolkit_common import Multi_Execution
+except:
+	# backworad compatibility ( will be deprycated )
+	from nettoolkit import Multi_Execution
 
 from pyVig.visio import device
 

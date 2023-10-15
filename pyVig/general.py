@@ -1,8 +1,11 @@
 """general functions
 """
 
-
-from nettoolkit_common import LST
+try:
+	from nettoolkit_common import LST
+except:
+	# backworad compatibility ( will be deprycated )
+	from nettoolkit import LST
 
 # ----------------------------------------------------------------------------------------------------
 # Some of static fixed / default values
