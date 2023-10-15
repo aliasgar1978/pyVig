@@ -2,7 +2,7 @@
 """
 
 
-import nettoolkit as nt
+from nettoolkit_common import LST
 
 # ----------------------------------------------------------------------------------------------------
 # Some of static fixed / default values
@@ -145,7 +145,7 @@ def get_vlans_info(vlan_members, vlan_df):
 	if isinstance(vlan_members, float):
 		vlan_members = [int(vlan_members)]
 	else:
-		vlan_members = nt.LST.remove_empty_members(vlan_members.split(","))
+		vlan_members = LST.remove_empty_members(vlan_members.split(","))
 	s = ''
 	if len(vlan_members) == 0: return s
 	for vlan in vlan_members:

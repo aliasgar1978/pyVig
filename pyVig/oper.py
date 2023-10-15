@@ -1,7 +1,7 @@
 """ Operations
 """
 import pandas as pd
-import nettoolkit as nt
+from nettoolkit_db import read_xl
 from .devices import AdevDevices, device_df_drop_empty_duplicates, update_var_df_details_to_table_df
 from .cablings import ADevCablings
 from .maths import CalculateXY
@@ -125,7 +125,7 @@ class DF_ConverT():
 			line_pattern_style_shift_no (int): line pattern change/shift number/steps
 		"""		
 		self.file = file
-		self.full_df = nt.read_xl(file)
+		self.full_df = read_xl(file)
 		file = file.split("/")[-1].split("\\")[-1]
 		self.self_device = file.split("-clean")[0].split(".")[0]
 		#

@@ -2,7 +2,7 @@
 """
 # -----------------------------------------------------------------------------------
 
-from nettoolkit import Multi_Execution
+from nettoolkit_common import Multi_Execution
 
 from pyVig.visio import device
 
