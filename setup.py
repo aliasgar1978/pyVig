@@ -15,7 +15,7 @@ docs_extras = [
 
 setuptools.setup(
     name="pyVig",
-    version="0.0.11",
+    version="0.1.0",
     author="ALIASGAR - ALI",
     author_email="aholo2000@gmail.com",
     description="python based Visio Generator",
@@ -29,7 +29,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.8',
-    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit',  'PySimpleGUI', 'pywin32'],
+    install_requires=['pandas', 'numpy', 'xlrd', 'openpyxl', 'nettoolkit_db', 'nettoolkit_common', 'PySimpleGUI', 'pywin32'],
     extras_require={'docs': docs_extras},
 )
 

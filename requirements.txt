@@ -1,4 +1,6 @@
-nettoolkit>=0.0.17
+nettoolkit>=0.1.0
+nettoolkit_db
+nettoolkit_common
 pandas>=0.25.0
 PySimpleGUI>=4.0.0
 numpy>=1.21.0
