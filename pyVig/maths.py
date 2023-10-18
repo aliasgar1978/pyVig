@@ -108,7 +108,7 @@ class CalculateXY():
 		Returns:
 			dict: dictionary with y axis placement values for hierarchical_order
 		"""
-		i, y = 0, {}
+		i, y, next_i = 0, {}, 0
 		for ho in sorted(self.ho_dict):
 			for r in range(1, 3):
 				if self.ho_dict.get(ho+r):

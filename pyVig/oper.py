@@ -1,12 +1,8 @@
 """ Operations
 """
 import pandas as pd
-try:
-	from nettoolkit_db import read_xl
-except:
-	# backworad compatibility ( will be deprycated )
-	from nettoolkit import read_xl
-
+from nettoolkit_db import *
+from nettoolkit_common import *
 from .devices import AdevDevices, device_df_drop_empty_duplicates, update_var_df_details_to_table_df
 from .cablings import ADevCablings
 from .maths import CalculateXY

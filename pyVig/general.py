@@ -1,11 +1,8 @@
 """general functions
 """
 
-try:
-	from nettoolkit_common import LST
-except:
-	# backworad compatibility ( will be deprycated )
-	from nettoolkit import LST
+
+import nettoolkit_common as nt
 
 # ----------------------------------------------------------------------------------------------------
 # Some of static fixed / default values
@@ -148,16 +145,38 @@ def get_vlans_info(vlan_members, vlan_df):
 	if isinstance(vlan_members, float):
 		vlan_members = [int(vlan_members)]
 	else:
-		vlan_members = LST.remove_empty_members(vlan_members.split(","))
+		vlan_members = nt.LST.remove_empty_members(vlan_members.split(","))
 	s = ''
+	# print(vlan_members)
 	if len(vlan_members) == 0: return s
 	for vlan in vlan_members:
-		vlan = int(vlan)
+		try:
+			vlan = int(vlan)
+			s += __get_a_vlan_info_string(vlan_df, vlan)
+		except ValueError:
+			try:
+				vlans = vlan.split("-") 
+				for v in range(int(vlans[0]), int(vlans[1])+1):
+					s+= __get_a_vlan_info_string(vlan_df, v)
+			except:
+				pass
+	return s
+
+
+## return vlan information string for matching vlan number from given dataframe db
+def __get_a_vlan_info_string(vlan_df, vlan):
+	s = ""
+	try:
 		df = vlan_df[vlan_df['int_number'] == vlan]
+		if df.empty:
+			return s
 		s += series_item_0_value(df['interface']) + " "
 		s += series_item_0_value(df['intvrf']) + " "
 		s += series_item_0_value(df['subnet']) + "\n"
+	except:
+		print(f'Information:\tmissing information for vlan: {vlan}')
 	return s
+
 
 def update_vlans_info(int_df, vlan_df):
 	"""add `vlan_info` [column] to interface DataFrame using help of vlan DataFrame

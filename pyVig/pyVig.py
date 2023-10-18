@@ -55,8 +55,8 @@ def visio_operations(devices_data, cable_matrix_data, stencils, **dic):
 	outputFile = dic['op_file'] if 'op_file' in dic else None
 	with VisioObject(stencils, outputFile) as v:
 		print(f"Information:\tVisio Drawing Inprogress, Do not close Visio Drawing while its running...")
-		if (	(  'sheet_filters' in dic and dic['sheet_filters'])           and
-			not ('is_sheet_filter' in dic and dic['is_sheet_filter'] != True) 			
+		if (	(  'sheet_filters' in dic and dic['sheet_filters'])
+			# and not ('is_sheet_filter' in dic and dic['is_sheet_filter'] != True) 			
 			) :
 			for kv in dic['sheet_filters'].items():
 				if isinstance(kv[1], str):

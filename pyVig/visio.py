@@ -43,7 +43,7 @@ class VisioObject():
 		self.icons = {}
 		self.outputFile = outputFile
 		self._startVisio
-		self._openBlankVisioDoc
+		self._openBlankVisioDoc()
 		if all([stencils is not None, 
 				self.visio is not None,
 				self.doc is not None,
@@ -109,11 +109,10 @@ class VisioObject():
 			self.visio = None
 
 	# Internal use only: Open a blank visio page inside opened Visio Application
-	@property
 	def _openBlankVisioDoc(self):
 		try:
 			print(f"Information:\tadding a new blank page on visio application..", end='\t')
-			self.doc = self.visio.Documents.Add("")
+			self.doc = self.visio.Documents.Add('Basic Diagram.vst')
 			print(f"success..",)
 		except Exception as e:
 			print(f"fail..",)
