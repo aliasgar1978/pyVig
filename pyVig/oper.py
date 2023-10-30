@@ -1,12 +1,16 @@
 """ Operations
 """
 import pandas as pd
+from copy import deepcopy
 from nettoolkit_db import *
 from nettoolkit_common import *
 from .devices import AdevDevices, device_df_drop_empty_duplicates, update_var_df_details_to_table_df
 from .cablings import ADevCablings
 from .maths import CalculateXY
 from .general import *
+
+pd.set_option('mode.chained_assignment', None)
+
 
 # --------------------------------------------- 
 # Data Frame Generator
@@ -28,6 +32,7 @@ class DFGen():
 		self.line_pattern_style_shift_no = 2
 		self.func_dict = {}
 		self.var_func_dict = {}
+		self.pattern = 1
 		self.blank_dfs()
 
 	def blank_dfs(self):
@@ -69,7 +74,17 @@ class DFGen():
 
 		self.devices_merged_df = device_df_drop_empty_duplicates(self.devices_merged_df)
 		self.devices_merged_df = update_var_df_details_to_table_df(self.devices_merged_df, self.DCT, self.var_func_dict)
+		#
 		self.calculate_cordinates()
+		#
+		self.cabling_merged_df.reset_index(inplace=True)
+		self.remove_duplicate_cabling_entries()
+		# self.remove_undefined_cabling_entries()
+		#
+
+	def update(self, *funcs):
+		for f in funcs:
+			f(self.df_dict)
 
 	def update_devices_df(self, DCT, file):
 		"""update Devices DataFrame
@@ -103,6 +118,27 @@ class DFGen():
 		CXY.calc()
 		self.df_dict = {'Devices': CXY.df, 'Cablings': self.cabling_merged_df }
 
+	def remove_duplicate_cabling_entries(self):
+		a_to_b = {}
+		copy_full_df = deepcopy(self.cabling_merged_df)
+		for i, data in copy_full_df.iterrows():
+			if not a_to_b.get(data.a_device):
+				a_to_b[data.a_device] = {'remotedev':[]}
+			if data.b_device in a_to_b.keys() and data.a_device in a_to_b[data.b_device]['remotedev']:
+				self.cabling_merged_df.drop(i, inplace=True)
+				continue
+			if data.a_device in a_to_b.keys() and data.b_device in a_to_b[data.a_device]['remotedev']:
+				self.cabling_merged_df.drop(i, inplace=True)
+				continue
+			a_to_b[data.a_device]['remotedev'].append(data.b_device)
+
+	def remove_undefined_cabling_entries(self):
+		dev_hosts = set(self.devices_merged_df.hostname) 
+		copy_full_df = deepcopy(self.cabling_merged_df)
+		for i, data in copy_full_df.iterrows():
+			if not data.a_device in dev_hosts or not data.b_device in dev_hosts:
+				self.cabling_merged_df.drop(i, inplace=True)
+				continue
 
 
 # --------------------------------------------- 

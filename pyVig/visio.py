@@ -79,21 +79,23 @@ class VisioObject():
 	# save visio output file
 	def _saveVisio(self, file):
 		try: 
-			print(f"Information:\tattempting to save file as {file}..")
+			print(f"Information:\tattempting to save file as {file}... ", end='\t')
 			self.doc.SaveAs(file)
+			print(f"Success ")
 			return True
 		except: 
-			print(f"Warning:\t\tFiles auto save as {file} not working, please save file manually")
+			print(f"Failed")
 			return False
 
 	# close visio application
 	def _closeVisio(self):
 		try:
-			print(f"Information:\tattempting to close/quite visio ")
+			print(f"Information:\tattempting to close/quite visio... ", end='\t')
 			self.doc.Close()
 			self.visio.Quit()
+			print(f"Success ")
 		except:
-			print(f"Warning:\t\tVisio application failed, please close manually")
+			print(f"Failed")
 
 	# Internal use only: starts a new Visio Application
 	@property
@@ -112,7 +114,8 @@ class VisioObject():
 	def _openBlankVisioDoc(self):
 		try:
 			print(f"Information:\tadding a new blank page on visio application..", end='\t')
-			self.doc = self.visio.Documents.Add('Basic Diagram.vst')
+			# self.doc = self.visio.Documents.Add('Basic Diagram.vst')
+			self.doc = self.visio.Documents.Add('')
 			print(f"success..",)
 		except Exception as e:
 			print(f"fail..",)

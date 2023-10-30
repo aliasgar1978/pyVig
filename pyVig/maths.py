@@ -92,6 +92,7 @@ class CalculateXY():
 		"""sort the Device DataFrame based on ['hierarchical_order', 'hostname']
 		"""		
 		self.df.sort_values(by=['hierarchical_order', 'hostname'], inplace=True)
+		self.df = self.df[self.df.hierarchical_order != 100]
 
 	def count_of_ho(self):
 		"""counts hierarchical_order items and stores it in local dict 
@@ -102,21 +103,35 @@ class CalculateXY():
 			self.ho_dict[ho] = c
 
 	# -----------------------------------------------
-	def calc_ys(self):
-		"""calculates y axis placement for each hierarchical order
+	# def calc_ys(self):
+	# 	"""calculates y axis placement for each hierarchical order
 
-		Returns:
-			dict: dictionary with y axis placement values for hierarchical_order
-		"""
-		i, y, next_i = 0, {}, 0
+	# 	Returns:
+	# 		dict: dictionary with y axis placement values for hierarchical_order
+	# 	"""
+	# 	i, y, next_i = 0, {}, 0
+	# 	for ho in sorted(self.ho_dict):
+	# 		for r in range(1, 3):
+	# 			if self.ho_dict.get(ho+r):
+	# 				c = self.ho_dict[ho+r]
+	# 				next_i = c/2 * self.spacing_y
+	# 				break
+	# 		y[ho] = i
+	# 		i = next_i
+	# 	y = self.inverse_y(y)
+	# 	return y
+
+	def calc_ys(self):
+		ih, y, i = 0, {}, 0
 		for ho in sorted(self.ho_dict):
-			for r in range(1, 3):
-				if self.ho_dict.get(ho+r):
-					c = self.ho_dict[ho+r]
-					next_i = c/2 * self.spacing_y
-					break
-			y[ho] = i
-			i = next_i
+			if i == 0: 
+				y[ho] = ih
+				i += 1
+				prev_ho = ho
+				continue
+			c = self.ho_dict[ho]+self.ho_dict[prev_ho]
+			ih = c/2 * self.spacing_y
+			y[ho] = ih
 		y = self.inverse_y(y)
 		return y
 

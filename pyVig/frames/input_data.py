@@ -17,7 +17,7 @@ def pv_input_data_exec(i):
 		bool: wheter executor success or not.
 	"""	
 	try:
-		pass # TBD
+		pass
 		# if i['compare_config_file1'] != '' and i['compare_config_file2'] != '':
 		# 	text_diff(i['compare_config_file1'], i['compare_config_file2'], i['op_folder_compare_config_text'])
 		# 	sg.Popup("Success!")
