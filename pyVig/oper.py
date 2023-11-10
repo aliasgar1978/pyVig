@@ -75,16 +75,19 @@ class DFGen():
 		self.devices_merged_df = device_df_drop_empty_duplicates(self.devices_merged_df)
 		self.devices_merged_df = update_var_df_details_to_table_df(self.devices_merged_df, self.DCT, self.var_func_dict)
 		#
-		self.calculate_cordinates()
+		# self.calculate_cordinates()  # do after update for multi tab calculations (delete line in next release)
 		#
 		self.cabling_merged_df.reset_index(inplace=True)
 		self.remove_duplicate_cabling_entries()
 		# self.remove_undefined_cabling_entries()
 		#
+		self.df_dict = {'Devices': self.devices_merged_df, 'Cablings': self.cabling_merged_df }
+		#
 
 	def update(self, *funcs):
 		for f in funcs:
 			f(self.df_dict)
+
 
 	def update_devices_df(self, DCT, file):
 		"""update Devices DataFrame
@@ -111,10 +114,13 @@ class DFGen():
 		#
 		self.cabling_merged_df = pd.concat([self.cabling_merged_df, cdf], axis=0, join='outer')
 
-	def calculate_cordinates(self):
+	def calculate_cordinates(self, sheet_filter_dict):
 		"""calculate the x,y coordinate values for each devices and keep Devices, Cablings DataFrame Dictionary ready.
+
+		Args:
+			sheet_filter_dict (dict): sheet filter dictionary for mutitab executions.
 		"""		
-		CXY = CalculateXY(self.devices_merged_df, self.default_x_spacing, self.default_y_spacing)
+		CXY = CalculateXY(self.devices_merged_df, self.default_x_spacing, self.default_y_spacing, self.cabling_merged_df, sheet_filter_dict)
 		CXY.calc()
 		self.df_dict = {'Devices': CXY.df, 'Cablings': self.cabling_merged_df }
 

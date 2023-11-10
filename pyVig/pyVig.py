@@ -60,9 +60,13 @@ def visio_operations(devices_data, cable_matrix_data, stencils, **dic):
 			) :
 			for kv in dic['sheet_filters'].items():
 				if isinstance(kv[1], str):
+					devices_data.x = f'{kv[0]}-x-axis'					
+					devices_data.y = f'{kv[0]}-y-axis'
 					repeat_for_filter(v, devices_data, cable_matrix_data, kv[0], kv[1], kv[0], **dic)
 				elif isinstance(kv[1], (list, tuple, set)):
 					for _kv in kv[1]:
+						devices_data.x = f'{kv[0]}-x-axis'					
+						devices_data.y = f'{kv[0]}-y-axis'
 						repeat_for_filter(v, devices_data, cable_matrix_data, kv[0], _kv, kv[0] + '_' + _kv, **dic)
 		else:
 			visio_page_operation(v, devices_data, cable_matrix_data, {}, **dic)
