@@ -49,6 +49,17 @@ Version Control
      - April 10, 2023
      -  * Major Changes, Code Rewamp, input features changed.
         * Not backward compatible. Use latest documentation (>=0.0.11) for this version usage. 
+   * - 0.1.1
+     - Nov 1, 2023
+     - added custom fork to create multiple (x, y) axis value pairs to create multi-tab drawings. 
+
+
+
+.. warning::
+
+  * Updation of this package individually is stopped.
+  * Package is incorporated in ``nettoolkit`` package as a sub-package.
+  * Use nettoolkit for the future updates.
 
 
 -----
